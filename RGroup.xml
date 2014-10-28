@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<RGroupRecords xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="RGroup.xsd">
+
+<RGroupRequest>
+  <RGroupname>Animation</RGroupname>
+  <RGroupId>1</RGroupId>
+  <RAchievements>'Papers published'</RAchievements>
+  <photoIds>2 10 23 45</photoIds>
+  <eventIds>4 1</eventIds>
+</RGroupRequest>
+
+<RGroupRequest >
+  <RGroupname>WirelessNetworks</RGroupname>
+  <RGroupId>2</RGroupId>
+  <RAchievements>'Papers published'</RAchievements>
+  <photoIds>26 48 16 9 90</photoIds>
+  <eventIds>3 6</eventIds>
+</RGroupRequest>
+
+<RGroupRequest >
+  <RGroupname>HPC</RGroupname>
+  <RGroupId>3</RGroupId>
+  <RAchievements>'Papers published'</RAchievements>
+  <photoIds>75 4 88 37 22</photoIds>
+  <eventIds>6 8</eventIds>
+</RGroupRequest>
+
+</RGroupRecords>
