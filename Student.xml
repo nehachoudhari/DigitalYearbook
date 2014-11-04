@@ -39,4 +39,17 @@
   <deptId>1000</deptId>
   <job>Research work in Summer</job>
 </student>
+<student>
+  <buckId>2000003454</buckId>
+  <fname>Abhang</fname>
+  <lname>Sonawane</lname>
+  <contactNumber>123234543</contactNumber>
+  <email>a.b@osu.edu</email>
+  <dob>11/23/1989</dob>>
+  <gradYear>7/22/2015 </gradYear>
+  <userName>abhangs</userName>
+  <password>abhangs</password>
+  <deptId>1000</deptId>
+  <job>Nationwide</job>
+</student>
 </students>
