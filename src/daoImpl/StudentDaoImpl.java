@@ -125,7 +125,6 @@ public class StudentDaoImpl extends ParentAbstractDao implements StudentDao{
 	
 	public void deleteStudent(Student student) throws YearbookException{
 		Connection con = null;
-		Statement stmt = null;
 		PreparedStatement pstmt = null;
 		try{
 			con = getConnection();
@@ -152,11 +151,9 @@ public class StudentDaoImpl extends ParentAbstractDao implements StudentDao{
 		}finally{
 			if(con!=null){
 				try{
-					stmt.close();
 					pstmt.close();
 					con.close();
 					con=null;
-					stmt = null;
 					pstmt = null;
 				}catch(Exception e){
 					System.out.println(e);
