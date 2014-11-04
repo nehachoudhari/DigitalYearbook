@@ -34,160 +34,163 @@ public class MainMethod {
 	
 	public static void main(String args[])throws IOException, YearbookException, Exception
 	{
-		//initialize the empty hash tables
-		initialiseHashTables();
-		
-		//validate and load photographs from xml
-		boolean validate = false;
-		validate = XMLValidator.validateXMLFromXSD("Photographs.xml", "Photographs.xsd");
-		if (validate) {
-			photographs = PhotoParser.parsePhotos("Photographs.xml");
-			arrangePhotos();
-		}
-		
-		//for user input
-		BufferedReader b = new BufferedReader(new InputStreamReader(System.in));
-		
-		//loop till user chooses to exit
-		while (true) {
-			System.out.println("1 : Student \n2 : Department \n3 : Photograph \n0 : Exit" );
+		try{
+			//initialize the empty hash tables
+			initialiseHashTables();
 			
-			//choice of data table 
-			entity = Integer.parseInt(b.readLine());
-			
-			if(entity == 0) {
-				System.out.print("Goodbye!");
-				System.exit(0);
+			//validate and load photographs from xml
+			boolean validate = false;
+			validate = XMLValidator.validateXMLFromXSD("Photographs.xml", "Photographs.xsd");
+			if (validate) {
+				photographs = PhotoParser.parsePhotos("Photographs.xml");
+				arrangePhotos();
 			}
 			
-			System.out.println("1 : ADD \n2 : MODIFY \n3 : DELETE \n0 : Exit");
-			//choice of operation on the chosen table
-			action = Integer.parseInt(b.readLine());
-
-			if(action == 0) {
-				System.out.print("Goodbye!");
-				System.exit(0);
-			}
+			//for user input
+			BufferedReader b = new BufferedReader(new InputStreamReader(System.in));
 			
-			switch (entity)
-			{
-			case 1: Entity = "Student";
+			//loop till user chooses to exit
+			while (true) {
+				System.out.println("1 : Student \n2 : Department \n3 : Photograph \n0 : Exit" );
 				
-				switch (action)
-				{
-				case 1: Action = "Add";
-						validate = XMLValidator.validateXMLFromXSD("Student.xml", "Student.xsd");
-						if (validate) {
-							students = StudentParser.parseStudents("Student.xml");
-							for(Student s : students) {
-								List<Photograph> l = (List<Photograph>) getPhotos(s);
-								if(l==null) {
-									System.out.println("Please add this student's photograph first : " + s.getFirstName());
-									continue;
-								}	
-								studentDao.addStudent(s, getPhotos(s).get(0));
-								System.out.println("Student added : " + s.getFirstName());
-							}
-						} else {
-							System.out.println("Error validating xml");
-						}
-						
-						break;
-				case 2: Action = "Modify"; 
-						validate = XMLValidator.validateXMLFromXSD("Student.xml", "Student.xsd");
-						if (validate) {
-							students = StudentParser.parseStudents("Student.xml");
-							for(Student s : students) {
-								List<Photograph> l = (List<Photograph>) getPhotos(s);
-								if(l==null) {
-									System.out.println("Please add this student's photograph first : " + s.getFirstName());
-									continue;
-								}
-								studentDao.updateStudent(s, getPhotos(s).get(0));
-								}
-						} else {
-							System.out.println("Error validating xml");
-						}
+				//choice of data table 
+				entity = Integer.parseInt(b.readLine());
 				
-						break;
-				case 3: Action = "Delete"; 
-						validate = XMLValidator.validateXMLFromXSD("Student.xml", "Student.xsd");
-						if (validate) {
-							students = StudentParser.parseStudents("Student.xml");
-							for(Student s : students) {
-								List<Photograph> l = (List<Photograph>) getPhotos(s);
-								if(l==null)
-									continue;
-								studentDao.deleteStudent(s);
-								
-							}
-						} else {
-							System.out.println("Error validating xml");
-						}
-							
-						
-						break;
+				if(entity == 0) {
+					System.out.print("Goodbye!");
+					System.exit(0);
 				}
 				
-				break;
-			case 2: 
-				Entity = "Department";
+				System.out.println("1 : ADD \n2 : MODIFY \n3 : DELETE \n0 : Exit");
+				//choice of operation on the chosen table
+				action = Integer.parseInt(b.readLine());
+	
+				if(action == 0) {
+					System.out.print("Goodbye!");
+					System.exit(0);
+				}
 				
-				switch (action)
+				switch (entity)
 				{
-				case 1: Action = "Add";
-						validate = XMLValidator.validateXMLFromXSD("Department.xml","Department.xsd");
-						if (validate) {
-							departments = DepartmentParser.parseDepartments("Department.xml");
-							for(Department d : departments) {
-								
-								depDao.addDepartment(d, getPhotos(d));
+				case 1: Entity = "Student";
+					
+					switch (action)
+					{
+					case 1: Action = "Add";
+							validate = XMLValidator.validateXMLFromXSD("Student.xml", "Student.xsd");
+							if (validate) {
+								students = StudentParser.parseStudents("Student.xml");
+								for(Student s : students) {
+									List<Photograph> l = (List<Photograph>) getPhotos(s);
+									if(l==null) {
+										System.out.println("Please add this student's photograph first : " + s.getFirstName());
+										continue;
+									}	
+									studentDao.addStudent(s, getPhotos(s).get(0));
+									System.out.println("Student added : " + s.getFirstName());
+								}
+							} else {
+								System.out.println("Error validating xml");
 							}
-						} else {
-							System.out.println("Error validating xml");
-						}
 							
-						break;
-				case 2: Action = "Modify"; 
-				
-						validate = XMLValidator.validateXMLFromXSD("Department.xml","Department.xsd");
-						if (validate) {
-							departments = DepartmentParser.parseDepartments("Department.xml");
-							for(Department d : departments) {
-								
-								depDao.updateDepartment(d, getPhotos(d));
+							break;
+					case 2: Action = "Modify"; 
+							validate = XMLValidator.validateXMLFromXSD("Student.xml", "Student.xsd");
+							if (validate) {
+								students = StudentParser.parseStudents("Student.xml");
+								for(Student s : students) {
+									List<Photograph> l = (List<Photograph>) getPhotos(s);
+									if(l==null) {
+										System.out.println("Please add this student's photograph first : " + s.getFirstName());
+										continue;
+									}
+									studentDao.updateStudent(s, getPhotos(s).get(0));
+									}
+							} else {
+								System.out.println("Error validating xml");
 							}
-						} else {
-							System.out.println("Error validating xml");
-						}
-							
-						
-						break;
-				case 3: Action = "Delete"; 
-				
-						validate = XMLValidator.validateXMLFromXSD("Department.xml","Department.xsd");
-						if (validate) {
-							departments = DepartmentParser.parseDepartments("Department.xml");
-							for(Department d : departments) {
-								
-								depDao.deleteDepartment(d);
+					
+							break;
+					case 3: Action = "Delete"; 
+							validate = XMLValidator.validateXMLFromXSD("Student.xml", "Student.xsd");
+							if (validate) {
+								students = StudentParser.parseStudents("Student.xml");
+								for(Student s : students) {
+									List<Photograph> l = (List<Photograph>) getPhotos(s);
+									if(l==null)
+										continue;
+									studentDao.deleteStudent(s);
+									
+								}
+							} else {
+								System.out.println("Error validating xml");
 							}
-						} else {
-							System.out.println("Error validating xml");
-						}
+								
 							
-				
+							break;
+					}
+					
 					break;
+				case 2: 
+					Entity = "Department";
+					
+					switch (action)
+					{
+					case 1: Action = "Add";
+							validate = XMLValidator.validateXMLFromXSD("Department.xml","Department.xsd");
+							if (validate) {
+								departments = DepartmentParser.parseDepartments("Department.xml");
+								for(Department d : departments) {
+									
+									depDao.addDepartment(d, getPhotos(d));
+								}
+							} else {
+								System.out.println("Error validating xml");
+							}
+								
+							break;
+					case 2: Action = "Modify"; 
+					
+							validate = XMLValidator.validateXMLFromXSD("Department.xml","Department.xsd");
+							if (validate) {
+								departments = DepartmentParser.parseDepartments("Department.xml");
+								for(Department d : departments) {
+									
+									depDao.updateDepartment(d, getPhotos(d));
+								}
+							} else {
+								System.out.println("Error validating xml");
+							}
+								
+							
+							break;
+					case 3: Action = "Delete"; 
+					
+							validate = XMLValidator.validateXMLFromXSD("Department.xml","Department.xsd");
+							if (validate) {
+								departments = DepartmentParser.parseDepartments("Department.xml");
+								for(Department d : departments) {
+									
+									depDao.deleteDepartment(d);
+								}
+							} else {
+								System.out.println("Error validating xml");
+							}
+								
+					
+						break;
+					}
+					
+					
+					break;
+				
 				}
 				
 				
-				break;
-			
 			}
-			
-			
+		}catch(Exception e){
+			System.out.println(e.getMessage());
 		}
-		
 		
 	}
 	

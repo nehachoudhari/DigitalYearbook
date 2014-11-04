@@ -46,7 +46,7 @@ public class StudentDaoImpl extends ParentAbstractDao implements StudentDao{
 						
 			//con.commit();
 		}catch (SQLException e) {
-			if(e.getMessage().toUpperCase().contains("DUPLICATE TABLE NAME")) {
+			if(e.getMessage().toUpperCase().contains("UNIQUE INDEX OR PRIMARY KEY VIOLATION:")) {
 				   throw new YearbookException("Duplicate Student buck id.");
 			}else{
 				System.out.println(e.getMessage());
