@@ -53,7 +53,7 @@ public class EventDaoImpl extends ParentAbstractDao implements EventDao{
 						
 			con.commit();
 		}catch (SQLException e) {
-			if(e.getMessage().toUpperCase().contains("DUPLICATE TABLE NAME")) {
+			if(e.getMessage().toUpperCase().contains("UNIQUE INDEX OR PRIMARY KEY VIOLATION:")) {
 				   throw new YearbookException("Duplicate Event ");
 				} 
 		}catch(Exception e){
@@ -163,10 +163,6 @@ public class EventDaoImpl extends ParentAbstractDao implements EventDao{
 			con.commit();
 		}catch(YearbookException e){
 			throw e;
-		}catch (SQLException e) {
-			if(e.getMessage().toUpperCase().contains("DUPLICATE TABLE NAME")) {
-				   throw new YearbookException("Event already exists... ");
-				} 
 		}catch(Exception e){
 			System.out.println(e.getMessage());
 		}finally{

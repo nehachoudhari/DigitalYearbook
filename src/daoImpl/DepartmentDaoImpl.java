@@ -53,8 +53,8 @@ public class DepartmentDaoImpl extends ParentAbstractDao implements DepartmentDa
             }			
 			//con.commit();
 		}catch (SQLException e) {
-			if(e.getMessage().toUpperCase().contains("DUPLICATE TABLE NAME")) {
-			   throw new YearbookException("Duplicate Department name");
+			if(e.getMessage().toUpperCase().contains("UNIQUE INDEX OR PRIMARY KEY VIOLATION:")) {
+			   throw new YearbookException("Department with this department ID already exists.");
 			   
 			}
 			e.printStackTrace();
