@@ -21,5 +21,11 @@
   <type>Department</type>
   <typeId>1001</typeId>
 </photo>
-
+<photo>
+  <photoId>4</photoId>
+  <photo_url>https://www.dropbox.com/s/rxo1yl0poc3dac5/iOS%207%20Programming%20Cookbook.pdf?n=223694613</photo_url>
+  <photo_details>Abhang Sonawane</photo_details>
+  <type>Student</type>
+  <typeId>2000003454</typeId>
+</photo>
 </photoRecords>
