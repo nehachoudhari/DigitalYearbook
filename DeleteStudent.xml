@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<students xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Student Student.xsd">
+<student>
+  <buckId>2000045699</buckId>
+  <fname>Neha</fname>
+  <lname>Choudhari</lname>
+  <contactNumber>6145555474</contactNumber>
+  <email>choudhari.4@osu.edu</email>
+  <dob>08/23/1990</dob>>
+  <gradYear> 7/22/2015 </gradYear>
+  <userName>nehac</userName>
+  <password>nehac</password>
+  <deptId>1000</deptId>
+  <job>Summer intern at Amazon</job>
+</student>
+</students>
