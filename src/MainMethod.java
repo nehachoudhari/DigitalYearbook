@@ -95,7 +95,7 @@ public class MainMethod {
 							
 							break;
 					case 2: Action = "Modify"; 
-							validate = XMLValidator.validateXMLFromXSD("Student.xml", "Student.xsd");
+							validate = XMLValidator.validateXMLFromXSD("ModifyStudent.xml", "Student.xsd");
 							if (validate) {
 								students = StudentParser.parseStudents("Student.xml");
 								for(Student s : students) {
@@ -112,7 +112,7 @@ public class MainMethod {
 					
 							break;
 					case 3: Action = "Delete"; 
-							validate = XMLValidator.validateXMLFromXSD("Student.xml", "Student.xsd");
+							validate = XMLValidator.validateXMLFromXSD("DeleteStudent.xml", "Student.xsd");
 							if (validate) {
 								students = StudentParser.parseStudents("Student.xml");
 								for(Student s : students) {
@@ -151,7 +151,7 @@ public class MainMethod {
 							break;
 					case 2: Action = "Modify"; 
 					
-							validate = XMLValidator.validateXMLFromXSD("Department.xml","Department.xsd");
+							validate = XMLValidator.validateXMLFromXSD("ModifyDepartment.xml","Department.xsd");
 							if (validate) {
 								departments = DepartmentParser.parseDepartments("Department.xml");
 								for(Department d : departments) {
@@ -166,7 +166,7 @@ public class MainMethod {
 							break;
 					case 3: Action = "Delete"; 
 					
-							validate = XMLValidator.validateXMLFromXSD("Department.xml","Department.xsd");
+							validate = XMLValidator.validateXMLFromXSD("DeleteDepartment.xml","Department.xsd");
 							if (validate) {
 								departments = DepartmentParser.parseDepartments("Department.xml");
 								for(Department d : departments) {
