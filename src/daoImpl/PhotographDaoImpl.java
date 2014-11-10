@@ -86,7 +86,8 @@ public class PhotographDaoImpl implements PhotographDao{
 			
 			String query = Constants.DELETE_PHOTO;
 			pstmt = con.prepareStatement(query);
-			pstmt.setLong(1, photo.getPhotoId());
+			pstmt.setString(1, photo.getType());
+			pstmt.setLong(2, photo.getTypeId());
 			
 			result = pstmt.executeUpdate();
 		}catch(Exception e){

@@ -161,7 +161,7 @@ public class DepartmentDaoImpl extends ParentAbstractDao implements DepartmentDa
 				photoDao.addPhoto(photo, con);
 				result++;
 			}
-            pstmt.executeUpdate();
+         
 			if(result == 0){
 				throw new YearbookException("Incorrect details for department update..");
 			}

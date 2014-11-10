@@ -5,13 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import bean.Photograph;
+import bean.Student;
 import constants.Constants;
 import constants.PhotoTypeEnum;
 import dao.StudentDao;
 import exception.YearbookException;
-
-import bean.Photograph;
-import bean.Student;
 
 public class StudentDaoImpl extends ParentAbstractDao implements StudentDao{
 	public void addStudent(Student student, Photograph photo) throws YearbookException{
@@ -33,10 +32,11 @@ public class StudentDaoImpl extends ParentAbstractDao implements StudentDao{
 			pstmt.setString(4, student.getGradYear());
 			pstmt.setString(5, student.getDob());
 			pstmt.setString(6, student.getJobInternDetails());
-			pstmt.setString(7, student.getContactNumber());
+			pstmt.setString(7,  student.getContactNumber());
 			pstmt.setInt(8, student.getDeptId());
 			pstmt.setString(9, student.getUsername());
 			pstmt.setString(10, student.getPassword());
+			pstmt.setString(11,  student.getEmail());
 			pstmt.executeUpdate();
 			
 			photo.setType(PhotoTypeEnum.STUDENT.toString());
@@ -90,7 +90,8 @@ public class StudentDaoImpl extends ParentAbstractDao implements StudentDao{
 			pstmt.setString(6, student.getContactNumber());
 			pstmt.setInt(7, student.getDeptId());
 			pstmt.setString(8, student.getPassword());
-			pstmt.setLong(9, student.getBuckId());
+			pstmt.setLong(10, student.getBuckId());
+			pstmt.setString(9,  student.getEmail());
 			int result = pstmt.executeUpdate();
 			
 			photo.setType(PhotoTypeEnum.STUDENT.toString());
@@ -141,7 +142,7 @@ public class StudentDaoImpl extends ParentAbstractDao implements StudentDao{
 			pstmt.setLong(1, student.getBuckId());
 			int result = pstmt.executeUpdate();
 			if(result == 0){
-				throw new YearbookException("Incorrect details for student delete..");
+				throw new YearbookException("Incorrect details for student to delete..");
 			}
 			con.commit();
 		}catch(YearbookException e){
