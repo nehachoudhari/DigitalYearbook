@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <departments>
 	<department>
-		<id>1001</id>
+		<id>1000</id>
 		<name>Computer Science and Engineering</name>
 		<location>395 Dreese Laboratories</location>
 		<url>http://web.cse.ohio-state.edu</url>
