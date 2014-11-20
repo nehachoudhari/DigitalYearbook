@@ -1,6 +1,11 @@
 package constants;
 
-public final class Constants {
+/**
+ * @author nhchdhr
+ * This class is contains static constants for each of the SQL queries used for CRUD operations on various tables in database 
+ *
+ */
+public final class SqlCommands {
 	
 	public static final String ADD_STUDENT_TABLE = "CREATE TABLE IF NOT EXISTS STUDENT(BUCK_ID INTEGER, FNAME VARCHAR2(500), LNAME VARCHAR2(500), GRAD_YEAR VARCHAR2(20), DATE_OF_BIRTH VARCHAR2(20), JOB_INTERN_DETAILS VARCHAR2(1000), CONTACT_NUMBER VARCHAR2(15), DEPARTMENT_ID INTEGER,USER_NAME VARCHAR2(100), PASSWORD VARCHAR2(100), EMAIL VARCHAR2(100), PRIMARY KEY (BUCK_ID), FOREIGN KEY (DEPARTMENT_ID) REFERENCES DEPARTMENT(ID))";
 	public static final String ADD_STUDENT = "INSERT INTO STUDENT(BUCK_ID, FNAME, LNAME,  GRAD_YEAR, DATE_OF_BIRTH , JOB_INTERN_DETAILS , CONTACT_NUMBER, DEPARTMENT_ID, USER_NAME, PASSWORD, EMAIL) VALUES(?,?,?,?,?,?,?,?,?,?,?) ";

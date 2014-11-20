@@ -9,7 +9,7 @@ import java.util.List;
 
 import bean.Event;
 import bean.Photograph;
-import constants.Constants;
+import constants.SqlCommands;
 import constants.PhotoTypeEnum;
 import dao.EventDao;
 import exception.YearbookException;
@@ -25,9 +25,9 @@ public class EventDaoImpl extends ParentAbstractDao implements EventDao{
 			con.setAutoCommit(false);
 			
 			stmt = con.createStatement();
-			stmt.execute(Constants.ADD_EVENT_TABLE);
+			stmt.execute(SqlCommands.ADD_EVENT_TABLE);
 			
-			String query = Constants.ADD_EVENT;
+			String query = SqlCommands.ADD_EVENT;
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, event.getName());
 			pstmt.setString(2, event.getDate());
@@ -84,7 +84,7 @@ public class EventDaoImpl extends ParentAbstractDao implements EventDao{
 			con.setAutoCommit(false);
 			
 			stmt = con.createStatement();
-			stmt.execute(Constants.ADD_EVENT_TABLE);
+			stmt.execute(SqlCommands.ADD_EVENT_TABLE);
 			
 			int result = 0;
 			PhotographDaoImpl photoDao = new PhotographDaoImpl();
@@ -94,7 +94,7 @@ public class EventDaoImpl extends ParentAbstractDao implements EventDao{
 			result += photoDao.deletePhotos(photo, con);	
 			
 
-			String query = Constants.DELETE_EVENT;
+			String query = SqlCommands.DELETE_EVENT;
 			pstmt = con.prepareStatement(query);
 			pstmt.setLong(1, event.getEventId());
 			result = pstmt.executeUpdate();
@@ -133,9 +133,9 @@ public class EventDaoImpl extends ParentAbstractDao implements EventDao{
 			con.setAutoCommit(false);
 			
 			stmt = con.createStatement();
-			stmt.execute(Constants.ADD_EVENT_TABLE);
+			stmt.execute(SqlCommands.ADD_EVENT_TABLE);
 			
-			String query = Constants.UPDATE_EVENT;
+			String query = SqlCommands.UPDATE_EVENT;
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, event.getName());
 			pstmt.setString(2, event.getDate());
