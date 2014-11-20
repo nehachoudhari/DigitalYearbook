@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<committeeMembers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="CommitteeMember.xsd">
+	<member>
+		<name>Xiaodong Zhang</name>
+		<photoId></photoId>
+		<email>zhang</email>
+		<url>http://web.cse.ohio-state.edu/~zhang/</url>
+		<designation>Department Chair</designation>
+	</member>
+
+	<member>
+		<name>Gagan Agrawal</name>
+		<photoId>2</photoId>
+		<email>agrawal</email>
+		<url>http://web.cse.ohio-state.edu/~agrawal/</url>
+		<designation>Grad Chair</designation>
+	</member>
+
+	<member>
+		<name>Kathryn Reeves</name>
+		<photoId>3</photoId>
+		<email>reeves</email>
+		<url></url>
+		<designation>Admin</designation>
+	</member>
+
+	<member>
+		<name>Jeremy Morris</name>
+		<photoId>4</photoId>
+		<email>morrijer</email>
+		<url>http://web.cse.ohio-state.edu/~morrijer/</url>
+		<designation>Lecturer</designation>
+	</member>
+
+</committeeMembers>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EventRecords xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Event Event.xsd">
+<EventRequest >
+  <eventname>Hackathon</eventname>
+  <eventId>1</eventId>
+  <description>OSU hackathon organized by Arnab Nandi on 3rd October</description>
+  <photoIds>2 10 23 45</photoIds>
+</EventRequest>
+<EventRequest>
+  <eventname>Career Fair</eventname>
+  <eventId>2</eventId>
+  <description>Engineering Career Fair organized on 24th September</description>
+  <photoIds>58 6 4 99 334 45 4 12</photoIds>
+</EventRequest>
+
+</EventRecords>
