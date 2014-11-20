@@ -9,7 +9,7 @@ import java.util.List;
 
 import bean.Department;
 import bean.Photograph;
-import constants.Constants;
+import constants.SqlCommands;
 import constants.PhotoTypeEnum;
 import dao.DepartmentDao;
 import exception.YearbookException;
@@ -27,9 +27,9 @@ public class DepartmentDaoImpl extends ParentAbstractDao implements DepartmentDa
 			//con.setAutoCommit(false);
 			
 			stmt = con.createStatement();
-			stmt.execute(Constants.ADD_DEPARTMENT_TABLE);
+			stmt.execute(SqlCommands.ADD_DEPARTMENT_TABLE);
 			
-			String query = Constants.ADD_DEPARTMENT;
+			String query = SqlCommands.ADD_DEPARTMENT;
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, department.getName());
 			pstmt.setString(2, department.getMission());
@@ -88,7 +88,7 @@ public class DepartmentDaoImpl extends ParentAbstractDao implements DepartmentDa
 			con.setAutoCommit(false);
 			
 			stmt = con.createStatement();
-			stmt.execute(Constants.ADD_DEPARTMENT_TABLE);
+			stmt.execute(SqlCommands.ADD_DEPARTMENT_TABLE);
 
 			PhotographDaoImpl photoDao = new PhotographDaoImpl();
 			Photograph photo = new Photograph();
@@ -96,7 +96,7 @@ public class DepartmentDaoImpl extends ParentAbstractDao implements DepartmentDa
 			photo.setTypeId(department.getDeptId());
 			int result = photoDao.deletePhotos(photo, con);
 			
-			String query = Constants.DELETE_DEPARTMENT;
+			String query = SqlCommands.DELETE_DEPARTMENT;
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, department.getDeptId());
 			result += pstmt.executeUpdate();
@@ -135,10 +135,10 @@ public class DepartmentDaoImpl extends ParentAbstractDao implements DepartmentDa
 			con.setAutoCommit(false);
 			
 			stmt = con.createStatement();
-			stmt.execute(Constants.ADD_DEPARTMENT_TABLE);
+			stmt.execute(SqlCommands.ADD_DEPARTMENT_TABLE);
 			
 			
-			String query = Constants.UPDATE_DEPARTMENT;
+			String query = SqlCommands.UPDATE_DEPARTMENT;
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, department.getName());
 			pstmt.setString(2, department.getMission());

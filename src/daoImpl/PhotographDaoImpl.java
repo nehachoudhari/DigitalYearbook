@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 
 import bean.Photograph;
-import constants.Constants;
+import constants.SqlCommands;
 import dao.PhotographDao;
 
 public class PhotographDaoImpl implements PhotographDao{
@@ -14,9 +14,9 @@ public class PhotographDaoImpl implements PhotographDao{
 		PreparedStatement pstmt = null;
 		try{
 			stmt = con.createStatement();
-			stmt.execute(Constants.ADD_PHOTO_TABLE);
+			stmt.execute(SqlCommands.ADD_PHOTO_TABLE);
 			
-			String query = Constants.ADD_PHOTO;
+			String query = SqlCommands.ADD_PHOTO;
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, photo.getType());
 			pstmt.setLong(2, photo.getTypeId());
@@ -50,9 +50,9 @@ public class PhotographDaoImpl implements PhotographDao{
 		int result = 0;
 		try{
 			stmt = con.createStatement();
-			stmt.execute(Constants.ADD_PHOTO_TABLE);
+			stmt.execute(SqlCommands.ADD_PHOTO_TABLE);
 			
-			String query = Constants.UPDATE_PHOTO;
+			String query = SqlCommands.UPDATE_PHOTO;
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, photo.getUrl());
 			pstmt.setString(2, photo.getDetails());
@@ -82,9 +82,9 @@ public class PhotographDaoImpl implements PhotographDao{
 		int result = 0;
 		try{
 			stmt = con.createStatement();
-			stmt.execute(Constants.ADD_PHOTO_TABLE);
+			stmt.execute(SqlCommands.ADD_PHOTO_TABLE);
 			
-			String query = Constants.DELETE_PHOTO;
+			String query = SqlCommands.DELETE_PHOTO;
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, photo.getType());
 			pstmt.setLong(2, photo.getTypeId());

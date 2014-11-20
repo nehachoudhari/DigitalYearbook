@@ -1,17 +1,49 @@
 package bean;
+import javax.persistence.* ;
 
-
+/**
+ * @author nhchdhr
+ * 
+ * This class represents the Student entity and provides getters and setters for its fields
+ * Student entity is mapped to Student table in the database 
+ *
+ */
+@Entity
+@Table(name="STUDENT")
 public class Student {
+	
+	@Id
+	@Column(name="BUCK_ID")
 	private long buckId;
+	
+	@Column(name="FNAME")
 	private String firstName;
+	
+	@Column(name="LNAME")
 	private String lastName;
+	
+	@Column(name="USER_NAME")
 	private String username;
+	
+	@Column(name="PASSWORD")
 	private String password;
+	
+	@Column(name="DATE_OF_BIRTH")
 	private String dob;
+	
+	@Column(name="GRAD_YEAR")
 	private String gradYear;
+	
+	@Column(name="CONTACT_NUMBER")
 	private String contactNumber;
+	
+	@Column(name="JOB_INTERN_DETAILS")
 	private String jobInternDetails;
+	
+	@Column(name="DEPARTMENT_ID")
 	private int deptId;
+	
+	@Column(name="EMAIL")
 	private String email;
 	
 	public String getEmail() {
@@ -86,9 +118,10 @@ public class Student {
 	@Override
 	public String toString() {
 		StringBuffer  sb = new StringBuffer();
-		sb.append("The Student with id : " + this.buckId);
-		sb.append(" Name : " + firstName + " " + lastName);
-		sb.append(" Date of birth : " + dob + "\n");
+		sb.append("The details of the Student are: \nid : " + this.buckId);
+		sb.append("\nName : " + firstName + " " + lastName);
+		sb.append("\nDate of birth : " + dob);
+		sb.append("\nYear of graduation: " + dob + "\n");
 		return sb.toString();
 	}
 }

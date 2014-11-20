@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 import bean.Photograph;
 import bean.Student;
-import constants.Constants;
+import constants.SqlCommands;
 import constants.PhotoTypeEnum;
 import dao.StudentDao;
 import exception.YearbookException;
@@ -22,9 +22,9 @@ public class StudentDaoImpl extends ParentAbstractDao implements StudentDao{
 			//con.setAutoCommit(false);
 			
 			stmt = con.createStatement();
-			stmt.execute(Constants.ADD_STUDENT_TABLE);
+			stmt.execute(SqlCommands.ADD_STUDENT_TABLE);
 			
-			String query = Constants.ADD_STUDENT;
+			String query = SqlCommands.ADD_STUDENT;
 			pstmt = con.prepareStatement(query);
 			pstmt.setLong(1, student.getBuckId());
 			pstmt.setString(2, student.getFirstName());
@@ -78,9 +78,9 @@ public class StudentDaoImpl extends ParentAbstractDao implements StudentDao{
 			con.setAutoCommit(false);
 			
 			stmt = con.createStatement();
-			stmt.execute(Constants.ADD_STUDENT_TABLE);
+			stmt.execute(SqlCommands.ADD_STUDENT_TABLE);
 			
-			String query = Constants.UPDATE_STUDENT;
+			String query = SqlCommands.UPDATE_STUDENT;
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, student.getFirstName());
 			pstmt.setString(2, student.getLastName());
@@ -137,7 +137,7 @@ public class StudentDaoImpl extends ParentAbstractDao implements StudentDao{
 			PhotographDaoImpl photoDao = new PhotographDaoImpl();
 			photoDao.deletePhotos(photo, con);
 			
-			String query = Constants.DELETE_STUDENT;
+			String query = SqlCommands.DELETE_STUDENT;
 			pstmt = con.prepareStatement(query);
 			pstmt.setLong(1, student.getBuckId());
 			int result = pstmt.executeUpdate();
