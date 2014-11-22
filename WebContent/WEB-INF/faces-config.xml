@@ -1,8 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<faces-config
-    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
-    version="2.2">
-
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+ <managed-bean>
+  <managed-bean-name>studentBean</managed-bean-name>
+  <managed-bean-class>bean.Student</managed-bean-class>
+  <managed-bean-scope>application</managed-bean-scope>
+ </managed-bean>
+ 
+ <managed-bean>
+  <managed-bean-name>deptBean</managed-bean-name>
+  <managed-bean-class>bean.Department</managed-bean-class>
+  <managed-bean-scope>application</managed-bean-scope>
+ </managed-bean>
+ 
+ <navigation-rule>
+  <display-name>registerStudent.xhtml</display-name>
+  <from-view-id>/registerStudent.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>true</from-outcome>
+   <to-view-id>/successfulRegistration.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ 
+ <navigation-rule>
+  <display-name>addDepartment.xhtml</display-name>
+  <from-view-id>/addDepartment.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>true</from-outcome>
+   <to-view-id>/successfulRegistration.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <application/>
 </faces-config>

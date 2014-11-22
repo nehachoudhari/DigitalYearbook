@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#registerStudent.xhtml"
+  PATH="/registerStudent.xhtml" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#registerStudent.xhtml:0" NAME="item"
+   PATH="/registerStudent.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="true::#successfulRegistration.xhtml"
+    NAME="output" PATH="/successfulRegistration.xhtml"
+    TARGET="rules:#successfulRegistration.xhtml" TITLE="true" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#successfulRegistration.xhtml"
+  PATH="/successfulRegistration.xhtml" SHAPE="240,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#addDepartment.xhtml"
+  PATH="/addDepartment.xhtml" SHAPE="32,129,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#addDepartment.xhtml:0" NAME="item"
+   PATH="/addDepartment.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="true::#successfulRegistration.xhtml"
+    NAME="output" PATH="/successfulRegistration.xhtml"
+    TARGET="rules:#successfulRegistration.xhtml" TITLE="true" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>

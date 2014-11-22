@@ -1,5 +1,8 @@
 package bean;
-import javax.persistence.* ;
+import javax.ejb.EJB;
+
+import service.StudentService;
+import exception.YearbookException;
 
 /**
  * @author nhchdhr
@@ -8,43 +11,34 @@ import javax.persistence.* ;
  * Student entity is mapped to Student table in the database 
  *
  */
-@Entity
-@Table(name="STUDENT")
 public class Student {
 	
-	@Id
-	@Column(name="BUCK_ID")
 	private long buckId;
 	
-	@Column(name="FNAME")
 	private String firstName;
 	
-	@Column(name="LNAME")
 	private String lastName;
 	
-	@Column(name="USER_NAME")
 	private String username;
 	
-	@Column(name="PASSWORD")
 	private String password;
 	
-	@Column(name="DATE_OF_BIRTH")
 	private String dob;
 	
-	@Column(name="GRAD_YEAR")
 	private String gradYear;
 	
-	@Column(name="CONTACT_NUMBER")
 	private String contactNumber;
 	
-	@Column(name="JOB_INTERN_DETAILS")
 	private String jobInternDetails;
 	
-	@Column(name="DEPARTMENT_ID")
 	private int deptId;
 	
-	@Column(name="EMAIL")
 	private String email;
+	
+	private Photograph photo = new Photograph();
+	
+	@EJB
+	StudentService studentService ;
 	
 	public String getEmail() {
 		return email;
@@ -123,5 +117,28 @@ public class Student {
 		sb.append("\nDate of birth : " + dob);
 		sb.append("\nYear of graduation: " + dob + "\n");
 		return sb.toString();
+	}
+	
+	private entity.Photograph convertEntityToBean(bean.Photograph photographs){
+		
+		entity.Photograph photoIn = new entity.Photograph();
+		photoIn.setDetails(photo.getDetails());
+		photoIn.setPhotoId(photo.getPhotoId());
+		photoIn.setType(photo.getType());
+		photoIn.setTypeId(photo.getTypeId());
+		photoIn.setUrl(photo.getUrl());
+		return photoIn;
+	}
+	
+	public String addStudent() throws YearbookException{
+		entity.Photograph photoEntity = convertEntityToBean(photo);
+		String ret = studentService.addStudent(buckId, contactNumber, deptId, dob, email,
+				firstName, gradYear, jobInternDetails, lastName,
+				  password, username, photoEntity);
+
+		if(!ret.equalsIgnoreCase("Exists"))
+			return "true";
+		else 
+			return "false";
 	}
 }

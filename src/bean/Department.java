@@ -1,9 +1,12 @@
 package bean;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.ejb.EJB;
+
+import service.DepartmentService;
+import exception.YearbookException;
+
 
 /**
  * @author nhchdhr
@@ -12,26 +15,23 @@ import javax.persistence.Table;
  * Student entity is mapped to Department table in the database 
  *
  */
-@Entity
-@Table(name="DEPARTMENT")
+
 public class Department {
 	
-	@Id
-	@GeneratedValue
-	@Column(name="ID")
+	@EJB
+	DepartmentService deptService;
+	
 	private int deptId;
 	
-	@Column(name="NAME")
 	private String name;
-	
-	@Column(name="MISSION")
+
 	private String mission;
 	
-	@Column(name="LOCATION")
 	private String location;
 	
-	@Column(name="URL")
 	private String url;
+	
+	private List<bean.Photograph> photoList = new ArrayList<bean.Photograph>();
 	
 	
 	public String getLocation() {
@@ -65,13 +65,38 @@ public class Department {
 		this.mission = mission;
 	}
 	
-	@Override
+	
 	public String toString() {
 		StringBuffer  sb = new StringBuffer();
 		sb.append("The Department details are : \nDept id: " + this.deptId);
 		sb.append("\nName : " + name);
 		sb.append("\nMission : " + mission + "\n");
 		return sb.toString();
+	}
+	
+	private List<entity.Photograph> convertEntityToBean(List<bean.Photograph> photographs){
+		List<entity.Photograph> photoList = new ArrayList<entity.Photograph>();
+		for (bean.Photograph photo : photographs){
+			entity.Photograph photoIn = new entity.Photograph();
+			photoIn.setDetails(photo.getDetails());
+			photoIn.setPhotoId(photo.getPhotoId());
+			photoIn.setType(photo.getType());
+			photoIn.setTypeId(photo.getTypeId());
+			photoIn.setUrl(photo.getUrl());
+			photoList.add(photoIn);
+		}
+		return photoList;
+	}
+	
+	public String add() throws YearbookException{
+		
+		List<entity.Photograph> photos = convertEntityToBean(photoList);
+		String ret = deptService.addDepartment(deptId, location, mission, name, url,  photos);
+
+		if(!ret.equalsIgnoreCase("Exists"))
+			return "true";
+			else 
+				return "false";
 	}
 
 }
