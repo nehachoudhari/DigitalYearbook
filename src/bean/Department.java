@@ -3,10 +3,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.servlet.http.Part;
 
 import service.DepartmentService;
 import entity.Photograph;
 import exception.YearbookException;
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.UploadedFile;
 
 
 /**
@@ -32,8 +35,15 @@ public class Department {
 	
 	private String url;
 	
-	//private UploadedFile file;
+	private UploadedFile  file;
 	
+	public UploadedFile  getFile() {
+		return file;
+	}
+	public void setFile(UploadedFile  file) {
+		this.file = file;
+	}
+
 	private String details;
 	
 	
