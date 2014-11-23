@@ -20,11 +20,9 @@ public class PhotographDaoImpl implements PhotographDao{
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, photo.getType());
 			pstmt.setLong(2, photo.getTypeId());
-			pstmt.setString(3, photo.getUrl());
 			pstmt.setString(4, photo.getDetails());
 			
 			//comment this when photo id is auto-generated.
-			pstmt.setLong(5, photo.getPhotoId());
 			
 			pstmt.executeUpdate();
 			
@@ -54,9 +52,9 @@ public class PhotographDaoImpl implements PhotographDao{
 			
 			String query = SqlCommands.UPDATE_PHOTO;
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, photo.getUrl());
+			//pstmt.setString(1, photo.getUrl());
 			pstmt.setString(2, photo.getDetails());
-			pstmt.setLong(3, photo.getPhotoId());
+			//pstmt.setLong(3, photo.getPhotoId());
 			
 			result = pstmt.executeUpdate();
 		}catch(Exception e){

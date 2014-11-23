@@ -41,10 +41,10 @@ public class PhotoHandler extends DefaultHandler
 			piclist.add(pic);
 			break;
 		case "photoId":
-			pic.setPhotoId(Long.parseLong(content));
+			//pic.setPhotoId(Long.parseLong(content));
 			break;
 		case "photo_url":
-			pic.setUrl(content);
+			//pic.setUrl(content);
 			break;
 		case "photo_details":
 			pic.setDetails(content);

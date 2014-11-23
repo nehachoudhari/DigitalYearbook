@@ -123,10 +123,9 @@ public class Student {
 		
 		entity.Photograph photoIn = new entity.Photograph();
 		photoIn.setDetails(photo.getDetails());
-		photoIn.setPhotoId(photo.getPhotoId());
 		photoIn.setType(photo.getType());
 		photoIn.setTypeId(photo.getTypeId());
-		photoIn.setUrl(photo.getUrl());
+		photoIn.setUrl(photo.getFile().getPath());
 		return photoIn;
 	}
 	
