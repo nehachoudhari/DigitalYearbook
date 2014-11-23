@@ -3,13 +3,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
-import javax.servlet.http.Part;
+
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.UploadedFile;
 
 import service.DepartmentService;
 import entity.Photograph;
 import exception.YearbookException;
-import org.primefaces.event.FileUploadEvent;
-import org.primefaces.model.UploadedFile;
 
 
 /**
@@ -107,14 +107,21 @@ public class Department {
 		return photoList;*/
 	}
 	
+	public void handleFileUpload(FileUploadEvent event) {
+        UploadedFile file = event.getFile();
+       this.file = file;
+    }
+	
 	public String addDepartment() throws YearbookException{
 		
 		List<entity.Photograph> photos = new ArrayList<entity.Photograph>();
 		entity.Photograph photo = new Photograph();
 		photo.setDetails(details);
 		photo.setType("department");
-		//photo.setUrl(file.getName());
-		//System.out.println(file.getName());
+		photo.setUrl(file.getFileName());
+		System.out.println(file.getFileName());
+
+		System.out.println(file.getContentType());
 		String ret = deptService.addDepartment(deptId, location, mission, name, url,  photos);
 
 		if(!ret.equalsIgnoreCase("Exists"))

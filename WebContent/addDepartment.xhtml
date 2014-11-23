@@ -21,15 +21,18 @@
                 <h:inputText id = "url" value="#{deptBean.url}"></h:inputText>
                 
             </h:panelGrid>
+            <br />
                         
-
-            <h:panelGrid columns="2">
+			<h3 >Photograph for Department</h3>
+            <h:panelGrid columns="2" style=" width : 378px;">
                 <h:outputText id = "label5" value="Details"></h:outputText>
                 <h:inputText id = "details" value="#{deptBean.details}"></h:inputText>
-                <p:fileUpload value="#{deptBean.file}" mode="simple" skinSimple="true"/>
+                <h:outputLabel value="Upload file" for="file" />
+                <p:fileUpload fileUploadListener="#{deptBean.handleFileUpload}" update="msgs" allowTypes="*.*;"/>
             </h:panelGrid>
                         
-            
+            <br />
+            <br />
             <h:commandButton value="Register" action="#{deptBean.addDepartment()}" style= "position: static; 
             left: 2000px; top: 100px; width : 101px;"></h:commandButton>
                        
