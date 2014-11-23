@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.ejb.EJB;
 
-import org.apache.myfaces.custom.fileupload.UploadedFile;
-
 import service.DepartmentService;
 import entity.Photograph;
 import exception.YearbookException;
@@ -34,7 +32,7 @@ public class Department {
 	
 	private String url;
 	
-	private UploadedFile file;
+	//private UploadedFile file;
 	
 	private String details;
 	
@@ -44,12 +42,6 @@ public class Department {
 	}
 	public void setDetails(String details) {
 		this.details = details;
-	}
-	public UploadedFile getFile() {
-		return file;
-	}
-	public void setFile(UploadedFile file) {
-		this.file = file;
 	}
 	public String getLocation() {
 		return location;
@@ -111,8 +103,8 @@ public class Department {
 		entity.Photograph photo = new Photograph();
 		photo.setDetails(details);
 		photo.setType("department");
-		photo.setUrl(file.getName());
-		System.out.println(file.getName());
+		//photo.setUrl(file.getName());
+		//System.out.println(file.getName());
 		String ret = deptService.addDepartment(deptId, location, mission, name, url,  photos);
 
 		if(!ret.equalsIgnoreCase("Exists"))
