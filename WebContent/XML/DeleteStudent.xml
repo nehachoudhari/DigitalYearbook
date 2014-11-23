@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<students xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Student Student.xsd">
+<student>
+  <buckId>200000154</buckId>
+  <fname>Nayan</fname>
+  <lname>Khodke</lname>
+  <contactNumber>6140000000</contactNumber>
+  <email>khodke.2@osu.edu</email>
+  <dob>12/25/1989</dob>
+  <gradYear>7/22/2015 </gradYear>
+  <userName>nayank</userName>
+  <password>nayank</password>
+  <deptId>1000</deptId>
+  <job>-</job>
+</student>
+</students>

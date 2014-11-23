@@ -1,36 +1,20 @@
 package bean;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 /**
  * @author nhchdhr
  * 
  * This class represents the Committee Member entity and provides getters and setters for its fields
- * Student entity is mapped to Committee_Member table in the database 
+ * This entity is mapped to Committee_Member table in the database 
  *
  */
 
-@Entity
-@Table(name="Committee_Member")
 public class CommitteeMember {
 
-	@Id
-	@Column(name="MEMBER_ID")
 	private long member_id;
-	
-	@Column(name="FNAME")
 	private String fName;
-	
-	@Column(name="LNAME")
 	private String lName;
-	
-	@Column(name="DESIGNATION")
 	private String designation;
-	
-	@Column(name="DEPT_ID")
 	private int deptId;
 	
 	public long getMember_id() {
