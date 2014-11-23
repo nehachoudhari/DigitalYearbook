@@ -4,7 +4,10 @@ import java.util.List;
 
 import javax.ejb.EJB;
 
+import org.apache.myfaces.custom.fileupload.UploadedFile;
+
 import service.DepartmentService;
+import entity.Photograph;
 import exception.YearbookException;
 
 
@@ -31,9 +34,23 @@ public class Department {
 	
 	private String url;
 	
-	private List<bean.Photograph> photoList = new ArrayList<bean.Photograph>();
+	private UploadedFile file;
+	
+	private String details;
 	
 	
+	public String getDetails() {
+		return details;
+	}
+	public void setDetails(String details) {
+		this.details = details;
+	}
+	public UploadedFile getFile() {
+		return file;
+	}
+	public void setFile(UploadedFile file) {
+		this.file = file;
+	}
 	public String getLocation() {
 		return location;
 	}
@@ -74,23 +91,28 @@ public class Department {
 		return sb.toString();
 	}
 	
-	private List<entity.Photograph> convertEntityToBean(List<bean.Photograph> photographs){
-		List<entity.Photograph> photoList = new ArrayList<entity.Photograph>();
-		for (bean.Photograph photo : photographs){
+	private entity.Photograph convertEntityToBean(bean.Photograph photographs){
+		/*List<entity.Photograph> photoList = new ArrayList<entity.Photograph>();
+		for (bean.Photograph photo : photographs){*/
 			entity.Photograph photoIn = new entity.Photograph();
-			photoIn.setDetails(photo.getDetails());
-			photoIn.setPhotoId(photo.getPhotoId());
-			photoIn.setType(photo.getType());
-			photoIn.setTypeId(photo.getTypeId());
-			photoIn.setUrl(photo.getUrl());
-			photoList.add(photoIn);
+			photoIn.setDetails(photographs.getDetails());
+			photoIn.setType(photographs.getType());
+			photoIn.setTypeId(photographs.getTypeId());
+			photoIn.setUrl(photographs.getFile().getPath());
+			return photoIn;
+			/*photoList.add(photoIn);
 		}
-		return photoList;
+		return photoList;*/
 	}
 	
-	public String add() throws YearbookException{
+	public String addDepartment() throws YearbookException{
 		
-		List<entity.Photograph> photos = convertEntityToBean(photoList);
+		List<entity.Photograph> photos = new ArrayList<entity.Photograph>();
+		entity.Photograph photo = new Photograph();
+		photo.setDetails(details);
+		photo.setType("department");
+		photo.setUrl(file.getName());
+		System.out.println(file.getName());
 		String ret = deptService.addDepartment(deptId, location, mission, name, url,  photos);
 
 		if(!ret.equalsIgnoreCase("Exists"))

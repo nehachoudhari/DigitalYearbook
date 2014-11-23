@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+    <ui:define name="content">
+        <h:form enctype="multipart/form-data">
+            <h:panelGrid columns="2">
+                <h:outputText id = "label1" value="URL"></h:outputText>
+                <h:inputText id = "url" value="#{photo.url}"></h:inputText>
+                <h:outputText id = "label2" value="Details"></h:outputText>
+                <h:inputText id = "details" value="#{photo.details}"></h:inputText>
+                <h:outputLabel for="file" value="Select file" />
+                <h:inputFile id = "file" value="#{photo.file}" />
+                    <h:message for="file" style="color: red;" />
+                <h:inputHidden id="type" value="#{photo.type}"/>
+                <h:inputHidden id="typeId" value="#{photo.typeId}"/>
+            </h:panelGrid>
+                        
+            <h:commandButton value="Register" action="#{photo.addPhoto()}" style= "position: static; 
+            left: 2000px; top: 100px; width : 101px;"></h:commandButton>
+                       
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>

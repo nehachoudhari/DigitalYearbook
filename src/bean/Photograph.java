@@ -1,24 +1,25 @@
 package bean;
 
+import java.io.File;
+
 
 public class Photograph {
-	
-	private long photoId;
-	
+		
 	private String type;
 	
 	private long typeId;
 	
-	private String url;
+	private File file;
 	
+	public File getFile() {
+		return file;
+	}
+	public void setFile(File file) {
+		this.file = file;
+	}
+
 	private String details;
 	
-	public long getPhotoId() {
-		return photoId;
-	}
-	public void setPhotoId(long photoId) {
-		this.photoId = photoId;
-	}
 	public String getType() {
 		return type;
 	}
@@ -30,12 +31,6 @@ public class Photograph {
 	}
 	public void setTypeId(long typeId) {
 		this.typeId = typeId;
-	}
-	public String getUrl() {
-		return url;
-	}
-	public void setUrl(String url) {
-		this.url = url;
 	}
 	public String getDetails() {
 		return details;

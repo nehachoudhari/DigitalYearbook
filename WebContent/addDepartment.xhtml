@@ -4,11 +4,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:t="http://myfaces.apache.org/tomahawk"
     xmlns:f="http://java.sun.com/jsf/core">
 
 <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
     <ui:define name="content">
-        <h:form>
+        <h:form id="deptForm" enctype="multipart/form-data">
             <h:panelGrid columns="2">
                 <h:outputText id = "label1" value="Department Name"></h:outputText>
                 <h:inputText id = "name" value="#{deptBean.name}"></h:inputText>
@@ -21,7 +22,17 @@
                 
             </h:panelGrid>
                         
-            <h:commandButton value="Register" action="#{deptBean.add}" style= "position: static; 
+
+            <h:panelGrid columns="2">
+                <h:outputText id = "label2" value="Details"></h:outputText>
+                <h:inputText id = "details" value="#{deptBean.details}"></h:inputText>
+                <h:outputLabel for="file" value="Select file" />
+                <t:inputFileUpload id = "file" value="#{deptBean.file}" />
+                    <h:message for="file" style="color: red;" />
+            </h:panelGrid>
+                        
+            
+            <h:commandButton value="Register" action="#{deptBean.addDepartment()}" style= "position: static; 
             left: 2000px; top: 100px; width : 101px;"></h:commandButton>
                        
         </h:form>
