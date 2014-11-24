@@ -76,7 +76,7 @@ public class DropboxUploaderHelper {
     
     public DbxEntry.File fetchFromDropBox(String remoteUrl, String localUrl, String type){
 		 DbxEntry.File md = null;
-		 File target = new File(System.getProperty("user.dir")+"/WebContent/WEB-INF/images/"+localUrl);
+		 File target = new File(System.getProperty("user.dir")+"/WebContent/WEB-INF/images/downloads"+localUrl);
 		 try {
 			 OutputStream out = new FileOutputStream(target);
 		     md = client.getFile("/"+type+remoteUrl, null, out);

@@ -1,4 +1,11 @@
 package bean;
+import helper.DropboxUploaderHelper;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +32,7 @@ public class Department {
 	@EJB
 	DepartmentService deptService;
 	
+	
 	private int deptId;
 	
 	private String name;
@@ -35,14 +43,30 @@ public class Department {
 	
 	private String url;
 	
-	private UploadedFile  file;
+	//private UploadedFile  file;
 	
+	private String filePath;
+	
+	private String fileName;
+	
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+	public String getFilePath() {
+		return filePath;
+	}
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}/*
 	public UploadedFile  getFile() {
 		return file;
 	}
 	public void setFile(UploadedFile  file) {
 		this.file = file;
-	}
+	}*/
 
 	private String details;
 	
@@ -108,22 +132,49 @@ public class Department {
 	}
 	
 	public void handleFileUpload(FileUploadEvent event) {
-        UploadedFile file = event.getFile();
-       this.file = file;
+       try{
+    	   UploadedFile file = event.getFile();
+
+	       this.fileName = file.getFileName();
+	       this.filePath = System.getProperty("user.dir")+"/WebContent/WEB-INF/images/uploads/";
+	       copyFile(fileName, filePath, event.getFile().getInputstream());
+       }catch(Exception e){
+    	   System.out.println(e.getMessage());
+       }
     }
 	
+	private void copyFile(String fileName, String filePath, InputStream in) {
+		try {
+			OutputStream out = new FileOutputStream(new File(filePath+fileName));
+			int read = 0;
+			byte[] bytes = new byte[1024];
+			while ((read = in.read(bytes)) != -1) {
+				out.write(bytes, 0, read);
+			}
+			in.close();
+			out.flush();
+			out.close();
+			System.out.println("New file created!");
+			} catch (IOException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+
 	public String addDepartment() throws YearbookException{
 		
 		List<entity.Photograph> photos = new ArrayList<entity.Photograph>();
 		entity.Photograph photo = new Photograph();
 		photo.setDetails(details);
 		photo.setType("department");
-		photo.setUrl(file.getFileName());
-		System.out.println(file.getFileName());
+		photo.setUrl(System.getProperty("user.dir")+"/WebContent/WEB-INF/images/uploads/" + this.filePath);
+		System.out.println(this.fileName);
 
-		System.out.println(file.getContentType());
+		System.out.println(this.fileName);
+
+		DropboxUploaderHelper dropboxUploader = new DropboxUploaderHelper();
+		String url = dropboxUploader.uploadToDropBox(this.filePath,this.fileName, photo.getType());
 		String ret = deptService.addDepartment(deptId, location, mission, name, url,  photos);
-
+		
 		if(!ret.equalsIgnoreCase("Exists"))
 			return "true";
 			else 
