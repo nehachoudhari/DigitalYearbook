@@ -10,8 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 
-import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 
 import service.DepartmentService;
@@ -43,30 +44,14 @@ public class Department {
 	
 	private String url;
 	
-	//private UploadedFile  file;
+	private UploadedFile  file;
 	
-	private String filePath;
-	
-	private String fileName;
-	
-	public String getFileName() {
-		return fileName;
-	}
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
-	}
-	public String getFilePath() {
-		return filePath;
-	}
-	public void setFilePath(String filePath) {
-		this.filePath = filePath;
-	}/*
 	public UploadedFile  getFile() {
 		return file;
 	}
 	public void setFile(UploadedFile  file) {
 		this.file = file;
-	}*/
+	}
 
 	private String details;
 	
@@ -130,26 +115,40 @@ public class Department {
 		}
 		return photoList;*/
 	}
-	
+	/*
 	public void handleFileUpload(FileUploadEvent event) {
        try{
+    	   System.out.println("Inside handle listener");
+    	   FacesMessage msg = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");  
+           FacesContext.getCurrentInstance().addMessage(null, msg);  
     	   UploadedFile file = event.getFile();
 
 	       this.fileName = file.getFileName();
-	       this.filePath = System.getProperty("user.dir")+"/WebContent/WEB-INF/images/uploads/";
-	       copyFile(fileName, filePath, event.getFile().getInputstream());
+	       this.filePath = System.getProperty("user.dir")+"/WebContent/WEB-INF/images/uploads/Department/";
+	       copyFile(this.fileName, this.filePath, event.getFile().getInputstream());
+	       System.out.println("File path "+this.filePath);
+	       System.out.println("File name "+this.fileName);
        }catch(Exception e){
     	   System.out.println(e.getMessage());
        }
     }
-	
-	private void copyFile(String fileName, String filePath, InputStream in) {
+	*/
+	private void copyFile(String fileName,  InputStream in) {
 		try {
-			OutputStream out = new FileOutputStream(new File(filePath+fileName));
+			ExternalContext extContext =FacesContext.getCurrentInstance().getExternalContext();
+			String filePath = extContext.getRealPath("//WEB-INF//images//uploads//Department//" + fileName);
+			System.out.println("File is "+extContext.getRealPath("//WEB-INF//images//uploads//Department//" + fileName));
+			OutputStream out = new FileOutputStream(new File(filePath));
+			System.out.println("Ready to write file");
 			int read = 0;
-			byte[] bytes = new byte[1024];
-			while ((read = in.read(bytes)) != -1) {
+			byte[] bytes = new byte[6124];
+			while (true) {
+				read = in.read(bytes);
+				if (read < 0) {
+					break;
+				}
 				out.write(bytes, 0, read);
+				out.flush();
 			}
 			in.close();
 			out.flush();
@@ -161,24 +160,32 @@ public class Department {
 		}
 
 	public String addDepartment() throws YearbookException{
-		
-		List<entity.Photograph> photos = new ArrayList<entity.Photograph>();
-		entity.Photograph photo = new Photograph();
-		photo.setDetails(details);
-		photo.setType("department");
-		photo.setUrl(System.getProperty("user.dir")+"/WebContent/WEB-INF/images/uploads/" + this.filePath);
-		System.out.println(this.fileName);
-
-		System.out.println(this.fileName);
-
-		DropboxUploaderHelper dropboxUploader = new DropboxUploaderHelper();
-		String url = dropboxUploader.uploadToDropBox(this.filePath,this.fileName, photo.getType());
-		String ret = deptService.addDepartment(deptId, location, mission, name, url,  photos);
-		
-		if(!ret.equalsIgnoreCase("Exists"))
-			return "true";
-			else 
-				return "false";
+		try{ 
+			System.out.println("Inside add department");
+			System.out.println(this.file);
+			List<entity.Photograph> photos = new ArrayList<entity.Photograph>();
+			entity.Photograph photo = new Photograph();
+			photo.setDetails(details);
+			photo.setType("Department");
+			System.out.println(this.file.getFileName());
+			copyFile(this.file.getFileName(), this.file.getInputstream());
+			
+	
+			DropboxUploaderHelper dropboxUploader = new DropboxUploaderHelper();
+			String dropboxUrl = dropboxUploader.uploadToDropBox(this.file.getFileName(), "//"+photo.getType());
+			System.out.println("Dropbox "+dropboxUrl);
+			photo.setUrl(dropboxUrl);
+			photos.add(photo);
+			String ret = deptService.addDepartment(deptId, location, mission, name, url,  photos);
+			dropboxUploader.fetchFromDropBox(dropboxUrl);
+			if(!ret.equalsIgnoreCase("Exists"))
+					return "true";
+				else 
+					return "false";
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+		}
+		return "false";
 	}
 
 }

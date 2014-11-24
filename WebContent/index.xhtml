@@ -6,10 +6,10 @@
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:f="http://java.sun.com/jsf/core">
 
-<ui:composition template="/WEB-INF/templates/LoggedInBasicTemplate.xhtml">
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
     <ui:define name="content">
-        <h:outputLabel value="Hello #{student.firstName}"></h:outputLabel>
-        <h:outputLabel value="You have successfully logged in/registered at Digital Yearbook"></h:outputLabel>
+        <h2>Welcome to the Digital Yearbook for The Ohio State University</h2>
+        <h3><a href="login.xhtml">Login</a> or <a href="registerStudent.xhtml">Register</a> to get started!</h3>
     </ui:define>
 </ui:composition>
 </html>

@@ -6,10 +6,15 @@
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:f="http://java.sun.com/jsf/core">
 
-<ui:composition template="/WEB-INF/templates/LoggedInBasicTemplate.xhtml">
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
     <ui:define name="content">
-        <h:outputLabel value="Hello #{student.firstName}"></h:outputLabel>
-        <h:outputLabel value="You have successfully logged in/registered at Digital Yearbook"></h:outputLabel>
+        <h:form>
+            <h:panelGrid columns="2">
+               	<h:outputText value="User not found.."></h:outputText>
+            </h:panelGrid>
+            
+            <h:commandButton value="Back" action="back"></h:commandButton>
+        </h:form>
     </ui:define>
 </ui:composition>
 </html>

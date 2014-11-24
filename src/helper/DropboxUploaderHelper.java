@@ -8,6 +8,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.Locale;
 
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.servlet.ServletContext;
 
 import com.dropbox.core.DbxAppInfo;
@@ -48,8 +50,10 @@ public class DropboxUploaderHelper {
     	}
     }
     
-    public String uploadToDropBox(String inputFilePath,String inputFileName, String type){
-    	File inputFile = new File(inputFilePath + inputFileName);
+    public String uploadToDropBox(String inputFileName, String type){
+    	ExternalContext extContext =FacesContext.getCurrentInstance().getExternalContext();
+		String filePath = extContext.getRealPath("//WEB-INF//images//uploads//"+type+"//" + inputFileName);
+    	File inputFile = new File(filePath);
     	FileInputStream inputStream = null;
         try {
             inputStream = new FileInputStream(inputFile);
@@ -57,7 +61,7 @@ public class DropboxUploaderHelper {
                 DbxWriteMode.add(), inputFile.length(), inputStream);
             String sharedUrl = client.createShareableUrl("/"+type+"/"+inputFileName);
             System.out.println("Uploaded: " + uploadedFile.toString() + " URL " + sharedUrl);
-            return sharedUrl;
+            return type+"/"+uploadedFile.name;
         }catch(Exception e){
     		System.out.println(e.getMessage());
     	} finally {
@@ -74,12 +78,14 @@ public class DropboxUploaderHelper {
     }
     
     
-    public DbxEntry.File fetchFromDropBox(String remoteUrl, String localUrl, String type){
+    public DbxEntry.File fetchFromDropBox(String remoteUrl){
 		 DbxEntry.File md = null;
-		 File target = new File(System.getProperty("user.dir")+"/WebContent/WEB-INF/images/downloads"+localUrl);
+    	ExternalContext extContext =FacesContext.getCurrentInstance().getExternalContext();
+		String filePath = extContext.getRealPath("//WEB-INF//images//downloads//"+remoteUrl);
+		 File target = new File(filePath);
 		 try {
 			 OutputStream out = new FileOutputStream(target);
-		     md = client.getFile("/"+type+remoteUrl, null, out);
+		     md = client.getFile(remoteUrl, null, out);
 		     if(out!=null){
 		    	 out.close();
 		     }
@@ -88,15 +94,5 @@ public class DropboxUploaderHelper {
 		 }
     	return md;
     }
-    
-    
-    public static void main(String[] args){
-    	DropboxUploaderHelper helper = new DropboxUploaderHelper();
-    	/*String resultUrl = helper.uploadToDropBox("C://Users//Public//Pictures//Sample Pictures//", "Desert.jpg","/Student");
-    	System.out.println(resultUrl);*/
-    	int counter = 1;
-    	helper.fetchFromDropBox("/Desert.jpg",counter+".jpg","Student");
-    	counter ++;
-    	helper.fetchFromDropBox("/Desert.jpg",counter+".jpg","Student");
-    }
+   
 }
