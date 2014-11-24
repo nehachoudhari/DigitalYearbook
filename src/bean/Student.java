@@ -1,6 +1,8 @@
 package bean;
 import javax.ejb.EJB;
 
+import org.primefaces.model.UploadedFile;
+
 import service.StudentService;
 import exception.YearbookException;
 
@@ -11,7 +13,7 @@ import exception.YearbookException;
  * Student entity is mapped to Student table in the database 
  *
  */
-public class Student {
+public class Student extends Photograph{
 	
 	private long buckId;
 	
@@ -31,9 +33,26 @@ public class Student {
 	
 	private String jobInternDetails;
 	
-	private int deptId;
-	
 	private String email;
+	
+	private UploadedFile  file;
+	
+	private String details;
+	
+	public String getDetails() {
+		return details;
+	}
+	public void setDetails(String details) {
+		this.details = details;
+	}
+	public UploadedFile  getFile() {
+		return file;
+	}
+	public void setFile(UploadedFile  file) {
+		this.file = file;
+	}
+	
+	private int deptId;
 	
 	private Photograph photo = new Photograph();
 	
@@ -119,15 +138,6 @@ public class Student {
 		return sb.toString();
 	}
 	
-	private entity.Photograph convertEntityToBean(bean.Photograph photographs){
-		
-		entity.Photograph photoIn = new entity.Photograph();
-		photoIn.setDetails(photo.getDetails());
-		photoIn.setType(photo.getType());
-		photoIn.setTypeId(photo.getTypeId());
-		photoIn.setUrl(photo.getFile().getPath());
-		return photoIn;
-	}
 	
 	public String addStudent() throws YearbookException{
 		entity.Photograph photoEntity = convertEntityToBean(photo);
@@ -137,6 +147,23 @@ public class Student {
 
 		if(!ret.equalsIgnoreCase("Exists"))
 			return "true";
+		else 
+			return "false";
+	}
+	public String modifyStudent() throws YearbookException{
+		String ret = "true";
+
+		if(!ret.equalsIgnoreCase("Exists"))
+			return "true";
+		else 
+			return "false";
+	}
+	
+	public String deleteStudent() throws YearbookException{
+		String ret = "Success";
+
+		if(!ret.equalsIgnoreCase("Success"))
+			return "delete";
 		else 
 			return "false";
 	}

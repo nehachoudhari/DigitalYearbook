@@ -1,5 +1,7 @@
 package bean;
 
+import exception.YearbookException;
+
 /**
  * @author nhchdhr
  * 
@@ -7,7 +9,7 @@ package bean;
  * This entity is mapped to Event table in the database 
  *
  */
-public class Event {
+public class Event extends Photograph{
 	
 	private String name;
 	private String description;
@@ -45,5 +47,31 @@ public class Event {
 	}
 	public void setEventId(long eventId) {
 		this.eventId = eventId;
+	}
+	
+	public String add() throws YearbookException{
+		String ret = "true";
+
+		if(!ret.equalsIgnoreCase("true"))
+			return "true";
+		else 
+			return "false";
+	}
+	public String modify() throws YearbookException{
+		String ret = "true";
+
+		if(!ret.equalsIgnoreCase("true"))
+			return "true";
+		else 
+			return "false";
+	}
+	
+	public String delete() throws YearbookException{
+		String ret = "Success";
+
+		if(!ret.equalsIgnoreCase("Success"))
+			return "delete";
+		else 
+			return "false";
 	}
 }

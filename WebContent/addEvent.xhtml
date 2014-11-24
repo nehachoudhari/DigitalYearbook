@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/LoggedInBasicTemplate.xhtml">
+    <ui:define name="content">
+        <h:form>
+            <h:panelGrid columns="2">
+                <h:outputText id = "firstLabel" value="Event Name"></h:outputText>
+                <h:inputText id = "firstText" value="#{eventBean.name}"></h:inputText>
+                <h:outputText id = "lastLabel" value="Description"></h:outputText>
+                <h:inputText id = "lastText" value="#{eventBean.description}"></h:inputText>
+                <h:outputText id = "buckidLabel" value="Date of Event"></h:outputText>
+                <h:inputText id = "designation" value="#{eventBean.date}"></h:inputText>
+                <h:outputText id = "urlLabel" value="Url"></h:outputText>
+                <h:inputText id="url" value="#{eventBean.url}" />
+                <h:inputHidden id="member_id" value="#{eventBean.eventId}" />
+            </h:panelGrid>
+            <br />
+                        
+			<h3 >Photograph for Event</h3>
+            <h:panelGrid columns="2" style=" width : 378px;">
+                <h:outputText id = "label5" value="Details"></h:outputText>
+                <h:inputText id = "details" value="#{eventBean.details}"></h:inputText>
+                <h:outputLabel value="Upload file" for="file" /> 
+                <p:fileUpload value="#{eventBean.file}" sizeLimit="10485760" 
+                id="file" dragDropSupport="false" mode="simple" allowTypes="png,gif,jpg" />
+            </h:panelGrid>
+                        
+            <br />
+            <br />
+            <h:commandButton value="Add Event" action="#{eventBean.add()}" style= "position: static; 
+            left: 2000px; top: 100px; width: 100px; height: 20px"></h:commandButton>
+                       
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>

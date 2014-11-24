@@ -19,22 +19,24 @@
   <managed-bean-scope>application</managed-bean-scope>
  </managed-bean>
  
- <navigation-rule>
-  <display-name>registerStudent.xhtml</display-name>
-  <from-view-id>/registerStudent.xhtml</from-view-id>
-  <navigation-case>
-   <from-outcome>true</from-outcome>
-   <to-view-id>/successfulRegistration.xhtml</to-view-id>
-  </navigation-case>
- </navigation-rule>
+  <managed-bean>
+  <managed-bean-name>committeeBean</managed-bean-name>
+  <managed-bean-class>bean.CommitteeMember</managed-bean-class>
+  <managed-bean-scope>application</managed-bean-scope>
+ </managed-bean>
  
- <navigation-rule>
-  <display-name>loginfail.xhtml</display-name>
-  <from-view-id>/loginfail.xhtml</from-view-id>
-  <navigation-case>
-   <to-view-id>/login.xhtml</to-view-id>
-  </navigation-case>
- </navigation-rule>
+ <managed-bean>
+  <managed-bean-name>eventBean</managed-bean-name>
+  <managed-bean-class>bean.Event</managed-bean-class>
+  <managed-bean-scope>application</managed-bean-scope>
+ </managed-bean>
+ 
+ <managed-bean>
+  <managed-bean-name>researchBean</managed-bean-name>
+  <managed-bean-class>bean.ResearchGroup</managed-bean-class>
+  <managed-bean-scope>application</managed-bean-scope>
+ </managed-bean>
+ 
  
  <navigation-rule>
   <display-name>login.xhtml</display-name>
@@ -79,5 +81,93 @@
    <to-view-id>/departmentChangeSuccess.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
+ 
+  <navigation-rule>
+  <display-name>modifyDepartment.xhtml</display-name>
+  <from-view-id>/modifyDepartment.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>true</from-outcome>
+   <to-view-id>/departmentChangeSuccess.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ 
+ <navigation-rule>
+  <display-name>registerStudent.xhtml</display-name>
+  <from-view-id>/registerStudent.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>true</from-outcome>
+   <to-view-id>/successfulRegistration.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ 
+ <navigation-rule>
+   <display-name>modifyStudent.xhtml</display-name>
+  <from-view-id>/modifyStudent.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>deleted</from-outcome>
+   <to-view-id>/loginout.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>true</from-outcome>
+   <to-view-id>/studentChangeSuccess.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ 
+ <navigation-rule>
+  <display-name>addCommittee.xhtml</display-name>
+  <from-view-id>/addCommittee.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>true</from-outcome>
+   <to-view-id>/committeeChangeSuccess.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ 
+  <navigation-rule>
+  <display-name>modifyCommittee.xhtml</display-name>
+  <from-view-id>/modifyCommittee.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>true</from-outcome>
+   <to-view-id>/committeeChangeSuccess.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ 
+ 
+ <navigation-rule>
+  <display-name>addEvent.xhtml</display-name>
+  <from-view-id>/addEvent.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>true</from-outcome>
+   <to-view-id>/eventChangeSuccess.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ 
+  <navigation-rule>
+  <display-name>modifyEvent.xhtml</display-name>
+  <from-view-id>/modifyEvent.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>true</from-outcome>
+   <to-view-id>/eventChangeSuccess.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ 
+ 
+ <navigation-rule>
+  <display-name>addResearch.xhtml</display-name>
+  <from-view-id>/addResearch.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>true</from-outcome>
+   <to-view-id>/researchChangeSuccess.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ 
+  <navigation-rule>
+  <display-name>modifyResearch.xhtml</display-name>
+  <from-view-id>/modifyResearch.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>true</from-outcome>
+   <to-view-id>/researchChangeSuccess.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ 
  <application/>
 </faces-config>

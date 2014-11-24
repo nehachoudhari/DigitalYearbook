@@ -1,5 +1,7 @@
 package bean;
 
+import exception.YearbookException;
+
 
 /**
  * @author nhchdhr
@@ -8,11 +10,18 @@ package bean;
  * Student entity is mapped to ResearchGroup table in the database 
  *
  */
-public class ResearchGroup {
+public class ResearchGroup extends Photograph{
 
 	private int groupId;
 	private String name;
 	private String description;
+	private int deptId;
+	public int getDeptId() {
+		return deptId;
+	}
+	public void setDeptId(int deptId) {
+		this.deptId = deptId;
+	}
 	public int getGroupId() {
 		return groupId;
 	}
@@ -32,7 +41,31 @@ public class ResearchGroup {
 		this.description = description;
 	}
 	
+	public String add() throws YearbookException{
+		String ret = "true";
+
+		if(!ret.equalsIgnoreCase("true"))
+			return "true";
+		else 
+			return "false";
+	}
+	public String modify() throws YearbookException{
+		String ret = "true";
+
+		if(!ret.equalsIgnoreCase("true"))
+			return "true";
+		else 
+			return "false";
+	}
 	
+	public String delete() throws YearbookException{
+		String ret = "Success";
+
+		if(!ret.equalsIgnoreCase("Success"))
+			return "delete";
+		else 
+			return "false";
+	}
 }
 
 

@@ -1,24 +1,35 @@
 package bean;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+
+import org.primefaces.model.UploadedFile;
 
 
 public class Photograph {
 		
-	private String type;
+	protected String type;
 	
-	private long typeId;
+	protected long typeId;
 	
-	private File file;
+
 	
-	public File getFile() {
+	protected UploadedFile  file;
+	
+	public UploadedFile  getFile() {
 		return file;
 	}
-	public void setFile(File file) {
+	public void setFile(UploadedFile  file) {
 		this.file = file;
 	}
 
-	private String details;
+	protected String details;
 	
 	public String getType() {
 		return type;
@@ -43,4 +54,42 @@ public class Photograph {
 	{
 		System.out.println(details);
 	}
+	protected entity.Photograph convertEntityToBean(bean.Photograph photographs){
+		/*List<entity.Photograph> photoList = new ArrayList<entity.Photograph>();
+		for (bean.Photograph photo : photographs){*/
+			entity.Photograph photoIn = new entity.Photograph();
+			photoIn.setDetails(photographs.getDetails());
+			photoIn.setType(photographs.getType());
+			photoIn.setTypeId(photographs.getTypeId());
+			//photoIn.setUrl(photographs.getFile().getPath());
+			return photoIn;
+			/*photoList.add(photoIn);
+		}
+		return photoList;*/
+	}
+	protected void copyFile(String fileName,  InputStream in) {
+		try {
+			ExternalContext extContext =FacesContext.getCurrentInstance().getExternalContext();
+			String filePath = extContext.getRealPath("//WEB-INF//images//uploads//Department//" + fileName);
+			System.out.println("File is "+extContext.getRealPath("//WEB-INF//images//uploads//Department//" + fileName));
+			OutputStream out = new FileOutputStream(new File(filePath));
+			System.out.println("Ready to write file");
+			int read = 0;
+			byte[] bytes = new byte[6124];
+			while (true) {
+				read = in.read(bytes);
+				if (read < 0) {
+					break;
+				}
+				out.write(bytes, 0, read);
+				out.flush();
+			}
+			in.close();
+			out.flush();
+			out.close();
+			System.out.println("New file created!");
+			} catch (IOException e) {
+				System.out.println(e.getMessage());
+			}
+		}
 }

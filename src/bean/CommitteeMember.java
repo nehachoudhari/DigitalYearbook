@@ -1,5 +1,7 @@
 package bean;
 
+import exception.YearbookException;
+
 
 /**
  * @author nhchdhr
@@ -9,7 +11,7 @@ package bean;
  *
  */
 
-public class CommitteeMember {
+public class CommitteeMember extends Photograph{
 
 	private long member_id;
 	private String fName;
@@ -55,6 +57,32 @@ public class CommitteeMember {
 
 	public void setDeptId(int deptId) {
 		this.deptId = deptId;
+	}
+	
+	public String add() throws YearbookException{
+		String ret = "true";
+
+		if(!ret.equalsIgnoreCase("true"))
+			return "true";
+		else 
+			return "false";
+	}
+	public String modify() throws YearbookException{
+		String ret = "true";
+
+		if(!ret.equalsIgnoreCase("true"))
+			return "true";
+		else 
+			return "false";
+	}
+	
+	public String delete() throws YearbookException{
+		String ret = "Success";
+
+		if(!ret.equalsIgnoreCase("Success"))
+			return "delete";
+		else 
+			return "false";
 	}
 
 }
