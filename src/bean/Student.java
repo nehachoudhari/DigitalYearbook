@@ -1,4 +1,6 @@
 package bean;
+import helper.DropboxUploaderHelper;
+
 import javax.ejb.EJB;
 
 import org.primefaces.model.UploadedFile;
@@ -13,7 +15,7 @@ import exception.YearbookException;
  * Student entity is mapped to Student table in the database 
  *
  */
-public class Student extends Photograph{
+public class Student extends bean.Photograph{
 	
 	private long buckId;
 	
@@ -53,9 +55,7 @@ public class Student extends Photograph{
 	}
 	
 	private int deptId;
-	
-	private Photograph photo = new Photograph();
-	
+
 	@EJB
 	StudentService studentService ;
 	
@@ -140,15 +140,30 @@ public class Student extends Photograph{
 	
 	
 	public String addStudent() throws YearbookException{
-		entity.Photograph photoEntity = convertEntityToBean(photo);
-		String ret = studentService.addStudent(buckId, contactNumber, deptId, dob, email,
-				firstName, gradYear, jobInternDetails, lastName,
-				  password, username, photoEntity);
-
-		if(!ret.equalsIgnoreCase("Exists"))
-			return "true";
-		else 
-			return "false";
+		try{     
+			entity.Photograph photo = new entity.Photograph();
+			photo.setDetails(this.details);
+			photo.setType("Student");
+			System.out.println(this.file.getFileName());
+			copyFile(this.file.getFileName(), this.file.getInputstream());
+	
+			DropboxUploaderHelper dropboxUploader = new DropboxUploaderHelper();
+			String dropboxUrl = dropboxUploader.uploadToDropBox(this.file.getFileName(), "//"+photo.getType());
+			System.out.println("Dropbox "+dropboxUrl);
+			photo.setUrl(dropboxUrl);
+			boolean ret = studentService.addStudent(this.buckId, this.contactNumber, this.deptId, this.dob,
+					this.email, this.firstName, this.gradYear, this.jobInternDetails, this.lastName, 
+					this.password, this.username, photo);
+			dropboxUploader.fetchFromDropBox(dropboxUrl);
+			if(ret)
+					return "true";
+				else 
+					return "false";
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+		}
+		return "false";
+		
 	}
 	public String modifyStudent() throws YearbookException{
 		String ret = "true";
