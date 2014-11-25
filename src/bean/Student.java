@@ -41,6 +41,14 @@ public class Student extends bean.Photograph{
 	
 	private String details;
 	
+	private String fileName;
+	
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
 	public String getDetails() {
 		return details;
 	}
@@ -154,7 +162,7 @@ public class Student extends bean.Photograph{
 			boolean ret = studentService.addStudent(this.buckId, this.contactNumber, this.deptId, this.dob,
 					this.email, this.firstName, this.gradYear, this.jobInternDetails, this.lastName, 
 					this.password, this.username, photo);
-			dropboxUploader.fetchFromDropBox(dropboxUrl);
+			//dropboxUploader.fetchFromDropBox(dropboxUrl);
 			if(ret)
 					return "true";
 				else 
