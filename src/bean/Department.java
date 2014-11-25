@@ -93,9 +93,9 @@ public class Department extends bean.Photograph{
 			System.out.println("Dropbox "+dropboxUrl);
 			photo.setUrl(dropboxUrl);
 			photos.add(photo);
-			String ret = deptService.addDepartment(deptId, location, mission, name, url,  photos);
+			boolean ret = deptService.addDepartment(deptId, location, mission, name, url,  photos);
 			dropboxUploader.fetchFromDropBox(dropboxUrl);
-			if(!ret.equalsIgnoreCase("Exists"))
+			if(ret)
 					return "true";
 				else 
 					return "false";
