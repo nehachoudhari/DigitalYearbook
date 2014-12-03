@@ -161,11 +161,8 @@ public class Student extends bean.Photograph{
 			photo.setUrl(dropboxUrl);
 			boolean ret = studentService.addStudent(this.buckId, this.contactNumber, this.deptId, this.dob,
 					this.email, this.firstName, this.gradYear, this.jobInternDetails, this.lastName, 
-					this.password, this.username, photo);
-<<<<<<< HEAD
-=======
-			
->>>>>>> nayank
+					this.password, this.username, dropboxUrl);
+
 			//dropboxUploader.fetchFromDropBox(dropboxUrl);
 			if(ret)
 					return "true";
@@ -209,7 +206,7 @@ public class Student extends bean.Photograph{
 			photo.setUrl(dropboxUrl);
 			boolean ret = studentService.updateStudent(this.buckId, this.contactNumber, this.deptId, this.dob,
 					this.email, this.firstName, this.gradYear, this.jobInternDetails, this.lastName, 
-					this.password, this.username, photo);
+					this.password, this.username, dropboxUrl);
 			dropboxUploader.fetchFromDropBox(dropboxUrl);
 			if(ret)
 					return "true";
