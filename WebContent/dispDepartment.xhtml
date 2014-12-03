@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+    <ui:define name="content">
+        <h:form id="Department" >
+            <h:panelGrid columns="2">
+                <h:outputText id = "label1" value="Department Name"></h:outputText>
+                <h:outputText id = "name" value="lol"></h:outputText>
+                <h:outputText id = "label2" value="Mission"></h:outputText>
+                <h:outputText id = "mission" value="lol1"></h:outputText>
+                <h:outputText id = "label3" value="Address"></h:outputText>
+                <h:outputText id = "loc" value="lol2"></h:outputText>
+                <h:outputText id = "label4" value="URL"></h:outputText>
+                <h:outputText id = "url" value="lol3"></h:outputText>
+                
+            </h:panelGrid>
+            <br />                     
+			                    
+            <br />
+            <br />
+            <h:commandButton value="Next Page" action="Next" style= "position: static; 
+            left: 2000px; top: 100px; width : 101px;"></h:commandButton>
+                       
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>

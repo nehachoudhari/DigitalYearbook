@@ -36,8 +36,23 @@
   <managed-bean-class>bean.ResearchGroup</managed-bean-class>
   <managed-bean-scope>application</managed-bean-scope>
  </managed-bean>
- 
- 
+
+ <managed-bean>
+  <managed-bean-name>deptdispBean</managed-bean-name>
+  <managed-bean-class>bean.Department</managed-bean-class>
+  <managed-bean-scope>application</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>committeelistBean</managed-bean-name>
+  <managed-bean-class>outputbean.DispCommittee</managed-bean-class>
+  <managed-bean-scope>application</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>committeedispBean</managed-bean-name>
+  <managed-bean-class>outputbean.CommitteeMember</managed-bean-class>
+  <managed-bean-scope>application</managed-bean-scope>
+ </managed-bean>
+
  <navigation-rule>
   <display-name>login.xhtml</display-name>
   <from-view-id>/login.xhtml</from-view-id>
@@ -168,6 +183,71 @@
    <to-view-id>/researchChangeSuccess.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
- 
+
+ <navigation-rule>
+  <display-name>dispDepartment.xhtml</display-name>
+  <from-view-id>/dispDepartment.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>Next</from-outcome>
+   <to-view-id>/dispComitteeMember.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <display-name>dispComitteeMember.xhtml</display-name>
+  <from-view-id>/dispComitteeMember.xhtml</from-view-id>
+   <navigation-case>
+   <from-outcome>Back</from-outcome>
+   <to-view-id>/dispDepartment.xhtml</to-view-id>
+  </navigation-case>
+  </navigation-rule>
+ <navigation-rule>
+  <display-name>dispComitteeMember.xhtml</display-name>
+  <from-view-id>/dispComitteeMember.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>Next</from-outcome>
+   <to-view-id>/dispEvents.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule> 
+ <navigation-rule>
+  <display-name>dispEvents.xhtml</display-name>
+  <from-view-id>/dispEvents.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>Next</from-outcome>
+   <to-view-id>/dispResearchGroups.xhtml</to-view-id>
+  </navigation-case>
+  </navigation-rule>
+  <navigation-rule>
+  <display-name>dispResearchGroups.xhtml</display-name>
+  <from-view-id>/dispResearchGroups.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>Next</from-outcome>
+   <to-view-id>/dispStudents.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <display-name>dispStudents.xhtml</display-name>
+  <from-view-id>/dispStudents.xhtml</from-view-id>
+   <navigation-case>
+   <from-outcome>Back</from-outcome>
+   <to-view-id>/dispResearchGroups.xhtml</to-view-id>
+  </navigation-case>
+  </navigation-rule>
+  <navigation-rule>
+  <display-name>dispResearchGroups.xhtml</display-name>
+  <from-view-id>/dispResearchGroups.xhtml</from-view-id>
+   <navigation-case>
+   <from-outcome>Back</from-outcome>
+   <to-view-id>/dispEvents.xhtml</to-view-id>
+  </navigation-case>
+  </navigation-rule>
+  <navigation-rule>
+  <display-name>dispEvents.xhtml</display-name>
+  <from-view-id>/dispEvents.xhtml</from-view-id>
+   <navigation-case>
+   <from-outcome>Back</from-outcome>
+   <to-view-id>/dispComitteeMember.xhtml</to-view-id>
+  </navigation-case>
+  </navigation-rule>
+
  <application/>
 </faces-config>
