@@ -57,7 +57,7 @@ public class Student extends bean.Photograph{
 	private int deptId;
 
 	@EJB
-	StudentService studentService ;
+	StudentService studentService;
 	
 	public String getEmail() {
 		return email;
@@ -154,7 +154,8 @@ public class Student extends bean.Photograph{
 			boolean ret = studentService.addStudent(this.buckId, this.contactNumber, this.deptId, this.dob,
 					this.email, this.firstName, this.gradYear, this.jobInternDetails, this.lastName, 
 					this.password, this.username, photo);
-			dropboxUploader.fetchFromDropBox(dropboxUrl);
+			
+			//dropboxUploader.fetchFromDropBox(dropboxUrl);
 			if(ret)
 					return "true";
 				else 
@@ -165,21 +166,64 @@ public class Student extends bean.Photograph{
 		return "false";
 		
 	}
+	
+	
+	public String getStudent() throws YearbookException{
+		try{
+			entity.Student student = studentService.getStudent(this.buckId);
+			if(student!=null){
+				this.buckId = student.getBuckId();
+				this.contactNumber = student.getContactNumber();
+				return "true";
+			}else 
+					return "false";
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+		}
+		return "false";
+	}
+	
+	
 	public String modifyStudent() throws YearbookException{
-		String ret = "true";
-
-		if(!ret.equalsIgnoreCase("Exists"))
-			return "true";
-		else 
-			return "false";
+		try{     
+			entity.Photograph photo = new entity.Photograph();
+			photo.setDetails(this.details);
+			photo.setType("Student");
+			System.out.println(this.file.getFileName());
+			copyFile(this.file.getFileName(), this.file.getInputstream());
+	
+			DropboxUploaderHelper dropboxUploader = new DropboxUploaderHelper();
+			String dropboxUrl = dropboxUploader.uploadToDropBox(this.file.getFileName(), "//"+photo.getType());
+			System.out.println("Dropbox "+dropboxUrl);
+			photo.setUrl(dropboxUrl);
+			boolean ret = studentService.updateStudent(this.buckId, this.contactNumber, this.deptId, this.dob,
+					this.email, this.firstName, this.gradYear, this.jobInternDetails, this.lastName, 
+					this.password, this.username, photo);
+			dropboxUploader.fetchFromDropBox(dropboxUrl);
+			if(ret)
+					return "true";
+				else 
+					return "false";
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+		}
+		return "false";
 	}
 	
 	public String deleteStudent() throws YearbookException{
-		String ret = "Success";
-
-		if(!ret.equalsIgnoreCase("Success"))
-			return "delete";
-		else 
-			return "false";
+		try{     
+			entity.Photograph photo = new entity.Photograph();
+			photo.setDetails(this.details);
+			photo.setType("Student");
+			boolean ret = studentService.deleteStudent(this.buckId);
+			//dropboxUploader.fetchFromDropBox(dropboxUrl);
+			if(ret)
+					return "true";
+				else 
+					return "false";
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+		}
+		return "false";
 	}
 }
