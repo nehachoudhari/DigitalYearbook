@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/LoggedInBasicTemplate.xhtml">
+    <ui:define name="content">
+        <h:form>
+            <h:panelGrid columns="2">
+                <h:outputText id = "firstLabel" value="Select a Department"></h:outputText>
+                
+                
+                <h:selectOneMenu>
+   					 <f:selectItems value="#{deptBean.allDepartments}"/>
+				</h:selectOneMenu>
+                
+            </h:panelGrid>
+            <br />
+                        
+			<h3 >Photograph for Committee Member</h3>
+            <h:panelGrid columns="2" style=" width : 378px;">
+                <h:outputText id = "label5" value="Details"></h:outputText>
+                <h:inputText id = "details" value="#{committeeBean.details}"></h:inputText>
+                <h:outputLabel value="Upload file" for="file" /> 
+                <p:fileUpload value="#{committeeBean.file}" sizeLimit="10485760" 
+                id="file" dragDropSupport="false" mode="simple" allowTypes="png,gif,jpg" />
+            </h:panelGrid>
+                        
+            <br />
+            <br />
+            <h:commandButton value="Add Member" action="#{committeeBean.add()}" style= "position: static; 
+            left: 2000px; top: 100px; width: 100px; height: 20px"></h:commandButton>
+                       
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>
