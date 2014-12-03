@@ -37,31 +37,6 @@ public class Student extends bean.Photograph{
 	
 	private String email;
 	
-	private UploadedFile  file;
-	
-	private String details;
-	
-	private String fileName;
-	
-	public String getFileName() {
-		return fileName;
-	}
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
-	}
-	public String getDetails() {
-		return details;
-	}
-	public void setDetails(String details) {
-		this.details = details;
-	}
-	public UploadedFile  getFile() {
-		return file;
-	}
-	public void setFile(UploadedFile  file) {
-		this.file = file;
-	}
-	
 	private int deptId;
 
 	@EJB
@@ -148,10 +123,12 @@ public class Student extends bean.Photograph{
 	
 	
 	public String addStudent() throws YearbookException{
-		try{     
+		try{
+			System.out.println("Inside add");
 			entity.Photograph photo = new entity.Photograph();
 			photo.setDetails(this.details);
 			photo.setType("Student");
+			System.out.println("Inside add 1 - "+this.file);
 			System.out.println(this.file.getFileName());
 			copyFile(this.file.getFileName(), this.file.getInputstream());
 	
