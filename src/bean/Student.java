@@ -3,8 +3,6 @@ import helper.DropboxUploaderHelper;
 
 import javax.ejb.EJB;
 
-import org.primefaces.model.UploadedFile;
-
 import service.StudentService;
 import exception.YearbookException;
 
@@ -125,6 +123,7 @@ public class Student extends bean.Photograph{
 	public String addStudent() throws YearbookException{
 		try{
 			System.out.println("Inside add");
+			System.out.println(this.buckId);
 			System.out.println("Inside add 1 - "+this.file);
 			System.out.println(this.file.getFileName());
 			copyFile(this.file.getFileName(), this.file.getInputstream());

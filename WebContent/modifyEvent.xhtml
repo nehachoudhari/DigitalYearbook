@@ -9,7 +9,7 @@
 
 <ui:composition template="/WEB-INF/templates/LoggedInBasicTemplate.xhtml">
     <ui:define name="content">
-        <h:form>
+        <h:form id="eventForm" enctype="multipart/form-data">
             <h:panelGrid columns="2">
                 <h:outputText id = "firstLabel" value="Event Name"></h:outputText>
                 <h:inputText id = "firstText" value="#{eventBean.name}"></h:inputText>
