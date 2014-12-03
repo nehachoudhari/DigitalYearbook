@@ -1,13 +1,9 @@
 package bean;
 import helper.DropboxUploaderHelper;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.ejb.EJB;
 
 import service.DepartmentService;
-import entity.Photograph;
 import exception.YearbookException;
 
 

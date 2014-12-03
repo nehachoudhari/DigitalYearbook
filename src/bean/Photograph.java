@@ -54,19 +54,7 @@ public class Photograph {
 	{
 		System.out.println(details);
 	}
-	protected entity.Photograph convertEntityToBean(bean.Photograph photographs){
-		/*List<entity.Photograph> photoList = new ArrayList<entity.Photograph>();
-		for (bean.Photograph photo : photographs){*/
-			entity.Photograph photoIn = new entity.Photograph();
-			photoIn.setDetails(photographs.getDetails());
-			photoIn.setType(photographs.getType());
-			photoIn.setTypeId(photographs.getTypeId());
-			//photoIn.setUrl(photographs.getFile().getPath());
-			return photoIn;
-			/*photoList.add(photoIn);
-		}
-		return photoList;*/
-	}
+	
 	protected void copyFile(String fileName,  InputStream in) {
 		try {
 			ExternalContext extContext =FacesContext.getCurrentInstance().getExternalContext();
