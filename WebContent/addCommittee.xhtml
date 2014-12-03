@@ -9,7 +9,7 @@
 
 <ui:composition template="/WEB-INF/templates/LoggedInBasicTemplate.xhtml">
     <ui:define name="content">
-        <h:form>
+        <h:form id="committeeForm" enctype="multipart/form-data">
             <h:panelGrid columns="2">
                 <h:outputText id = "firstLabel" value="First Name"></h:outputText>
                 <h:inputText id = "firstText" value="#{committeeBean.fName}"></h:inputText>

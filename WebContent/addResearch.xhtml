@@ -9,7 +9,7 @@
 
 <ui:composition template="/WEB-INF/templates/LoggedInBasicTemplate.xhtml">
     <ui:define name="content">
-        <h:form>
+        <h:form id="researchForm" enctype="multipart/form-data">
             <h:panelGrid columns="2">
                 <h:outputText id = "firstLabel" value="Research Group "></h:outputText>
                 <h:inputText id = "firstText" value="#{researchBean.name}"></h:inputText>

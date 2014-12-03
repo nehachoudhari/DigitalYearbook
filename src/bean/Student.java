@@ -3,8 +3,6 @@ import helper.DropboxUploaderHelper;
 
 import javax.ejb.EJB;
 
-import org.primefaces.model.UploadedFile;
-
 import service.StudentService;
 import exception.YearbookException;
 
@@ -125,17 +123,14 @@ public class Student extends bean.Photograph{
 	public String addStudent() throws YearbookException{
 		try{
 			System.out.println("Inside add");
-			entity.Photograph photo = new entity.Photograph();
-			photo.setDetails(this.details);
-			photo.setType("Student");
+			System.out.println(this.buckId);
 			System.out.println("Inside add 1 - "+this.file);
 			System.out.println(this.file.getFileName());
 			copyFile(this.file.getFileName(), this.file.getInputstream());
 	
 			DropboxUploaderHelper dropboxUploader = new DropboxUploaderHelper();
-			String dropboxUrl = dropboxUploader.uploadToDropBox(this.file.getFileName(), "//"+photo.getType());
+			String dropboxUrl = dropboxUploader.uploadToDropBox(this.file.getFileName(), "//Student");
 			System.out.println("Dropbox "+dropboxUrl);
-			photo.setUrl(dropboxUrl);
 			boolean ret = studentService.addStudent(this.buckId, this.contactNumber, this.deptId, this.dob,
 					this.email, this.firstName, this.gradYear, this.jobInternDetails, this.lastName, 
 					this.password, this.username, dropboxUrl);
@@ -170,17 +165,13 @@ public class Student extends bean.Photograph{
 	
 	
 	public String modifyStudent() throws YearbookException{
-		try{     
-			entity.Photograph photo = new entity.Photograph();
-			photo.setDetails(this.details);
-			photo.setType("Student");
+		try{
 			System.out.println(this.file.getFileName());
 			copyFile(this.file.getFileName(), this.file.getInputstream());
 	
 			DropboxUploaderHelper dropboxUploader = new DropboxUploaderHelper();
-			String dropboxUrl = dropboxUploader.uploadToDropBox(this.file.getFileName(), "//"+photo.getType());
+			String dropboxUrl = dropboxUploader.uploadToDropBox(this.file.getFileName(), "//Student");
 			System.out.println("Dropbox "+dropboxUrl);
-			photo.setUrl(dropboxUrl);
 			boolean ret = studentService.updateStudent(this.buckId, this.contactNumber, this.deptId, this.dob,
 					this.email, this.firstName, this.gradYear, this.jobInternDetails, this.lastName, 
 					this.password, this.username, dropboxUrl);
@@ -196,10 +187,7 @@ public class Student extends bean.Photograph{
 	}
 	
 	public String deleteStudent() throws YearbookException{
-		try{     
-			entity.Photograph photo = new entity.Photograph();
-			photo.setDetails(this.details);
-			photo.setType("Student");
+		try{
 			boolean ret = studentService.deleteStudent(this.buckId);
 			//dropboxUploader.fetchFromDropBox(dropboxUrl);
 			if(ret)

@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+r
 import javax.ejb.EJB;
 
 import service.DepartmentService;
-import entity.Photograph;
 import exception.YearbookException;
 
 
