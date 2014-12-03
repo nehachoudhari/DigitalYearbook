@@ -43,8 +43,11 @@ public class LoginBean
     }
 
     public String logStudent() throws YearbookException{
-    	String ret = "true";
-    	//String ret = studentService.logIn(username,password);
-    	return ret;
+    	boolean result = studentService.login(username,password);
+    	if(result){
+    		return "true";
+    	}else{
+    		return "false";
+    	}
     }
 }
