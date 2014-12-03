@@ -1,10 +1,14 @@
 package bean;
 import helper.DropboxUploaderHelper;
 
+
+
+
 import javax.ejb.EJB;
 
 import service.DepartmentService;
 import exception.YearbookException;
+
 
 
 /**
@@ -30,6 +34,9 @@ public class Department extends bean.Photograph{
 	private String location;
 	
 	private String url;
+	
+	
+	
 	
 	public String getLocation() {
 		return location;
@@ -113,4 +120,5 @@ public class Department extends bean.Photograph{
 			return "false";
 	}
 
+	
 }
