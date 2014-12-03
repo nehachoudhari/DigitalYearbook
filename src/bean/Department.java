@@ -1,11 +1,9 @@
 package bean;
 import helper.DropboxUploaderHelper;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
-r
+
+
 import javax.ejb.EJB;
 
 import service.DepartmentService;
@@ -23,8 +21,6 @@ import exception.YearbookException;
 
 public class Department extends bean.Photograph{
 	
-	ArrayList<String> allDepartments = null;
-	
 	@EJB
 	DepartmentService deptService;
 	
@@ -40,9 +36,7 @@ public class Department extends bean.Photograph{
 	private String url;
 	
 	
-	public Department() {
-		loadDropdown();
-	}
+	
 	
 	public String getLocation() {
 		return location;
@@ -126,17 +120,5 @@ public class Department extends bean.Photograph{
 			return "false";
 	}
 
-	public void loadDropdown() {
-		allDepartments = new ArrayList<String>();
-		Collection<entity.Department> list;
-		try {
-			list = deptService.getAllDepartments();
-			for(entity.Department d : list) {
-				allDepartments.add(d.getName());
-			}
-		} catch (YearbookException e) {
-			e.printStackTrace();
-		}
-		
-	}
+	
 }

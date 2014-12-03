@@ -136,4 +136,67 @@
     TARGET="rules:#eventChangeSuccess.xhtml" TITLE="true" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#dispDepartment.xhtml"
+  PATH="/dispDepartment.xhtml" SHAPE="928,1793,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#dispDepartment.xhtml:0" NAME="item"
+   PATH="/dispDepartment.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="Next::#dispComitteeMember.xhtml"
+    NAME="output" PATH="/dispComitteeMember.xhtml"
+    TARGET="rules:#dispComitteeMember.xhtml" TITLE="Next" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#dispComitteeMember.xhtml"
+  PATH="/dispComitteeMember.xhtml" SHAPE="704,1809,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#dispComitteeMember.xhtml:0" NAME="item"
+   PATH="/dispComitteeMember.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="Back::#dispDepartment.xhtml" NAME="output"
+    PATH="/dispDepartment.xhtml" TARGET="rules:#dispDepartment.xhtml"
+    TITLE="Back" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#dispComitteeMember.xhtml:1" NAME="item1"
+   PATH="/dispComitteeMember.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="Next::#dispEvents.xhtml" NAME="output"
+    PATH="/dispEvents.xhtml" TARGET="rules:#dispEvents.xhtml"
+    TITLE="Next" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#dispEvents.xhtml" PATH="/dispEvents.xhtml"
+  SHAPE="480,1793,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#dispEvents.xhtml:0" NAME="item"
+   PATH="/dispEvents.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="Next::#dispResearchGroups.xhtml"
+    NAME="output" PATH="/dispResearchGroups.xhtml"
+    TARGET="rules:#dispResearchGroups.xhtml" TITLE="Next" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#dispEvents.xhtml:1" NAME="item1"
+   PATH="/dispEvents.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="Back::#dispComitteeMember.xhtml"
+    NAME="output" PATH="/dispComitteeMember.xhtml"
+    TARGET="rules:#dispComitteeMember.xhtml" TITLE="Back" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#dispResearchGroups.xhtml"
+  PATH="/dispResearchGroups.xhtml" SHAPE="256,1809,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#dispResearchGroups.xhtml:0" NAME="item"
+   PATH="/dispResearchGroups.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="Next::#dispStudents.xhtml" NAME="output"
+    PATH="/dispStudents.xhtml" TARGET="rules:#dispStudents.xhtml"
+    TITLE="Next" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#dispResearchGroups.xhtml:1" NAME="item1"
+   PATH="/dispResearchGroups.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="Back::#dispEvents.xhtml" NAME="output"
+    PATH="/dispEvents.xhtml" TARGET="rules:#dispEvents.xhtml"
+    TITLE="Back" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#dispStudents.xhtml"
+  PATH="/dispStudents.xhtml" SHAPE="32,1793,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#dispStudents.xhtml:0" NAME="item"
+   PATH="/dispStudents.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="Back::#dispResearchGroups.xhtml"
+    NAME="output" PATH="/dispResearchGroups.xhtml"
+    TARGET="rules:#dispResearchGroups.xhtml" TITLE="Back" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
 </PROCESS>
