@@ -28,9 +28,6 @@ public class Photograph {
 	public void setFile(UploadedFile  file) {
 		this.file = file;
 	}
-
-	protected String details;
-	
 	public String getType() {
 		return type;
 	}
@@ -43,23 +40,12 @@ public class Photograph {
 	public void setTypeId(long typeId) {
 		this.typeId = typeId;
 	}
-	public String getDetails() {
-		return details;
-	}
-	public void setDetails(String details) {
-		this.details = details;
-	}
 	
-	public void print()
-	{
-		System.out.println(details);
-	}
-	
-	protected void copyFile(String fileName,  InputStream in) {
+	protected void copyFile(String fileName,  InputStream in, String type) {
 		try {
 			ExternalContext extContext =FacesContext.getCurrentInstance().getExternalContext();
-			String filePath = extContext.getRealPath("//WEB-INF//images//uploads//Department//" + fileName);
-			System.out.println("File is "+extContext.getRealPath("//WEB-INF//images//uploads//Department//" + fileName));
+			String filePath = extContext.getRealPath("//WEB-INF//images//uploads//"+type+"//" + fileName);
+			System.out.println("File is "+extContext.getRealPath("//WEB-INF//images//uploads//"+type+"//" + fileName));
 			OutputStream out = new FileOutputStream(new File(filePath));
 			System.out.println("Ready to write file");
 			int read = 0;

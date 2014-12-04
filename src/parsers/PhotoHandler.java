@@ -47,7 +47,7 @@ public class PhotoHandler extends DefaultHandler
 			//pic.setUrl(content);
 			break;
 		case "photo_details":
-			pic.setDetails(content);
+			//pic.setDetails(content);
 			break;
 		case "type":
 			pic.setType(content);

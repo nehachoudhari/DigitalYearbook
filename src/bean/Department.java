@@ -84,11 +84,11 @@ public class Department extends bean.Photograph{
 			System.out.println("Inside add department");
 			System.out.println(this.file);
 			System.out.println(this.file.getFileName());
-			copyFile(this.file.getFileName(), this.file.getInputstream());
+			copyFile(this.file.getFileName(), this.file.getInputstream(),"Department");
 			
 	
 			DropboxUploaderHelper dropboxUploader = new DropboxUploaderHelper();
-			String dropboxUrl = dropboxUploader.uploadToDropBox(this.file.getFileName(), "//Department");
+			String dropboxUrl = dropboxUploader.uploadToDropBox(this.file.getFileName(), "Department");
 			System.out.println("Dropbox "+dropboxUrl);
 			boolean ret = deptService.addDepartment(deptId, location, mission, name, url,  dropboxUrl);
 			dropboxUploader.fetchFromDropBox(dropboxUrl);

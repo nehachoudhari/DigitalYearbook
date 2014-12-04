@@ -61,7 +61,7 @@ public class DropboxUploaderHelper {
                 DbxWriteMode.add(), inputFile.length(), inputStream);
             String sharedUrl = client.createShareableUrl("/"+type+"/"+inputFileName);
             System.out.println("Uploaded: " + uploadedFile.toString() + " URL " + sharedUrl);
-            return type+"/"+uploadedFile.name;
+            return "/"+type+"/"+uploadedFile.name;
         }catch(Exception e){
     		System.out.println(e.getMessage());
     	} finally {

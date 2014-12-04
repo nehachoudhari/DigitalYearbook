@@ -126,10 +126,10 @@ public class Student extends bean.Photograph{
 			System.out.println(this.buckId);
 			System.out.println("Inside add 1 - "+this.file);
 			System.out.println(this.file.getFileName());
-			copyFile(this.file.getFileName(), this.file.getInputstream());
+			copyFile(this.file.getFileName(), this.file.getInputstream(), "Student");
 	
 			DropboxUploaderHelper dropboxUploader = new DropboxUploaderHelper();
-			String dropboxUrl = dropboxUploader.uploadToDropBox(this.file.getFileName(), "//Student");
+			String dropboxUrl = dropboxUploader.uploadToDropBox(this.file.getFileName(), "Student");
 			System.out.println("Dropbox "+dropboxUrl);
 			boolean ret = studentService.addStudent(this.buckId, this.contactNumber, this.deptId, this.dob,
 					this.email, this.firstName, this.gradYear, this.jobInternDetails, this.lastName, 
@@ -167,10 +167,10 @@ public class Student extends bean.Photograph{
 	public String modifyStudent() throws YearbookException{
 		try{
 			System.out.println(this.file.getFileName());
-			copyFile(this.file.getFileName(), this.file.getInputstream());
+			copyFile(this.file.getFileName(), this.file.getInputstream(), "Student");
 	
 			DropboxUploaderHelper dropboxUploader = new DropboxUploaderHelper();
-			String dropboxUrl = dropboxUploader.uploadToDropBox(this.file.getFileName(), "//Student");
+			String dropboxUrl = dropboxUploader.uploadToDropBox(this.file.getFileName(), "Student");
 			System.out.println("Dropbox "+dropboxUrl);
 			boolean ret = studentService.updateStudent(this.buckId, this.contactNumber, this.deptId, this.dob,
 					this.email, this.firstName, this.gradYear, this.jobInternDetails, this.lastName, 
