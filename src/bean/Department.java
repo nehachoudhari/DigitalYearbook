@@ -93,12 +93,32 @@ public class Department extends bean.Photograph{
 	}
 	
 	public String modifyDepartment() throws YearbookException{
-		String ret = "true";
-
-		if(!ret.equalsIgnoreCase("Exists"))
-			return "true";
-		else 
-			return "false";
+		
+		try{ 
+//			System.out.println("Inside modify department");
+//			System.out.println(this.file);
+//			System.out.println(this.file.getFileName());
+			
+			String dropboxUrl = "";
+			if(this.file.getFileName()!=null || this.file.getFileName() != "") {
+				copyFile(this.file.getFileName(), this.file.getInputstream(),"Department");
+				
+				DropboxUploaderHelper dropboxUploader = new DropboxUploaderHelper();
+				dropboxUrl = dropboxUploader.uploadToDropBox(this.file.getFileName(), "Department");
+			//	System.out.println("Dropbox "+dropboxUrl);
+			//	dropboxUploader.fetchFromDropBox(dropboxUrl);
+			}
+			
+			boolean ret = deptService.addDepartment(deptId, location, mission, name, url,  dropboxUrl);
+			
+			if(ret)
+					return "true";
+				else 
+					return "false";
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+		}
+		return "false";
 	}
 	
 	public String deleteDepartment() throws YearbookException{
