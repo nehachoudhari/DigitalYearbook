@@ -61,16 +61,6 @@
   <managed-bean-class>bean.Department</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
- <managed-bean>
-  <managed-bean-name>committeelistBean</managed-bean-name>
-  <managed-bean-class>outputbean.DispCommittee</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
- </managed-bean>
- <managed-bean>
-  <managed-bean-name>committeedispBean</managed-bean-name>
-  <managed-bean-class>outputbean.CommitteeMember</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
- </managed-bean>
 
  <navigation-rule>
   <display-name>login.xhtml</display-name>

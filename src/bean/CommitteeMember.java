@@ -1,5 +1,8 @@
 package bean;
 
+import javax.ejb.EJB;
+
+import service.CommitteeMemberService;
 import exception.YearbookException;
 
 
@@ -13,6 +16,9 @@ import exception.YearbookException;
 
 public class CommitteeMember extends Photograph{
 
+	@EJB
+	CommitteeMemberService memberService;
+	
 	private long member_id;
 	private String fName;
 	private String lName;
