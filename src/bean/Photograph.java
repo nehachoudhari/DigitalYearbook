@@ -51,8 +51,8 @@ public class Photograph {
 	protected void copyFile(String fileName,  InputStream in, String type) {
 		try {
 			ExternalContext extContext =FacesContext.getCurrentInstance().getExternalContext();
-			String filePath = extContext.getRealPath("//WEB-INF//images//uploads//"+type+"//" + fileName);
-			System.out.println("File is "+extContext.getRealPath("//WEB-INF//images//uploads//"+type+"//" + fileName));
+			String filePath = extContext.getRealPath("//images//uploads//"+type+"//" + fileName);
+			System.out.println("File is "+extContext.getRealPath("//images//uploads//"+type+"//" + fileName));
 			OutputStream out = new FileOutputStream(new File(filePath));
 			System.out.println("Ready to write file");
 			int read = 0;
