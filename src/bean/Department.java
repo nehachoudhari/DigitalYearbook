@@ -1,15 +1,10 @@
 package bean;
 import helper.DropboxUploaderHelper;
 
-
-
-
 import javax.ejb.EJB;
 
 import service.DepartmentService;
 import exception.YearbookException;
-
-
 
 /**
  * @author nhchdhr
@@ -24,7 +19,6 @@ public class Department extends bean.Photograph{
 	@EJB
 	DepartmentService deptService;
 	
-	
 	private int deptId;
 	
 	private String name;
@@ -34,9 +28,6 @@ public class Department extends bean.Photograph{
 	private String location;
 	
 	private String url;
-	
-	
-	
 	
 	public String getLocation() {
 		return location;
@@ -86,7 +77,6 @@ public class Department extends bean.Photograph{
 			System.out.println(this.file.getFileName());
 			copyFile(this.file.getFileName(), this.file.getInputstream(),"Department");
 			
-	
 			DropboxUploaderHelper dropboxUploader = new DropboxUploaderHelper();
 			String dropboxUrl = dropboxUploader.uploadToDropBox(this.file.getFileName(), "Department");
 			System.out.println("Dropbox "+dropboxUrl);

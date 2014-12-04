@@ -38,8 +38,8 @@
  </managed-bean>
 
  <managed-bean>
-  <managed-bean-name>listsBean</managed-bean-name>
-  <managed-bean-class>bean.Lists</managed-bean-class>
+  <managed-bean-name>deptListsBean</managed-bean-name>
+  <managed-bean-class>bean.DepartmentList</managed-bean-class>
   <managed-bean-scope>application</managed-bean-scope>
  </managed-bean>
 
