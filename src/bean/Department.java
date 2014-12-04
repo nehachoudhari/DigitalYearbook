@@ -2,6 +2,7 @@ package bean;
 import helper.DropboxUploaderHelper;
 
 import javax.ejb.EJB;
+import javax.faces.context.FacesContext;
 
 import service.DepartmentService;
 import exception.YearbookException;
@@ -60,6 +61,16 @@ public class Department extends bean.Photograph{
 		this.mission = mission;
 	}
 	
+	private String selectedDeptId;
+
+
+	public String getSelectedDeptId() {
+		return selectedDeptId;
+	}
+
+	public void setSelectedDeptId(String selectedDeptId) {
+		this.selectedDeptId = selectedDeptId;
+	}
 	
 	public String toString() {
 		StringBuffer  sb = new StringBuffer();
@@ -81,7 +92,7 @@ public class Department extends bean.Photograph{
 			String dropboxUrl = dropboxUploader.uploadToDropBox(this.file.getFileName(), "Department");
 			System.out.println("Dropbox "+dropboxUrl);
 			boolean ret = deptService.addDepartment(deptId, location, mission, name, url,  dropboxUrl);
-			dropboxUploader.fetchFromDropBox(dropboxUrl);
+			
 			if(ret)
 					return "true";
 				else 
@@ -130,5 +141,34 @@ public class Department extends bean.Photograph{
 			return "false";
 	}
 
+	public String showDepartment() throws YearbookException{
+		try {
+			System.out.println("Inside department list");
+			System.out.println("Department id  - "+selectedDeptId);
+			entity.Department dept = deptService.getDepartment(Integer.parseInt(selectedDeptId));
+			deptId = dept.getDeptId();
+			location = dept.getLocation();
+			mission = dept.getMission();
+			name = dept.getName();
+			url = dept.getUrl();
+
+			DropboxUploaderHelper dropboxUploader = new DropboxUploaderHelper();
+			dropboxUploader.fetchFromDropBox(dept.getPhotoUrl());
+			System.out.println();
+		} catch (YearbookException e) {
+			e.printStackTrace();
+		}
+		return "true";
+    }
+	
+	public boolean equals(Object other)
+	{
+	    return other instanceof Department && (selectedDeptId != null) ? selectedDeptId.equals(((Department) other).getDeptId()) : (other == this);
+	}
+
+	public int hashCode()
+	{
+	    return selectedDeptId != null ? this.getClass().hashCode() + selectedDeptId.hashCode() : super.hashCode();
+	}
 	
 }
