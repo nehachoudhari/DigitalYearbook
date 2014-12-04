@@ -31,14 +31,12 @@
                 <h:inputText id = "usernameText" value="#{studentBean.username}"></h:inputText>
                 <h:outputText  id = "passwordLabel" value="Password"></h:outputText>
                 <h:inputSecret  id = "passwordText" value="#{studentBean.password}"></h:inputSecret>
-                <h:graphicImage value="#{facesContext.externalContext.requestContextPath}/WEB-INF/images/downloads/Student/#{studentBean.fileName}" />
+                <h:graphicImage value="#{facesContext.externalContext.requestContextPath}/WEB-INF/images/downloads/Student/#{studentBean.localFileUrl}" />
             </h:panelGrid>
             <br />
                         
 			<h3 >Photograph for Student</h3>
             <h:panelGrid columns="2" style=" width : 378px;">
-                <h:outputText id = "label5" value="Details"></h:outputText>
-                <h:inputText id = "details" value="#{studentBean.details}"></h:inputText>
                 <h:outputLabel value="Upload file" for="file" /> 
                 <p:fileUpload value="#{studentBean.file}" sizeLimit="10485760" 
                 id="file" dragDropSupport="false" mode="simple" allowTypes="png,gif,jpg" />

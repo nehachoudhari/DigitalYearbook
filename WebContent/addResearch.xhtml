@@ -22,8 +22,6 @@
                         
 			<h3 >Photograph for Research Group</h3>
             <h:panelGrid columns="2" style=" width : 378px;">
-                <h:outputText id = "label5" value="Details"></h:outputText>
-                <h:inputText id = "details" value="#{researchBean.details}"></h:inputText>
                 <h:outputLabel value="Upload file" for="file" /> 
                 <p:fileUpload value="#{researchBean.file}" sizeLimit="10485760" 
                 id="file" dragDropSupport="false" mode="simple" allowTypes="png,gif,jpg" />
