@@ -44,6 +44,24 @@
  </managed-bean>
 
  <managed-bean>
+  <managed-bean-name>rGroupListBean</managed-bean-name>
+  <managed-bean-class>bean.ResearchGroupList</managed-bean-class>
+  <managed-bean-scope>application</managed-bean-scope>
+ </managed-bean>
+
+<managed-bean>
+  <managed-bean-name>memberListBean</managed-bean-name>
+  <managed-bean-class>bean.CommitteeMemberList</managed-bean-class>
+  <managed-bean-scope>application</managed-bean-scope>
+ </managed-bean>
+ 
+<managed-bean>
+  <managed-bean-name>eventListBean</managed-bean-name>
+  <managed-bean-class>bean.EventList</managed-bean-class>
+  <managed-bean-scope>application</managed-bean-scope>
+ </managed-bean>
+
+ <managed-bean>
   <managed-bean-name>deptdispBean</managed-bean-name>
   <managed-bean-class>bean.Department</managed-bean-class>
   <managed-bean-scope>application</managed-bean-scope>
