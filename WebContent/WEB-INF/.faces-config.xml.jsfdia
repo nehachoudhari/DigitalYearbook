@@ -199,4 +199,13 @@
     TARGET="rules:#dispResearchGroups.xhtml" TITLE="Back" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#listAllDepartments.xhtml"
+  PATH="/listAllDepartments.xhtml" SHAPE="32,897,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#listAllDepartments.xhtml:0" NAME="item"
+   PATH="/listAllDepartments.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="true::#modifyDepartment.xhtml" NAME="output"
+    PATH="/modifyDepartment.xhtml"
+    TARGET="rules:#modifyDepartment.xhtml" TITLE="true" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
 </PROCESS>

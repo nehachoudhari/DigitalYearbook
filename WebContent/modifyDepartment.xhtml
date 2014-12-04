@@ -19,17 +19,17 @@
                 <h:inputText id = "loc" value="#{deptBean.location}"></h:inputText>
                 <h:outputText id = "label4" value="URL"></h:outputText>
                 <h:inputText id = "url" value="#{deptBean.url}"></h:inputText>
-                
+                <h:inputHidden id="deptId" value="#{deptBean.deptId}" />
             </h:panelGrid>
             <br />
                         
 			<h3 >Photograph for Department</h3>
             <h:panelGrid columns="2" style=" width : 378px;">
-                <h:outputText id = "label5" value="Details"></h:outputText>
-                <h:inputText id = "details" value="#{deptBean.details}"></h:inputText>
                 <h:outputLabel value="Upload file" for="file" /> 
                 <p:fileUpload value="#{deptBean.file}" sizeLimit="10485760" 
                 id="file" dragDropSupport="false" mode="simple" allowTypes="png,gif,jpg" />
+                <h:graphicImage 
+                value="${renderRequest.contextPath}/WEB-INF/images/downloads/Department/Koala.jpg" />
             </h:panelGrid>
                         
             <br />
