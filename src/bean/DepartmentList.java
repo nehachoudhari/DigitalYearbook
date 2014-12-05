@@ -1,11 +1,15 @@
 package bean;
 
+import helper.DropboxUploaderHelper;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
 import service.DepartmentService;
@@ -60,6 +64,11 @@ public class DepartmentList {
 			
 			if(list!= null) {
 				deptList = new ArrayList<entity.Department>(list);
+				DropboxUploaderHelper dropboxUploader = new DropboxUploaderHelper();
+				dropboxUploader.fetchFromDropBoxIntoYearbook(deptList.get(0).getPhotoUrl());
+				ExternalContext extContext =FacesContext.getCurrentInstance().getExternalContext();
+				String filePath = extContext.getRealPath("//images//yearbook"+deptList.get(0).getPhotoUrl());
+				deptList.get(0).setPhotoUrl(filePath);
 				for(entity.Department d : list) {
 					allDepartments.add(new SelectItem(d.getDeptId(),d.getName()));
 				}
