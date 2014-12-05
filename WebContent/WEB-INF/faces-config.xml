@@ -266,6 +266,33 @@
    <to-view-id>/modifyDepartment.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
+ 
+ <navigation-rule>
+  <display-name>listAllEvents.xhtml</display-name>
+  <from-view-id>/listAllEvents.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>true</from-outcome>
+   <to-view-id>/modifyEvent.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ 
+ <navigation-rule>
+  <display-name>listAllMembers.xhtml</display-name>
+  <from-view-id>/listAllMembers.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>true</from-outcome>
+   <to-view-id>/modifyCommittee.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ 
+ <navigation-rule>
+  <display-name>listAllResearchGroups.xhtml</display-name>
+  <from-view-id>/listAllResearchGroups.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>true</from-outcome>
+   <to-view-id>/modifyResearch.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
 
  <application/>
 </faces-config>
