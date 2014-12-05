@@ -44,6 +44,7 @@ public class CommitteeMemberList {
 		try {
 		
 			list = memberService.getAllCommitteeMembers();
+
 			listallMembers = new ArrayList<entity.CommitteeMember>(list);
 			if(list!= null) {
 				for(entity.CommitteeMember m : list) {

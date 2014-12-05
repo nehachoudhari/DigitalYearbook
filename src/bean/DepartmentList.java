@@ -17,8 +17,12 @@ public class DepartmentList {
 	
 	@EJB
 	DepartmentService deptService;
+	
+	@EJB
+	Student studentBean;
 
 	List<SelectItem> allDepartments = null;
+
 	List<entity.Department> deptList = null;
 	
 	public List<entity.Department> getDeptList() {
@@ -28,6 +32,7 @@ public class DepartmentList {
 	public void setDeptList(List<entity.Department> deptList) {
 		this.deptList = deptList;
 	}
+
 
 	public List<SelectItem> getAllDepartments() {
 		return allDepartments;
@@ -44,13 +49,13 @@ public class DepartmentList {
 	public void setType(String type) {
 		this.type = type;
 	}
-	
+
 	@PostConstruct
 	public void init() {
 		allDepartments = new ArrayList<SelectItem>();
 		Collection<entity.Department> list;
+		
 		try {
-			System.out.println(deptService);
 			list = deptService.getAllDepartments();
 			
 			if(list!= null) {

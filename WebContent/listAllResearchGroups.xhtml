@@ -12,10 +12,17 @@
         <h:form>
             <h:panelGrid columns="2">
                  <h:outputText id = "firstLabel" value="Select a Research Group"></h:outputText>
-             	 <h:selectOneMenu>
-   					 <f:selectItems value="#{rGroupListBean.allGroups}"/>	
+             	 <h:selectOneMenu id="researchId" value="#{researchBean.selectedResId}">
+   					 <f:selectItems value="#{rGroupListBean.allGroups}"/>
+   					<f:converter converterId="longValueConverter" />
   				 </h:selectOneMenu>
             </h:panelGrid>
+            
+            
+            <br />
+            <br />
+            <h:commandButton value="Show Research" action="#{researchBean.showGroup()}" style= "position: static; 
+            left: 2000px; top: 100px; width : 120px;"></h:commandButton>
         </h:form>
     </ui:define>
 </ui:composition>
