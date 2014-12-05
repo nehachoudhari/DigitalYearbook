@@ -8,7 +8,6 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.model.SelectItem;
 
-import service.DepartmentService;
 import service.EventService;
 import exception.YearbookException;
 

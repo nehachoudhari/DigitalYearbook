@@ -23,6 +23,11 @@
             <br />
                         
 			<h3 >Photograph for Research Group</h3>
+			<h:panelGrid columns="2" style=" width : 378px;">
+            	<h:outputLabel value="Uploaded file"/> 
+                <h:graphicImage height="200" width="200" value="#{researchBean.photoUrl}" />
+            </h:panelGrid>
+            
             <h:panelGrid columns="2" style=" width : 378px;">
                 <h:outputLabel value="Upload file" for="file" /> 
                 <p:fileUpload value="#{researchBean.file}" sizeLimit="10485760" 

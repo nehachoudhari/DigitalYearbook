@@ -18,11 +18,17 @@
                 <h:outputText id = "buckidLabel" value="Designation"></h:outputText>
                 <h:inputText id = "designation" value="#{committeeBean.designation}"></h:inputText>
                 <h:inputHidden id="deptId" value="#{committeeBean.deptId}" />
-                <h:inputHidden id="member_id" value="#{committeeBean.member_id}" />
+                <h:inputHidden id="member_id" value="#{committeeBean.memberId}" />
             </h:panelGrid>
                         
             <br />
 			<h3 >Photograph for Committee Member</h3>
+			
+			<h:panelGrid columns="2" style=" width : 378px;">
+            	<h:outputLabel value="Uploaded file"/> 
+                <h:graphicImage height="200" width="200" value="#{committeeBean.photoUrl}" />
+            </h:panelGrid>
+			
             <h:panelGrid columns="2" style=" width : 378px;">
                 <h:outputLabel value="Upload file" for="file" /> 
                 <p:fileUpload value="#{committeeBean.file}" sizeLimit="10485760" 
