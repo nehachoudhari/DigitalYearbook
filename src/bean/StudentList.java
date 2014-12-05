@@ -1,5 +1,7 @@
 package bean;
 
+import helper.DropboxUploaderHelper;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -21,6 +23,8 @@ import exception.YearbookException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 
 @Named
 @SessionScoped
@@ -52,10 +56,18 @@ public class StudentList implements Serializable{
 
 	@PostConstruct
 	public void init() {
-		//System.out.println("the value od fept id is now" + this.getSessionDeptId());
-		//System.out.println("getting all students for dept id " + studentBean.getDeptId());
 		try {		
 			allStudents = studentService.getAllStudents();
+			
+			for(entity.Student s: allStudents) {
+				DropboxUploaderHelper dropboxUploader = new DropboxUploaderHelper();
+				dropboxUploader.fetchFromDropBoxIntoYearbook(s.getPhotoUrl());
+				ExternalContext extContext =FacesContext.getCurrentInstance().getExternalContext();
+				String filePath = extContext.getRealPath("//images//yearbook"+s.getPhotoUrl());
+				s.setPhotoUrl(filePath);
+				
+			}
+			
 			System.out.println("the number of students found is "+ allStudents.size());
 		}catch (YearbookException e) {
 			e.printStackTrace();

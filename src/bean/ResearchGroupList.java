@@ -1,11 +1,15 @@
 package bean;
 
+import helper.DropboxUploaderHelper;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
 import service.ResearchGroupService;
@@ -49,6 +53,14 @@ public class ResearchGroupList {
 				rGroupList = new ArrayList<entity.ResearchGroup>(list);
 				for(entity.ResearchGroup r : list) {
 					allGroups.add(new SelectItem(r.getGroupId(),r.getName()));
+					
+					DropboxUploaderHelper dropboxUploader = new DropboxUploaderHelper();
+					dropboxUploader.fetchFromDropBoxIntoYearbook(r.getPhotoUrl());
+					ExternalContext extContext =FacesContext.getCurrentInstance().getExternalContext();
+					String filePath = extContext.getRealPath("//images//yearbook"+r.getPhotoUrl());
+					r.setPhotoUrl(filePath);
+					
+					
 				}
 			}else {
 				System.out.println("No research groups found");

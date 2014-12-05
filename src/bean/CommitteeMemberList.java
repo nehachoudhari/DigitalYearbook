@@ -1,11 +1,15 @@
 package bean;
 
+import helper.DropboxUploaderHelper;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
 import service.CommitteeMemberService;
@@ -47,8 +51,19 @@ public class CommitteeMemberList {
 
 			listallMembers = new ArrayList<entity.CommitteeMember>(list);
 			if(list!= null) {
+				
+				
+				
 				for(entity.CommitteeMember m : list) {
 					allMembers.add(new SelectItem(m.getMember_id(),m.getfName() + " " + m.getlName() ));
+				
+					DropboxUploaderHelper dropboxUploader = new DropboxUploaderHelper();
+					dropboxUploader.fetchFromDropBoxIntoYearbook(m.getPhotoUrl());
+					ExternalContext extContext =FacesContext.getCurrentInstance().getExternalContext();
+					String filePath = extContext.getRealPath("//images//yearbook"+m.getPhotoUrl());
+					m.setPhotoUrl(filePath);
+					
+				
 				}
 			}
 		} catch (YearbookException e) {

@@ -11,12 +11,13 @@
     <ui:define name="content">
         <h:form id="Events" >
              <br></br>
+             <h3 style="text-align: center;"> All Events </h3>
             <h:panelGrid columns="1" style="border:1px solid red; text-align:center; margin:0 auto; vertical-align: top">
             	<ul>
                 <ui:repeat value = "#{eventListBean.eventList}" var = "event">
                 <li style="text-align: center; list-style-type: none">
+                 <h:graphicImage height="100" width="100"  value="#{event.photoUrl}" />
                 <br />
-                
                 <h:outputText id = "label1" value="Event name: "></h:outputText>
                 <h:outputText id = "name" value="#{event.name}"></h:outputText>
                 <br />
@@ -35,7 +36,7 @@
         <h:commandButton value="Next Page" action="Next" style= "position: static; 
             left: 2000px; top: 100px; width : 101px;"></h:commandButton>
             </h:panelGrid>          
-                 
+                 <a href="mainMenu.xhtml">    Go Back to Menu  </a>  
         </h:form>
     </ui:define>
 </ui:composition>
