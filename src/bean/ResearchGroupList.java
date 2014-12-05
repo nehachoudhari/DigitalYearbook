@@ -21,6 +21,16 @@ public class ResearchGroupList {
 
 	List<SelectItem> allGroups = null;
 	
+	List<entity.ResearchGroup> rGroupList = null;
+	
+	public List<entity.ResearchGroup> getrGroupList() {
+		return rGroupList;
+	}
+
+	public void setrGroupList(List<entity.ResearchGroup> rGroupList) {
+		this.rGroupList = rGroupList;
+	}
+
 	public List<SelectItem> getAllGroups() {
 		return allGroups;
 	}
@@ -36,9 +46,12 @@ public class ResearchGroupList {
 		try {
 			list = researchService.getAllResearchGroups();
 			if(list!= null) {
+				rGroupList = new ArrayList<entity.ResearchGroup>(list);
 				for(entity.ResearchGroup r : list) {
 					allGroups.add(new SelectItem(r.getGroupId(),r.getName()));
 				}
+			}else {
+				System.out.println("No research groups found");
 			}
 		} catch (YearbookException e) {
 			e.printStackTrace();

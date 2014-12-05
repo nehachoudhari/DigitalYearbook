@@ -221,6 +221,7 @@
    <to-view-id>/dispComitteeMember.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
+ 
  <navigation-rule>
   <display-name>dispComitteeMember.xhtml</display-name>
   <from-view-id>/dispComitteeMember.xhtml</from-view-id>
@@ -228,15 +229,12 @@
    <from-outcome>Back</from-outcome>
    <to-view-id>/dispDepartment.xhtml</to-view-id>
   </navigation-case>
-  </navigation-rule>
- <navigation-rule>
-  <display-name>dispComitteeMember.xhtml</display-name>
-  <from-view-id>/dispComitteeMember.xhtml</from-view-id>
   <navigation-case>
    <from-outcome>Next</from-outcome>
    <to-view-id>/dispEvents.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule> 
+ 
  <navigation-rule>
   <display-name>dispEvents.xhtml</display-name>
   <from-view-id>/dispEvents.xhtml</from-view-id>
@@ -244,15 +242,26 @@
    <from-outcome>Next</from-outcome>
    <to-view-id>/dispResearchGroups.xhtml</to-view-id>
   </navigation-case>
-  </navigation-rule>
-  <navigation-rule>
+   <navigation-case>
+   <from-outcome>Back</from-outcome>
+   <to-view-id>/dispComitteeMember.xhtml</to-view-id>
+  </navigation-case>
+</navigation-rule>
+
+ <navigation-rule>
   <display-name>dispResearchGroups.xhtml</display-name>
   <from-view-id>/dispResearchGroups.xhtml</from-view-id>
   <navigation-case>
    <from-outcome>Next</from-outcome>
    <to-view-id>/dispStudents.xhtml</to-view-id>
   </navigation-case>
+  <navigation-case>
+   <from-outcome>Back</from-outcome>
+   <to-view-id>/dispEvents.xhtml</to-view-id>
+  </navigation-case>
  </navigation-rule>
+ 
+ 
  <navigation-rule>
   <display-name>dispStudents.xhtml</display-name>
   <from-view-id>/dispStudents.xhtml</from-view-id>
@@ -260,23 +269,7 @@
    <from-outcome>Back</from-outcome>
    <to-view-id>/dispResearchGroups.xhtml</to-view-id>
   </navigation-case>
-  </navigation-rule>
-  <navigation-rule>
-  <display-name>dispResearchGroups.xhtml</display-name>
-  <from-view-id>/dispResearchGroups.xhtml</from-view-id>
-   <navigation-case>
-   <from-outcome>Back</from-outcome>
-   <to-view-id>/dispEvents.xhtml</to-view-id>
-  </navigation-case>
-  </navigation-rule>
-  <navigation-rule>
-  <display-name>dispEvents.xhtml</display-name>
-  <from-view-id>/dispEvents.xhtml</from-view-id>
-   <navigation-case>
-   <from-outcome>Back</from-outcome>
-   <to-view-id>/dispComitteeMember.xhtml</to-view-id>
-  </navigation-case>
-  </navigation-rule>
+ </navigation-rule>
   
   <navigation-rule>
   <display-name>listAllDepartments.xhtml</display-name>

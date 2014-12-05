@@ -18,6 +18,17 @@ public class EventList {
 
 	List<SelectItem> allEvents = null;
 	
+	List<entity.Event> eventList = null;
+	
+	
+	public List<entity.Event> getEventList() {
+		return eventList;
+	}
+
+	public void setEventList(List<entity.Event> eventList) {
+		this.eventList = eventList;
+	}
+
 	public List<SelectItem> getAllEvents() {
 		return allEvents;
 	}
@@ -34,9 +45,13 @@ public class EventList {
 		try {
 			list = eventService.getAllEvents();
 			if(list!= null) {
+				eventList = new ArrayList<entity.Event>(list);
 				for(entity.Event e : list) {
 					allEvents.add(new SelectItem(e.getEventId(),e.getName()));
 				}
+			}
+			else{
+				System.out.println("No events found");
 			}
 		} catch (YearbookException e) {
 			e.printStackTrace();
