@@ -18,15 +18,6 @@ public class Photograph {
 	
 	protected long typeId;
 	
-	protected String localFileUrl;
-	
-	public String getLocalFileUrl() {
-		return localFileUrl;
-	}
-	public void setLocalFileUrl(String localFileUrl) {
-		this.localFileUrl = localFileUrl;
-	}
-
 	protected UploadedFile  file;
 	
 	public UploadedFile  getFile() {

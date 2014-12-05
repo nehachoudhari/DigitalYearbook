@@ -170,7 +170,6 @@ public class Department extends bean.Photograph{
 			String filePath = extContext.getRealPath("//images//downloads"+dept.getPhotoUrl());
 			System.out.println(filePath);
 			photoUrl = filePath;
-			System.out.println();
 		} catch (YearbookException e) {
 			e.printStackTrace();
 		}

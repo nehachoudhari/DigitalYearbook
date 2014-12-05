@@ -17,6 +17,11 @@
                 <h:inputText id = "lastText" value="#{studentBean.lastName}"></h:inputText>
                 <h:outputText id = "buckidLabel" value="Buck Id"></h:outputText>
                 <h:inputText id = "buckidText" value="#{studentBean.buckId}"></h:inputText>
+                <h:outputText id = "deptidLabel" value="Department Id"></h:outputText>
+                <h:selectOneMenu id="deptId" value="#{studentBean.selectedDeptId}">
+   					 <f:selectItems value="#{deptListsBean.allDepartments}"  />
+   					 <f:converter converterId="valueConverter" />
+				</h:selectOneMenu>
                 <h:outputText id = "emailLabel" value="Email ID"></h:outputText>
                 <h:inputText id = "emailText" value="#{studentBean.email}"></h:inputText>
                 <h:outputText id = "gradYearLabel" value="Grad Year"></h:outputText>
@@ -36,8 +41,6 @@
                         
 			<h3 >Photograph for Student</h3>
             <h:panelGrid columns="2" style=" width : 378px;">
-                <h:outputText id = "label5" value="Details"></h:outputText>
-                <h:inputText id = "details" value="#{studentBean.details}"></h:inputText>
                 <h:outputLabel value="Upload file" for="file" /> 
                 <p:fileUpload value="#{studentBean.file}" sizeLimit="10485760" 
                 id="file" dragDropSupport="false" mode="simple" allowTypes="png,gif,jpg" />

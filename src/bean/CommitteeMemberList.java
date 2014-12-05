@@ -9,14 +9,15 @@ import javax.ejb.EJB;
 import javax.faces.model.SelectItem;
 
 import service.CommitteeMemberService;
-import service.DepartmentService;
-import entity.CommitteeMember;
 import exception.YearbookException;
 
 public class CommitteeMemberList {
 	
 	@EJB
 	CommitteeMemberService memberService;
+	
+	@EJB
+	Student studentBean;
 
 	List<SelectItem> allMembers = null;
 	List<entity.CommitteeMember> listallMembers = null;

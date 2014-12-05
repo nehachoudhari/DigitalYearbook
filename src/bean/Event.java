@@ -16,7 +16,14 @@ public class Event extends Photograph{
 	private String date;
 	private String url;
 	private long eventId;
+	private String photoUrl;
 	
+	public String getPhotoUrl() {
+		return photoUrl;
+	}
+	public void setPhotoUrl(String photoUrl) {
+		this.photoUrl = photoUrl;
+	}
 	
 	public String getName() {
 		return name;
