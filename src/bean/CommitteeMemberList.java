@@ -44,6 +44,7 @@ public class CommitteeMemberList {
 		Collection<entity.CommitteeMember> list;
 		try {
 			System.out.println("Inside committee member bean");
+			System.out.println("CommitteeMember" + studentBean.getDeptId());
 			list = memberService.getAllCommitteeMembers(studentBean.getDeptId());
 			listallMembers = new ArrayList<entity.CommitteeMember>(list);
 			if(list!= null) {
