@@ -39,6 +39,12 @@
  </managed-bean>
 
  <managed-bean>
+  <managed-bean-name>deptCurrentBean</managed-bean-name>
+  <managed-bean-class>bean.CurrentDepartment</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ 
+ <managed-bean>
   <managed-bean-name>rGroupListBean</managed-bean-name>
   <managed-bean-class>bean.ResearchGroupList</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
@@ -266,6 +272,16 @@
    <to-view-id>/modifyDepartment.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
+ 
+ <navigation-rule>
+  <display-name>menubar.xhtml</display-name>
+  <from-view-id>/menubar.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>true</from-outcome>
+   <to-view-id>/dispDepartment.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ 
 
  <application/>
 </faces-config>

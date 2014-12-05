@@ -12,13 +12,15 @@
         <h:form id="Department" >
             <h:panelGrid columns="2">
                 <h:outputText id = "label1" value="Department Name"></h:outputText>
-                <h:outputText id = "name" value="lol"></h:outputText>
+                <h:outputText id = "name" value="#{deptCurrentBean.name}"></h:outputText>
                 <h:outputText id = "label2" value="Mission"></h:outputText>
-                <h:outputText id = "mission" value="lol1"></h:outputText>
+                <h:outputText id = "mission" value="#{deptCurrentBean.mission}"></h:outputText>
                 <h:outputText id = "label3" value="Address"></h:outputText>
-                <h:outputText id = "loc" value="lol2"></h:outputText>
+                <h:outputText id = "loc" value="#{deptCurretBean.location}"></h:outputText>
                 <h:outputText id = "label4" value="URL"></h:outputText>
-                <h:outputText id = "url" value="lol3"></h:outputText>
+                <h:outputText id = "url" value="#{deptCurrentBean.url}"></h:outputText>
+                <h:outputText id = "label5" value="Photo"></h:outputText>
+                <h:outputText id = "Photo" value="#{deptCurrentBean.photoUrl}"></h:outputText>
                 
             </h:panelGrid>
             <br />                     

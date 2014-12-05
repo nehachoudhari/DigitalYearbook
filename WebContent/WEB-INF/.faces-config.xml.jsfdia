@@ -1,5 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#registerStudent.xhtml"
+  PATH="/registerStudent.xhtml" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#registerStudent.xhtml:0" NAME="item"
+   PATH="/registerStudent.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="true::#successfulRegistration.xhtml"
+    NAME="output" PATH="/successfulRegistration.xhtml"
+    TARGET="rules:#successfulRegistration.xhtml" TITLE="true" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#successfulRegistration.xhtml"
+  PATH="/successfulRegistration.xhtml" SHAPE="240,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#addDepartment.xhtml"
+  PATH="/addDepartment.xhtml" SHAPE="32,129,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#addDepartment.xhtml:0" NAME="item"
+   PATH="/addDepartment.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="true::#departmentChangeSuccess.xhtml"
+    NAME="output" PATH="/departmentChangeSuccess.xhtml"
+    TARGET="rules:#departmentChangeSuccess.xhtml" TITLE="true" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#loginfail.xhtml" PATH="/loginfail.xhtml"
+  SHAPE="32,305,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#loginfail.xhtml:0" NAME="item"
+   PATH="/loginfail.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="back::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="back" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#login.xhtml" PATH="/login.xhtml"
   SHAPE="272,145,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#login.xhtml:0" NAME="item"
@@ -23,41 +51,8 @@
     PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="back" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#loginfail.xhtml" PATH="/loginfail.xhtml"
-  SHAPE="32,305,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#loginfail.xhtml:0" NAME="item"
-   PATH="/loginfail.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="back::#login.xhtml" NAME="output"
-    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="back" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#addDepartment.xhtml"
-  PATH="/addDepartment.xhtml" SHAPE="32,129,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#addDepartment.xhtml:0" NAME="item"
-   PATH="/addDepartment.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="true::#departmentChangeSuccess.xhtml"
-    NAME="output" PATH="/departmentChangeSuccess.xhtml"
-    TARGET="rules:#departmentChangeSuccess.xhtml" TITLE="true" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#modifyDepartment.xhtml"
-  PATH="/modifyDepartment.xhtml" SHAPE="32,673,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#modifyDepartment.xhtml:0" NAME="item"
-   PATH="/modifyDepartment.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="true::#departmentChangeSuccess.xhtml"
-    NAME="output" PATH="/departmentChangeSuccess.xhtml"
-    TARGET="rules:#departmentChangeSuccess.xhtml" TITLE="true" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#registerStudent.xhtml"
-  PATH="/registerStudent.xhtml" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#registerStudent.xhtml:0" NAME="item"
-   PATH="/registerStudent.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="true::#successfulRegistration.xhtml"
-    NAME="output" PATH="/successfulRegistration.xhtml"
-    TARGET="rules:#successfulRegistration.xhtml" TITLE="true" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#departmentChangeSuccess.xhtml"
+  PATH="/departmentChangeSuccess.xhtml" SHAPE="240,577,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#modifyStudent.xhtml"
   PATH="/modifyStudent.xhtml" SHAPE="32,449,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#modifyStudent.xhtml:0" NAME="item"
@@ -68,6 +63,17 @@
    <PROCESS-ITEM-OUTPUT ID="true::#studentChangeSuccess.xhtml"
     NAME="output1" PATH="/studentChangeSuccess.xhtml"
     TARGET="rules:#studentChangeSuccess.xhtml" TITLE="true" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#studentChangeSuccess.xhtml"
+  PATH="/studentChangeSuccess.xhtml" SHAPE="256,545,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#modifyDepartment.xhtml"
+  PATH="/modifyDepartment.xhtml" SHAPE="32,673,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#modifyDepartment.xhtml:0" NAME="item"
+   PATH="/modifyDepartment.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="true::#departmentChangeSuccess.xhtml"
+    NAME="output" PATH="/departmentChangeSuccess.xhtml"
+    TARGET="rules:#departmentChangeSuccess.xhtml" TITLE="true" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#addCommittee.xhtml"
@@ -88,13 +94,26 @@
     TARGET="rules:#committeeChangeSuccess.xhtml" TITLE="true" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#addEvent.xhtml" PATH="/addEvent.xhtml"
-  SHAPE="32,1569,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#addEvent.xhtml:0" NAME="item"
-   PATH="/addEvent.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="true::#eventChangeSuccess.xhtml"
-    NAME="output" PATH="/eventChangeSuccess.xhtml"
-    TARGET="rules:#eventChangeSuccess.xhtml" TITLE="true" model-entity="JSFProcessItemOutput"/>
+ <PROCESS-ITEM NAME="rules:#committeeChangeSuccess.xhtml"
+  PATH="/committeeChangeSuccess.xhtml" SHAPE="256,913,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#modifyResearch.xhtml"
+  PATH="/modifyResearch.xhtml" SHAPE="32,1073,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#modifyResearch.xhtml:0" NAME="item"
+   PATH="/modifyResearch.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="true::#researchChangeSuccess.xhtml"
+    NAME="output" PATH="/researchChangeSuccess.xhtml"
+    TARGET="rules:#researchChangeSuccess.xhtml" TITLE="true" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#researchChangeSuccess.xhtml"
+  PATH="/researchChangeSuccess.xhtml" SHAPE="240,1201,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#addResearch.xhtml" PATH="/addResearch.xhtml"
+  SHAPE="32,1265,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#addResearch.xhtml:0" NAME="item"
+   PATH="/addResearch.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="true::#researchChangeSuccess.xhtml"
+    NAME="output" PATH="/researchChangeSuccess.xhtml"
+    TARGET="rules:#researchChangeSuccess.xhtml" TITLE="true" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#modifyEvent.xhtml" PATH="/modifyEvent.xhtml"
@@ -106,22 +125,15 @@
     TARGET="rules:#eventChangeSuccess.xhtml" TITLE="true" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#addResearch.xhtml" PATH="/addResearch.xhtml"
-  SHAPE="32,1265,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#addResearch.xhtml:0" NAME="item"
-   PATH="/addResearch.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="true::#researchChangeSuccess.xhtml"
-    NAME="output" PATH="/researchChangeSuccess.xhtml"
-    TARGET="rules:#researchChangeSuccess.xhtml" TITLE="true" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#modifyResearch.xhtml"
-  PATH="/modifyResearch.xhtml" SHAPE="32,1073,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#modifyResearch.xhtml:0" NAME="item"
-   PATH="/modifyResearch.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="true::#researchChangeSuccess.xhtml"
-    NAME="output" PATH="/researchChangeSuccess.xhtml"
-    TARGET="rules:#researchChangeSuccess.xhtml" TITLE="true" model-entity="JSFProcessItemOutput"/>
+ <PROCESS-ITEM NAME="rules:#eventChangeSuccess.xhtml"
+  PATH="/eventChangeSuccess.xhtml" SHAPE="240,1505,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#addEvent.xhtml" PATH="/addEvent.xhtml"
+  SHAPE="32,1569,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#addEvent.xhtml:0" NAME="item"
+   PATH="/addEvent.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="true::#eventChangeSuccess.xhtml"
+    NAME="output" PATH="/eventChangeSuccess.xhtml"
+    TARGET="rules:#eventChangeSuccess.xhtml" TITLE="true" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#dispDepartment.xhtml"
@@ -187,18 +199,6 @@
     TARGET="rules:#dispResearchGroups.xhtml" TITLE="Back" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#researchChangeSuccess.xhtml"
-  PATH="/researchChangeSuccess.xhtml" SHAPE="240,1201,0,0" model-entity="JSFProcessGroup"/>
- <PROCESS-ITEM NAME="rules:#departmentChangeSuccess.xhtml"
-  PATH="/departmentChangeSuccess.xhtml" SHAPE="240,577,0,0" model-entity="JSFProcessGroup"/>
- <PROCESS-ITEM NAME="rules:#studentChangeSuccess.xhtml"
-  PATH="/studentChangeSuccess.xhtml" SHAPE="256,545,0,0" model-entity="JSFProcessGroup"/>
- <PROCESS-ITEM NAME="rules:#successfulRegistration.xhtml"
-  PATH="/successfulRegistration.xhtml" SHAPE="240,33,0,0" model-entity="JSFProcessGroup"/>
- <PROCESS-ITEM NAME="rules:#committeeChangeSuccess.xhtml"
-  PATH="/committeeChangeSuccess.xhtml" SHAPE="256,913,0,0" model-entity="JSFProcessGroup"/>
- <PROCESS-ITEM NAME="rules:#eventChangeSuccess.xhtml"
-  PATH="/eventChangeSuccess.xhtml" SHAPE="240,1505,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#listAllDepartments.xhtml"
   PATH="/listAllDepartments.xhtml" SHAPE="32,897,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#listAllDepartments.xhtml:0" NAME="item"
@@ -206,6 +206,15 @@
    <PROCESS-ITEM-OUTPUT ID="true::#modifyDepartment.xhtml" NAME="output"
     PATH="/modifyDepartment.xhtml"
     TARGET="rules:#modifyDepartment.xhtml" TITLE="true" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#menubar.xhtml" PATH="/menubar.xhtml"
+  SHAPE="704,2065,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#menubar.xhtml:0" NAME="item"
+   PATH="/menubar.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="true::#dispDepartment.xhtml" NAME="output"
+    PATH="/dispDepartment.xhtml" TARGET="rules:#dispDepartment.xhtml"
+    TITLE="true" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
 </PROCESS>
