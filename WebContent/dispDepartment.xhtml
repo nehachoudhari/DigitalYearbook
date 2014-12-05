@@ -7,30 +7,31 @@
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+<ui:composition template="/WEB-INF/templates/YearbookPreview.xhtml">
+ 
     <ui:define name="content">
+        
         <h:form id="Department" >
-            <h:panelGrid columns="2">
-                <h:outputText id = "label1" value="Department Name"></h:outputText>
-                <h:outputText id = "name" value="lol"></h:outputText>
-                <h:outputText id = "label2" value="Mission"></h:outputText>
-                <h:outputText id = "mission" value="lol1"></h:outputText>
+       <br/>
+       <br/>
+            <h:panelGrid columns="1" style="border:1px solid red; text-align:center; margin:0 auto; vertical-align: top; width:500px">
+               
+                <h:outputText id = "name" value="Computer Science"></h:outputText>
+                <h:outputText id = "mission" value="Mission this is our mission"></h:outputText>
                 <h:outputText id = "label3" value="Address"></h:outputText>
                 <h:outputText id = "loc" value="lol2"></h:outputText>
                 <h:outputText id = "label4" value="URL"></h:outputText>
                 <h:outputText id = "url" value="lol3"></h:outputText>
                 
             </h:panelGrid>
-            <br />                     
-			                    
-            <br />
-            <br />
-            <a href="menubar.xhtml">    Go Back to Menu  </a>
-            <br />
-            <br />
-            <h:commandButton value="Next Page" action="Next" style= "position: static; 
-            left: 2000px; top: 100px; width : 101px;"></h:commandButton>
-                       
+            <br />                    
+           
+            
+             <h:panelGrid columns="1" style="margin:0 auto; text-align:center">
+    			<h:commandButton value="Next Page" action="Next"  style= "
+             	width : 120px;"></h:commandButton>
+			</h:panelGrid>
+            <a href="mainMenu.xhtml">    Go Back to Menu  </a>               
         </h:form>
     </ui:define>
 </ui:composition>
