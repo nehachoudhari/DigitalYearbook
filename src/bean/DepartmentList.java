@@ -17,9 +17,12 @@ public class DepartmentList {
 	
 	@EJB
 	DepartmentService deptService;
+	
+	@EJB
+	Student studentBean;
 
 	List<SelectItem> allDepartments = null;
-	
+		
 	public List<SelectItem> getAllDepartments() {
 		return allDepartments;
 	}
@@ -35,13 +38,13 @@ public class DepartmentList {
 	public void setType(String type) {
 		this.type = type;
 	}
-	
+
 	@PostConstruct
 	public void init() {
 		allDepartments = new ArrayList<SelectItem>();
 		Collection<entity.Department> list;
+		
 		try {
-			System.out.println(deptService);
 			list = deptService.getAllDepartments();
 			if(list!= null) {
 				for(entity.Department d : list) {
