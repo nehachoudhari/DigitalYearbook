@@ -21,7 +21,6 @@ public class CommitteeMemberList {
 
 	List<SelectItem> allMembers = null;
 	List<entity.CommitteeMember> listallMembers = null;
-		
 	public List<SelectItem> getAllMembers() {
 		return allMembers;
 	}

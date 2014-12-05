@@ -2,7 +2,6 @@ package bean;
 import helper.DropboxUploaderHelper;
 
 import javax.ejb.EJB;
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 import service.DepartmentService;
@@ -31,14 +30,6 @@ public class Department extends bean.Photograph{
 	
 	private String url;
 	
-	private String photoUrl;
-	
-	public String getPhotoUrl() {
-		return photoUrl;
-	}
-	public void setPhotoUrl(String photoUrl) {
-		this.photoUrl = photoUrl;
-	}
 	public String getLocation() {
 		return location;
 	}
@@ -113,18 +104,23 @@ public class Department extends bean.Photograph{
 	}
 	
 	public String modifyDepartment() throws YearbookException{
-		try{
-			System.out.println("Inside modify department");
-			String dropboxUrl = null;
-			if(this.file!=null){
-				System.out.println(this.file.getFileName());
-				copyFile(this.file.getFileName(), this.file.getInputstream(),"Department");
+		
+		try{ 
+//			System.out.println("Inside modify department");
+//			System.out.println(this.file);
+//			System.out.println(this.file.getFileName());
 			
+			String dropboxUrl = "";
+			if(this.file.getFileName()!=null || this.file.getFileName() != "") {
+				copyFile(this.file.getFileName(), this.file.getInputstream(),"Department");
+				
 				DropboxUploaderHelper dropboxUploader = new DropboxUploaderHelper();
 				dropboxUrl = dropboxUploader.uploadToDropBox(this.file.getFileName(), "Department");
-				System.out.println("Dropbox "+dropboxUrl);
+			//	System.out.println("Dropbox "+dropboxUrl);
+			//	dropboxUploader.fetchFromDropBox(dropboxUrl);
 			}
-			boolean ret = deptService.updateDepartment(deptId, location, mission, name, url,  dropboxUrl);
+			
+			boolean ret = deptService.addDepartment(deptId, location, mission, name, url,  dropboxUrl);
 			
 			if(ret)
 					return "true";
@@ -137,19 +133,12 @@ public class Department extends bean.Photograph{
 	}
 	
 	public String deleteDepartment() throws YearbookException{
-		try{
-			System.out.println("Inside delete department");
-			
-			boolean ret = deptService.deleteDepartment(deptId);
-			
-			if(ret)
-					return "true";
-				else 
-					return "false";
-		}catch(Exception e){
-			System.out.println(e.getMessage());
-		}
-		return "false";
+		String ret = "true";
+
+		if(!ret.equalsIgnoreCase("Exists"))
+			return "true";
+		else 
+			return "false";
 	}
 
 	public String showDepartment() throws YearbookException{
@@ -165,11 +154,7 @@ public class Department extends bean.Photograph{
 
 			DropboxUploaderHelper dropboxUploader = new DropboxUploaderHelper();
 			dropboxUploader.fetchFromDropBox(dept.getPhotoUrl());
-
-	    	ExternalContext extContext =FacesContext.getCurrentInstance().getExternalContext();
-			String filePath = extContext.getRealPath("//images//downloads"+dept.getPhotoUrl());
-			System.out.println(filePath);
-			photoUrl = filePath;
+			System.out.println();
 		} catch (YearbookException e) {
 			e.printStackTrace();
 		}

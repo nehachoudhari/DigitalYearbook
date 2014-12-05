@@ -13,8 +13,8 @@
   <managed-bean-class>bean.Department</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
-  
-  <managed-bean>
+ 
+ <managed-bean>
   <managed-bean-name>committeeBean</managed-bean-name>
   <managed-bean-class>bean.CommitteeMember</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
