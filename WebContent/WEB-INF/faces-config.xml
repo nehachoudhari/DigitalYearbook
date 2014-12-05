@@ -56,6 +56,13 @@
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
  
+ <managed-bean>
+  <managed-bean-name>studentListBean</managed-bean-name>
+  <managed-bean-class>bean.CommitteeMemberList</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ 
+ 
 <managed-bean>
   <managed-bean-name>eventListBean</managed-bean-name>
   <managed-bean-class>bean.EventList</managed-bean-class>
@@ -73,7 +80,7 @@
   <from-view-id>/login.xhtml</from-view-id>
   <navigation-case>
    <from-outcome>true</from-outcome>
-   <to-view-id>/successfulRegistration.xhtml</to-view-id>
+   <to-view-id>/mainMenu.xhtml</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>false</from-outcome>
@@ -282,6 +289,33 @@
   </navigation-case>
  </navigation-rule>
  
+<navigation-rule>
+  <display-name>listAllEvents.xhtml</display-name>
+  <from-view-id>/listAllEvents.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>true</from-outcome>
+   <to-view-id>/modifyEvent.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ 
+ <navigation-rule>
+  <display-name>listAllMembers.xhtml</display-name>
+  <from-view-id>/listAllMembers.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>true</from-outcome>
+   <to-view-id>/modifyCommittee.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ 
+ <navigation-rule>
+  <display-name>listAllResearchGroups.xhtml</display-name>
+  <from-view-id>/listAllResearchGroups.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>true</from-outcome>
+   <to-view-id>/modifyResearch.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+
 
  <application/>
 </faces-config>

@@ -7,14 +7,17 @@
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+<ui:composition template="/WEB-INF/templates/YearbookPreview.xhtml">
+ 
     <ui:define name="content">
+        
         <h:form id="Department" >
             <h:panelGrid columns="2">
                 <h:outputText id = "label1" value="Department Name"></h:outputText>
                 <h:outputText id = "name" value="#{deptCurrentBean.name}"></h:outputText>
                 <h:outputText id = "label2" value="Mission"></h:outputText>
                 <h:outputText id = "mission" value="#{deptCurrentBean.mission}"></h:outputText>
+
                 <h:outputText id = "label3" value="Address"></h:outputText>
                 <h:outputText id = "loc" value="#{deptCurretBean.location}"></h:outputText>
                 <h:outputText id = "label4" value="URL"></h:outputText>
@@ -23,16 +26,14 @@
                 <h:outputText id = "Photo" value="#{deptCurrentBean.photoUrl}"></h:outputText>
                 
             </h:panelGrid>
-            <br />                     
-			                    
-            <br />
-            <br />
-            <a href="menubar.xhtml">    Go Back to Menu  </a>
-            <br />
-            <br />
-            <h:commandButton value="Next Page" action="Next" style= "position: static; 
-            left: 2000px; top: 100px; width : 101px;"></h:commandButton>
-                       
+            <br />                    
+           
+            
+             <h:panelGrid columns="1" style="margin:0 auto; text-align:center">
+    			<h:commandButton value="Next Page" action="Next"  style= "
+             	width : 120px;"></h:commandButton>
+			</h:panelGrid>
+            <a href="mainMenu.xhtml">    Go Back to Menu  </a>               
         </h:form>
     </ui:define>
 </ui:composition>
