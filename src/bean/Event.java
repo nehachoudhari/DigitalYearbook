@@ -82,7 +82,7 @@ public class Event extends Photograph{
 			DropboxUploaderHelper dropboxUploader = new DropboxUploaderHelper();
 			String dropboxUrl = dropboxUploader.uploadToDropBox(this.file.getFileName(), "Event");
 			System.out.println("Dropbox "+dropboxUrl);
-			boolean ret = eventService.addEvent(name, description, date, url, photoUrl);
+			boolean ret = eventService.addEvent(name, description, date, url, dropboxUrl);
 			
 			if(ret)
 					return "true";
@@ -107,7 +107,7 @@ public class Event extends Photograph{
 				dropboxUrl = dropboxUploader.uploadToDropBox(this.file.getFileName(), "Event");
 				System.out.println("Dropbox "+dropboxUrl);
 			}
-			boolean ret = eventService.updateEvent(eventId,name, description, date, url, photoUrl);
+			boolean ret = eventService.updateEvent(eventId,name, description, date, url, dropboxUrl);
 			
 			if(ret)
 					return "true";
@@ -135,7 +135,7 @@ public class Event extends Photograph{
 		return "false";
 	}
 	
-	public String showGroup() throws YearbookException{
+	public String showEvent() throws YearbookException{
 		try {
 			System.out.println("Inside member list");
 			System.out.println("Event id  - "+selectedEvId);

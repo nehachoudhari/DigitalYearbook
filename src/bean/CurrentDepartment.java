@@ -7,7 +7,7 @@ import javax.ejb.EJB;
 import service.DepartmentService;
 import exception.YearbookException;
 
-public class CurrentDepartment 
+public class CurrentDepartment extends Photograph 
 {
 	@EJB
 	DepartmentService deptService;
@@ -68,6 +68,8 @@ public class CurrentDepartment
 	public String getDepartmentInfo() {
 		entity.Department dept;		
 		try {
+			System.out.println("Inside current department bean!!");
+			System.out.println("Department service "+deptService);
 			System.out.println("Student "+studentBean);
 			System.out.println("Student " + studentBean.getFirstName());
 			System.out.println("Department " + studentBean.getDeptId());

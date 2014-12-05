@@ -12,10 +12,17 @@
         <h:form>
             <h:panelGrid columns="2">
                  <h:outputText id = "firstLabel" value="Select a Committee Member"></h:outputText>
-             	 <h:selectOneMenu>
+                 <h:selectOneMenu id="committeeId" value="#{committeeBean.selectedComId}">
    					 <f:selectItems value="#{memberListBean.allMembers}"/>	
+   					<f:converter converterId="longValueConverter" />
   				 </h:selectOneMenu>
             </h:panelGrid>
+            
+            
+            <br />
+            <br />
+            <h:commandButton value="Show Member" action="#{committeeBean.showMember()}" style= "position: static; 
+            left: 2000px; top: 100px; width : 120px;"></h:commandButton>
         </h:form>
     </ui:define>
 </ui:composition>

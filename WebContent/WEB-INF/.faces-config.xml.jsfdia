@@ -207,6 +207,35 @@
     TARGET="rules:#modifyDepartment.xhtml" TITLE="true" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#mainMenu.xhtml" PATH="/mainMenu.xhtml"
+  SHAPE="496,129,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#listAllEvents.xhtml"
+  PATH="/listAllEvents.xhtml" SHAPE="64,897,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#listAllEvents.xhtml:0" NAME="item"
+   PATH="/listAllEvents.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="true::#modifyEvent.xhtml" NAME="output"
+    PATH="/modifyEvent.xhtml" TARGET="rules:#modifyEvent.xhtml"
+    TITLE="true" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#listAllMembers.xhtml"
+  PATH="/listAllMembers.xhtml" SHAPE="48,1457,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#listAllMembers.xhtml:0" NAME="item"
+   PATH="/listAllMembers.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="true::#modifyCommittee.xhtml" NAME="output"
+    PATH="/modifyCommittee.xhtml" TARGET="rules:#modifyCommittee.xhtml"
+    TITLE="true" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#listAllResearchGroups.xhtml"
+  PATH="/listAllResearchGroups.xhtml" SHAPE="32,1793,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#listAllResearchGroups.xhtml:0" NAME="item"
+   PATH="/listAllResearchGroups.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="true::#modifyResearch.xhtml" NAME="output"
+    PATH="/modifyResearch.xhtml" TARGET="rules:#modifyResearch.xhtml"
+    TITLE="true" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#menubar.xhtml" PATH="/menubar.xhtml"
   SHAPE="704,2065,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#menubar.xhtml:0" NAME="item"
@@ -216,33 +245,4 @@
     TITLE="true" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#listAllEvents.xhtml"
-  PATH="/listAllEvents.xhtml" SHAPE="32,1569,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#listAllEvents.xhtml:0" NAME="item"
-   PATH="/listAllEvents.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="true::#modifyEvent.xhtml" NAME="output"
-    PATH="/modifyEvent.xhtml" TARGET="rules:#modifyEvent.xhtml"
-    TITLE="true" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#listAllMembers.xhtml"
-  PATH="/listAllMembers.xhtml" SHAPE="32,1233,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#listAllMembers.xhtml:0" NAME="item"
-   PATH="/listAllMembers.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="true::#modifyCommittee.xhtml" NAME="output"
-    PATH="/modifyCommittee.xhtml" TARGET="rules:#modifyCommittee.xhtml"
-    TITLE="true" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#listAllResearchGroups.xhtml"
-  PATH="/listAllResearchGroups.xhtml" SHAPE="32,1457,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#listAllResearchGroups.xhtml:0" NAME="item"
-   PATH="/listAllResearchGroups.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="true::#modifyResearch.xhtml" NAME="output"
-    PATH="/modifyResearch.xhtml" TARGET="rules:#modifyResearch.xhtml"
-    TITLE="true" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#mainMenu.xhtml" PATH="/mainMenu.xhtml"
-  SHAPE="496,129,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

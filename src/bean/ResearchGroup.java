@@ -87,7 +87,7 @@ public class ResearchGroup extends Photograph{
 			String dropboxUrl = dropboxUploader.uploadToDropBox(this.file.getFileName(), "Research");
 			System.out.println("Dropbox "+dropboxUrl);
 			System.out.println(studentBean);
-			boolean ret = researchService.addResearchGroup(name, studentBean.getDeptId(), description, url, photoUrl);
+			boolean ret = researchService.addResearchGroup(name, studentBean.getDeptId(), description, url, dropboxUrl);
 			
 			if(ret)
 					return "true";
@@ -112,7 +112,7 @@ public class ResearchGroup extends Photograph{
 				System.out.println("Dropbox "+dropboxUrl);
 			}
 			System.out.println(studentBean);
-			boolean ret = researchService.updateResearchGroup(groupId,name, deptId, description, url, photoUrl);
+			boolean ret = researchService.updateResearchGroup(groupId,name, deptId, description, url, dropboxUrl);
 			
 			if(ret)
 					return "true";
