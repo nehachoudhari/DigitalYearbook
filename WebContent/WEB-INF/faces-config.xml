@@ -11,71 +11,55 @@
  <managed-bean>
   <managed-bean-name>deptBean</managed-bean-name>
   <managed-bean-class>bean.Department</managed-bean-class>
-  <managed-bean-scope>application</managed-bean-scope>
- </managed-bean>
- 
-  <managed-bean>
-  <managed-bean-name>loginBean</managed-bean-name>
-  <managed-bean-class>bean.LoginBean</managed-bean-class>
-  <managed-bean-scope>application</managed-bean-scope>
+  <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
  
  <managed-bean>
   <managed-bean-name>committeeBean</managed-bean-name>
   <managed-bean-class>bean.CommitteeMember</managed-bean-class>
-  <managed-bean-scope>application</managed-bean-scope>
+  <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
  
  <managed-bean>
   <managed-bean-name>eventBean</managed-bean-name>
   <managed-bean-class>bean.Event</managed-bean-class>
-  <managed-bean-scope>application</managed-bean-scope>
+  <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
  
  <managed-bean>
   <managed-bean-name>researchBean</managed-bean-name>
   <managed-bean-class>bean.ResearchGroup</managed-bean-class>
-  <managed-bean-scope>application</managed-bean-scope>
+  <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
 
  <managed-bean>
   <managed-bean-name>deptListsBean</managed-bean-name>
   <managed-bean-class>bean.DepartmentList</managed-bean-class>
-  <managed-bean-scope>application</managed-bean-scope>
+  <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
 
  <managed-bean>
   <managed-bean-name>rGroupListBean</managed-bean-name>
   <managed-bean-class>bean.ResearchGroupList</managed-bean-class>
-  <managed-bean-scope>application</managed-bean-scope>
+  <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
 
 <managed-bean>
   <managed-bean-name>memberListBean</managed-bean-name>
   <managed-bean-class>bean.CommitteeMemberList</managed-bean-class>
-  <managed-bean-scope>application</managed-bean-scope>
+  <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
  
 <managed-bean>
   <managed-bean-name>eventListBean</managed-bean-name>
   <managed-bean-class>bean.EventList</managed-bean-class>
-  <managed-bean-scope>application</managed-bean-scope>
+  <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
 
  <managed-bean>
   <managed-bean-name>deptdispBean</managed-bean-name>
   <managed-bean-class>bean.Department</managed-bean-class>
-  <managed-bean-scope>application</managed-bean-scope>
- </managed-bean>
- <managed-bean>
-  <managed-bean-name>committeelistBean</managed-bean-name>
-  <managed-bean-class>outputbean.DispCommittee</managed-bean-class>
-  <managed-bean-scope>application</managed-bean-scope>
- </managed-bean>
- <managed-bean>
-  <managed-bean-name>committeedispBean</managed-bean-name>
-  <managed-bean-class>outputbean.CommitteeMember</managed-bean-class>
-  <managed-bean-scope>application</managed-bean-scope>
+  <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
 
  <navigation-rule>

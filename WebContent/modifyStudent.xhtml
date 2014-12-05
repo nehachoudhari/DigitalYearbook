@@ -31,7 +31,8 @@
                 <h:inputText id = "usernameText" value="#{studentBean.username}"></h:inputText>
                 <h:outputText  id = "passwordLabel" value="Password"></h:outputText>
                 <h:inputSecret  id = "passwordText" value="#{studentBean.password}"></h:inputSecret>
-                <h:graphicImage value="#{facesContext.externalContext.requestContextPath}/WEB-INF/images/downloads/Student/#{studentBean.localFileUrl}" />
+                <h:graphicImage height="200" width="200" value="#{studentBean.photoUrl}" />
+                <h:inputHidden id="deptId" value="#{studentBean.deptId}" />
             </h:panelGrid>
             <br />
                         

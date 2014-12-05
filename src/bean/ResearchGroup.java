@@ -16,6 +16,14 @@ public class ResearchGroup extends Photograph{
 	private String name;
 	private String description;
 	private int deptId;
+	private String photoUrl;
+	
+	public String getPhotoUrl() {
+		return photoUrl;
+	}
+	public void setPhotoUrl(String photoUrl) {
+		this.photoUrl = photoUrl;
+	}
 	public int getDeptId() {
 		return deptId;
 	}

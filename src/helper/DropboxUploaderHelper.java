@@ -52,7 +52,7 @@ public class DropboxUploaderHelper {
     
     public String uploadToDropBox(String inputFileName, String type){
     	ExternalContext extContext =FacesContext.getCurrentInstance().getExternalContext();
-		String filePath = extContext.getRealPath("//WEB-INF//images//uploads//"+type+"//" + inputFileName);
+		String filePath = extContext.getRealPath("//images//uploads//"+type+"//" + inputFileName);
     	File inputFile = new File(filePath);
     	FileInputStream inputStream = null;
         try {
@@ -81,7 +81,7 @@ public class DropboxUploaderHelper {
     public DbxEntry.File fetchFromDropBox(String remoteUrl){
 		 DbxEntry.File md = null;
     	ExternalContext extContext =FacesContext.getCurrentInstance().getExternalContext();
-		String filePath = extContext.getRealPath("//WEB-INF//images//downloads//"+remoteUrl);
+		String filePath = extContext.getRealPath("//images//downloads//"+remoteUrl);
 		 File target = new File(filePath);
 		 try {
 			 OutputStream out = new FileOutputStream(target);

@@ -1,5 +1,10 @@
 package bean;
 
+import helper.DropboxUploaderHelper;
+
+import javax.ejb.EJB;
+
+import service.CommitteeMemberService;
 import exception.YearbookException;
 
 
@@ -13,18 +18,39 @@ import exception.YearbookException;
 
 public class CommitteeMember extends Photograph{
 
-	private long member_id;
+	@EJB
+	CommitteeMemberService memberService;
+	
+	@EJB
+	Student studentBean;
+	
+	private long memberId;
+	public long getMemberId() {
+		return memberId;
+	}
+	public void setMemberId(long memberId) {
+		this.memberId = memberId;
+	}
+
 	private String fName;
 	private String lName;
 	private String designation;
 	private int deptId;
+	private String photoUrl;
 	
-	public long getMember_id() {
-		return member_id;
+	private String selectedComId;
+	
+	public String getSelectedComId() {
+		return selectedComId;
 	}
-
-	public void setMember_id(long member_id) {
-		this.member_id = member_id;
+	public void setSelectedComId(String selectedComId) {
+		this.selectedComId = selectedComId;
+	}
+	public String getPhotoUrl() {
+		return photoUrl;
+	}
+	public void setPhotoUrl(String photoUrl) {
+		this.photoUrl = photoUrl;
 	}
 
 	public String getfName() {
@@ -60,12 +86,26 @@ public class CommitteeMember extends Photograph{
 	}
 	
 	public String add() throws YearbookException{
-		String ret = "true";
-
-		if(!ret.equalsIgnoreCase("true"))
-			return "true";
-		else 
-			return "false";
+		try{
+			System.out.println("Inside add");
+			System.out.println("Inside add 1 - "+this.file);
+			System.out.println(this.file.getFileName());
+			copyFile(this.file.getFileName(), this.file.getInputstream(), "Committee");
+	
+			DropboxUploaderHelper dropboxUploader = new DropboxUploaderHelper();
+			String dropboxUrl = dropboxUploader.uploadToDropBox(this.file.getFileName(), "Committee");
+			System.out.println("Dropbox "+dropboxUrl);
+			System.out.println(studentBean);
+			boolean ret = memberService.addMember(fName,lName,designation,studentBean.getDeptId(), dropboxUrl);
+			
+			if(ret)
+					return "true";
+				else 
+					return "false";
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+		}
+		return "false";
 	}
 	public String modify() throws YearbookException{
 		String ret = "true";
@@ -85,4 +125,13 @@ public class CommitteeMember extends Photograph{
 			return "false";
 	}
 
+	public boolean equals(Object other)
+	{
+	    return other instanceof CommitteeMember && (selectedComId != null) ? selectedComId.equals(((CommitteeMember) other).getMemberId()) : (other == this);
+	}
+
+	public int hashCode()
+	{
+	    return selectedComId != null ? this.getClass().hashCode() + selectedComId.hashCode() : super.hashCode();
+	}
 }

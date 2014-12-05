@@ -12,14 +12,16 @@
         <h:form id="ComitteeMembers" >
             <h:panelGrid columns="2">
             	<ul>
-                <ui:repeat value = "#{committeelistBean.cm}" var = "committee">
+                <ui:repeat value = "#{memberListBean.listallMembers}" var = "member">
                 <li>
-                <h:outputText id = "label1" value="Member Name"></h:outputText>
-                <h:outputText id = "name" value="#{committee.fName}"></h:outputText>
-                <h:outputText id = "label2" value="designation"></h:outputText>
-                <h:outputText id = "Designation" value="#{committee.designation}"></h:outputText>
-                <h:outputText id = "label3" value="photo"></h:outputText>
-                <h:outputText id = "Photo" value="#{committee.photourl}"></h:outputText>
+                <h:outputText id = "label1" value="Member Name: "></h:outputText>
+                <h:outputText id = "name" value="#{member.fName}"></h:outputText>
+                <br />
+                <h:outputText id = "label2" value="Designation: "></h:outputText>
+                <h:outputText id = "Designation" value="#{member.designation}"></h:outputText>
+                <br />
+                <h:outputText id = "label3" value="Photo: "></h:outputText>
+                <h:outputText id = "Photo" value="#{member.photoUrl}"></h:outputText>
                 </li>
                 </ui:repeat>
                 </ul>                

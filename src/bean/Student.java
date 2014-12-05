@@ -2,6 +2,9 @@ package bean;
 import helper.DropboxUploaderHelper;
 
 import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 
 import service.StudentService;
 import exception.YearbookException;
@@ -13,6 +16,7 @@ import exception.YearbookException;
  * Student entity is mapped to Student table in the database 
  *
  */
+@Stateless
 public class Student extends bean.Photograph{
 	
 	private long buckId;
@@ -36,6 +40,26 @@ public class Student extends bean.Photograph{
 	private String email;
 	
 	private int deptId;
+	
+	private String photoUrl;
+	
+	public String getPhotoUrl() {
+		return photoUrl;
+	}
+	public void setPhotoUrl(String photoUrl) {
+		this.photoUrl = photoUrl;
+	}
+	
+	private String selectedDeptId;
+
+
+	public String getSelectedDeptId() {
+		return selectedDeptId;
+	}
+
+	public void setSelectedDeptId(String selectedDeptId) {
+		this.selectedDeptId = selectedDeptId;
+	}
 
 	@EJB
 	StudentService studentService;
@@ -131,10 +155,14 @@ public class Student extends bean.Photograph{
 			DropboxUploaderHelper dropboxUploader = new DropboxUploaderHelper();
 			String dropboxUrl = dropboxUploader.uploadToDropBox(this.file.getFileName(), "Student");
 			System.out.println("Dropbox "+dropboxUrl);
-			boolean ret = studentService.addStudent(this.buckId, this.contactNumber, this.deptId, this.dob,
+			boolean ret = studentService.addStudent(this.buckId, this.contactNumber, Integer.parseInt(this.selectedDeptId), this.dob,
 					this.email, this.firstName, this.gradYear, this.jobInternDetails, this.lastName, 
 					this.password, this.username, dropboxUrl);
-
+			dropboxUploader.fetchFromDropBox(dropboxUrl);
+			ExternalContext extContext =FacesContext.getCurrentInstance().getExternalContext();
+			String filePath = extContext.getRealPath("//images//downloads"+dropboxUrl);
+			System.out.println(filePath);
+			this.photoUrl = filePath;
 			//dropboxUploader.fetchFromDropBox(dropboxUrl);
 			if(ret)
 					return "true";
@@ -146,7 +174,7 @@ public class Student extends bean.Photograph{
 		return "false";
 		
 	}
-	
+	/*
 	
 	public String getStudent() throws YearbookException{
 		try{
@@ -154,28 +182,48 @@ public class Student extends bean.Photograph{
 			if(student!=null){
 				this.buckId = student.getBuckId();
 				this.contactNumber = student.getContactNumber();
+				this.deptId = student.getDeptId();
+				this.dob = student.getDob();
+				this.email = student.getEmail();
+				this.firstName = student.getFirstName();
+				this.gradYear = student.getGradYear();
+				this.jobInternDetails = student.getJobInternDetails();
+				this.lastName = student.getLastName();
+				this.password = student.getPassword();
+				
+				DropboxUploaderHelper dropboxUploader = new DropboxUploaderHelper();
+				dropboxUploader.fetchFromDropBox(student.getPhotoUrl());
+
+		    	ExternalContext extContext =FacesContext.getCurrentInstance().getExternalContext();
+				String filePath = extContext.getRealPath("//images//downloads"+student.getPhotoUrl());
+				System.out.println(filePath);
+				this.photoUrl = filePath;
 				return "true";
 			}else 
-					return "false";
+				return "false";
 		}catch(Exception e){
 			System.out.println(e.getMessage());
 		}
 		return "false";
-	}
+	}*/
 	
 	
 	public String modifyStudent() throws YearbookException{
 		try{
-			System.out.println(this.file.getFileName());
-			copyFile(this.file.getFileName(), this.file.getInputstream(), "Student");
-	
-			DropboxUploaderHelper dropboxUploader = new DropboxUploaderHelper();
-			String dropboxUrl = dropboxUploader.uploadToDropBox(this.file.getFileName(), "Student");
-			System.out.println("Dropbox "+dropboxUrl);
+			System.out.println("Inside modify student");
+			String dropboxUrl = null;
+			if(this.file!=null){
+				System.out.println(this.file.getFileName());
+				copyFile(this.file.getFileName(), this.file.getInputstream(),"Student");
+			
+				DropboxUploaderHelper dropboxUploader = new DropboxUploaderHelper();
+				dropboxUrl = dropboxUploader.uploadToDropBox(this.file.getFileName(), "Student");
+				System.out.println("Dropbox "+dropboxUrl);
+			}
+			System.out.println("password "+this.password);
 			boolean ret = studentService.updateStudent(this.buckId, this.contactNumber, this.deptId, this.dob,
 					this.email, this.firstName, this.gradYear, this.jobInternDetails, this.lastName, 
 					this.password, this.username, dropboxUrl);
-			dropboxUploader.fetchFromDropBox(dropboxUrl);
 			if(ret)
 					return "true";
 				else 
@@ -188,8 +236,8 @@ public class Student extends bean.Photograph{
 	
 	public String deleteStudent() throws YearbookException{
 		try{
+			System.out.println("Inside delete student");
 			boolean ret = studentService.deleteStudent(this.buckId);
-			//dropboxUploader.fetchFromDropBox(dropboxUrl);
 			if(ret)
 					return "true";
 				else 
@@ -199,4 +247,46 @@ public class Student extends bean.Photograph{
 		}
 		return "false";
 	}
+	
+	 public String logStudent() throws YearbookException{
+		 try{
+			entity.Student loggedInStudent = studentService.login(username,password);
+			
+	    	if(loggedInStudent != null){
+	    		this.buckId = loggedInStudent.getBuckId();
+		    	this.contactNumber = loggedInStudent.getContactNumber();
+		    	this.deptId = loggedInStudent.getDeptId();
+		    	this.dob = loggedInStudent.getDob();
+		    	this.email = loggedInStudent.getEmail();
+		    	this.firstName = loggedInStudent.getFirstName();
+		    	this.gradYear = loggedInStudent.getGradYear();
+		    	this.jobInternDetails = loggedInStudent.getJobInternDetails();
+		    	this.lastName = loggedInStudent.getLastName();
+		    	this.password = loggedInStudent.getPassword();
+		    	System.out.println(this.password);
+		    	DropboxUploaderHelper dropboxUploader = new DropboxUploaderHelper();
+				dropboxUploader.fetchFromDropBox(loggedInStudent.getPhotoUrl());
+		    	ExternalContext extContext =FacesContext.getCurrentInstance().getExternalContext();
+				String filePath = extContext.getRealPath("//images//downloads"+loggedInStudent.getPhotoUrl());
+				System.out.println(filePath);
+				this.photoUrl = filePath;
+	    		return "true";
+	    	}else{
+	    		return "false";
+	    	}
+		 }catch(Exception e){
+				System.out.println(e.getMessage());
+			}
+			return "false";
+	    }
+	 
+	 public boolean equals(Object other)
+		{
+		    return other instanceof Department && (selectedDeptId != null) ? selectedDeptId.equals(((Department) other).getDeptId()) : (other == this);
+		}
+
+		public int hashCode()
+		{
+		    return selectedDeptId != null ? this.getClass().hashCode() + selectedDeptId.hashCode() : super.hashCode();
+		}
 }
