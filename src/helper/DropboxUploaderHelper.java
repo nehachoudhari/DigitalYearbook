@@ -94,5 +94,22 @@ public class DropboxUploaderHelper {
 		 }
     	return md;
     }
+    
+    public DbxEntry.File fetchFromDropBoxIntoYearbook(String remoteUrl){
+		 DbxEntry.File md = null;
+		 ExternalContext extContext =FacesContext.getCurrentInstance().getExternalContext();
+		 String filePath = extContext.getRealPath("//images//yearbook//"+remoteUrl);
+		 File target = new File(filePath);
+		 try {
+			 OutputStream out = new FileOutputStream(target);
+		     md = client.getFile(remoteUrl, null, out);
+		     if(out!=null){
+		    	 out.close();
+		     }
+		 }catch(Exception e){
+			 System.out.println(e.getMessage());
+		 }
+   	return md;
+   }
    
 }

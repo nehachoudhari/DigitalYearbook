@@ -3,6 +3,8 @@ package bean;
 import helper.DropboxUploaderHelper;
 
 import javax.ejb.EJB;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 
 import service.CommitteeMemberService;
 import exception.YearbookException;
@@ -108,22 +110,70 @@ public class CommitteeMember extends Photograph{
 		return "false";
 	}
 	public String modify() throws YearbookException{
-		String ret = "true";
-
-		if(!ret.equalsIgnoreCase("true"))
-			return "true";
-		else 
-			return "false";
+		try{
+			System.out.println("Inside modify");
+			System.out.println(this.file.getFileName());
+			String dropboxUrl = null;
+			if(this.file!=null){
+				System.out.println(this.file.getFileName());
+				copyFile(this.file.getFileName(), this.file.getInputstream(),"Committee");
+			
+				DropboxUploaderHelper dropboxUploader = new DropboxUploaderHelper();
+				dropboxUrl = dropboxUploader.uploadToDropBox(this.file.getFileName(), "Committee");
+				System.out.println("Dropbox "+dropboxUrl);
+			}
+			System.out.println(studentBean);
+			boolean ret = memberService.updateMember(memberId,fName,lName,designation,deptId, dropboxUrl);
+			
+			if(ret)
+					return "true";
+				else 
+					return "false";
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+		}
+		return "false";
 	}
 	
 	public String delete() throws YearbookException{
-		String ret = "Success";
-
-		if(!ret.equalsIgnoreCase("Success"))
-			return "delete";
-		else 
-			return "false";
+		try{
+			System.out.println("Inside delete members ");
+			
+			boolean ret = memberService.deleteMember(memberId);
+			
+			if(ret)
+					return "true";
+				else 
+					return "false";
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+		}
+		return "false";
 	}
+	
+	public String showMember() throws YearbookException{
+		try {
+			System.out.println("Inside member list");
+			System.out.println("Member id  - "+selectedComId);
+			entity.CommitteeMember member = memberService.getMember(Integer.parseInt(selectedComId));
+			this.deptId = member.getDeptId();
+			this.designation = member.getDesignation();
+			this.fName = member.getfName();
+			this.lName = member.getlName();
+			this.memberId = member.getMember_id();
+
+			DropboxUploaderHelper dropboxUploader = new DropboxUploaderHelper();
+			dropboxUploader.fetchFromDropBox(member.getPhotoUrl());
+
+	    	ExternalContext extContext =FacesContext.getCurrentInstance().getExternalContext();
+			String filePath = extContext.getRealPath("//images//downloads"+member.getPhotoUrl());
+			System.out.println(filePath);
+			this.photoUrl = filePath;
+		} catch (YearbookException e) {
+			e.printStackTrace();
+		}
+		return "true";
+    }
 
 	public boolean equals(Object other)
 	{

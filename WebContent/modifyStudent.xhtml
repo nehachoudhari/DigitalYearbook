@@ -30,7 +30,7 @@
                 <h:outputText id = "nameLabel" value="User name"></h:outputText>
                 <h:inputText id = "usernameText" value="#{studentBean.username}"></h:inputText>
                 <h:outputText  id = "passwordLabel" value="Password"></h:outputText>
-                <h:inputSecret  id = "passwordText" value="#{studentBean.password}"></h:inputSecret>
+                <h:outputText  id = "passwordText" value="#{studentBean.password}"></h:outputText>
                 <h:graphicImage height="200" width="200" value="#{studentBean.photoUrl}" />
                 <h:inputHidden id="deptId" value="#{studentBean.deptId}" />
             </h:panelGrid>

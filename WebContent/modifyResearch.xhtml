@@ -12,9 +12,11 @@
         <h:form id="researchForm" enctype="multipart/form-data">
             <h:panelGrid columns="2">
                 <h:outputText id = "firstLabel" value="Research Group "></h:outputText>
-                <h:inputText id = "firstText" value="#{researchBean.name}"></h:inputText>
+                <h:inputText id = "name" value="#{researchBean.name}"></h:inputText>
                 <h:outputText id = "lastLabel" value="Description"></h:outputText>
-                <h:inputText id = "lastText" value="#{researchBean.description}"></h:inputText>
+                <h:inputText id = "description" value="#{researchBean.description}"></h:inputText>
+                <h:outputText id = "urllabel" value="URL"></h:outputText>
+                <h:inputText id = "url" value="#{researchBean.url}"></h:inputText>
                 <h:inputHidden id="deptId" value="#{researchBean.deptId}" />
                 <h:inputHidden id="member_id" value="#{researchBean.groupId}" />
             </h:panelGrid>
