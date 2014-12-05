@@ -11,12 +11,13 @@
  
     <ui:define name="content">
         
+        <a href="dispStudents.xhtml">  View Students  </a>
         <h:form id="Department" >
        <br/>
        <br/>
             <h:panelGrid columns="1" style="border:1px solid red; text-align:center; margin:0 auto; vertical-align: top; width:500px">
                
-                <h:outputText id = "name" value="Computer Science"></h:outputText>
+                <h:outputText id = "name" value="#{deptListsBean.deptList.get(0).name}"></h:outputText>
                 <h:outputText id = "mission" value="Mission this is our mission"></h:outputText>
                 <h:outputText id = "label3" value="Address"></h:outputText>
                 <h:outputText id = "loc" value="lol2"></h:outputText>

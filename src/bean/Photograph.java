@@ -18,8 +18,17 @@ public class Photograph {
 	
 	protected long typeId;
 	
+	//protected int sessionDeptId;
+	
 	protected UploadedFile  file;
 	
+//	
+//	public int getSessionDeptId() {
+//		return sessionDeptId;
+//	}
+//	public void setSessionDeptId(int sessionDeptId) {
+//		this.sessionDeptId = sessionDeptId;
+//	}
 	public UploadedFile  getFile() {
 		return file;
 	}

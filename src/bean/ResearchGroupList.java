@@ -16,8 +16,8 @@ public class ResearchGroupList {
 	@EJB
 	ResearchGroupService researchService;
 	
-	@EJB
-	Student studentBean;
+//	@EJB
+//	Student studentBean;
 
 	List<SelectItem> allGroups = null;
 	
@@ -34,7 +34,7 @@ public class ResearchGroupList {
 		allGroups = new ArrayList<SelectItem>();
 		Collection<entity.ResearchGroup> list;
 		try {
-			list = researchService.getAllResearchGroups(studentBean.getDeptId());
+			list = researchService.getAllResearchGroups();
 			if(list!= null) {
 				for(entity.ResearchGroup r : list) {
 					allGroups.add(new SelectItem(r.getGroupId(),r.getName()));

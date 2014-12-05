@@ -16,8 +16,8 @@ public class CommitteeMemberList {
 	@EJB
 	CommitteeMemberService memberService;
 	
-	@EJB
-	Student studentBean;
+//	@EJB
+//	Student studentBean;
 
 	List<SelectItem> allMembers = null;
 	List<entity.CommitteeMember> listallMembers = null;
@@ -42,8 +42,8 @@ public class CommitteeMemberList {
 		allMembers = new ArrayList<SelectItem>();
 		Collection<entity.CommitteeMember> list;
 		try {
-			System.out.println("Inside committee member bean");
-			list = memberService.getAllCommitteeMembers(studentBean.getDeptId());
+		
+			list = memberService.getAllCommitteeMembers();
 			listallMembers = new ArrayList<entity.CommitteeMember>(list);
 			if(list!= null) {
 				for(entity.CommitteeMember m : list) {

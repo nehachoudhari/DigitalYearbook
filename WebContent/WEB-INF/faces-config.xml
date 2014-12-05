@@ -8,6 +8,13 @@
   <managed-bean-scope>application</managed-bean-scope>
  </managed-bean>
  
+ 
+<managed-bean>
+  <managed-bean-name>photoBean</managed-bean-name>
+  <managed-bean-class>bean.Photograph</managed-bean-class>
+  <managed-bean-scope>application</managed-bean-scope>
+ </managed-bean>
+ 
  <managed-bean>
   <managed-bean-name>deptBean</managed-bean-name>
   <managed-bean-class>bean.Department</managed-bean-class>
@@ -52,8 +59,8 @@
  
  <managed-bean>
   <managed-bean-name>studentListBean</managed-bean-name>
-  <managed-bean-class>bean.CommitteeMemberList</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
+  <managed-bean-class>bean.StudentList</managed-bean-class>
+  <managed-bean-scope>application</managed-bean-scope>
  </managed-bean>
  
  

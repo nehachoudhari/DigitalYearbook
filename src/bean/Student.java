@@ -1,10 +1,18 @@
 package bean;
+import java.io.Serializable;
+import java.util.List;
+
 import helper.DropboxUploaderHelper;
 
+import javax.annotation.ManagedBean;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.ejb.Stateful;
 import javax.ejb.Stateless;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
 
 import service.StudentService;
 import exception.YearbookException;
@@ -16,8 +24,10 @@ import exception.YearbookException;
  * Student entity is mapped to Student table in the database 
  *
  */
+//@javax.faces.bean.ManagedBean(name="student")
+//@SessionScoped
 @Stateless
-public class Student extends bean.Photograph{
+public class Student extends bean.Photograph implements Serializable{
 	
 	private long buckId;
 	
@@ -253,6 +263,7 @@ public class Student extends bean.Photograph{
 			entity.Student loggedInStudent = studentService.login(username,password);
 			
 	    	if(loggedInStudent != null){
+	    		//this.sessionDeptId = loggedInStudent.getDeptId();
 	    		this.buckId = loggedInStudent.getBuckId();
 		    	this.contactNumber = loggedInStudent.getContactNumber();
 		    	this.deptId = loggedInStudent.getDeptId();
@@ -289,4 +300,27 @@ public class Student extends bean.Photograph{
 		{
 		    return selectedDeptId != null ? this.getClass().hashCode() + selectedDeptId.hashCode() : super.hashCode();
 		}
+		
+//		List<entity.Student> allStudents = null;
+//
+//		public List<entity.Student> getAllStudents() {
+//			return allStudents;
+//		}
+//		
+//		public void setAllStudents(List<entity.Student> allStudents) {
+//			this.allStudents = allStudents;
+//		}
+//
+//		@PostConstruct
+//		public void init() {
+//			
+//			System.out.println("getting all students for dept id " + this.getDeptId());
+//			try {		
+//				allStudents = studentService.getAllStudents(this.getDeptId());
+//				System.out.println("the number of students found is "+ allStudents.size());
+//			}catch (YearbookException e) {
+//				e.printStackTrace();
+//			}
+//	    }
+		
 }
