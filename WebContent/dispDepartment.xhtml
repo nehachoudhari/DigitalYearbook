@@ -15,18 +15,18 @@
        <br/>
        <br/>
             <h:panelGrid columns="1" style="border:1px solid red; text-align:center; margin:0 auto; vertical-align: top; width:500px">
-               <h:graphicImage height="100" width="100"  value="#{deptListsBean.deptList.get(0).photoUrl}" />
-                <h:outputText id = "name" value="#{deptListsBean.deptList.get(0).name}"></h:outputText>
-  				<h:outputText id = "mission" value="#{deptListsBean.deptList.get(0).mission}"></h:outputText>
-                <h:outputText id = "label3" value="#{deptListsBean.deptList.get(0).location}"></h:outputText>
-                <h:outputText id = "loc" value="#{deptListsBean.deptList.get(0).url}"></h:outputText>
+               <p:graphicImage height="100" width="100"  value="#{deptListsBeanYearbook.dbImage}" cache="false"/>
+                <h:outputText id = "name" value="#{deptListsBeanYearbook.deptList.get(0).name}"></h:outputText>
+  				<h:outputText id = "mission" value="#{deptListsBeanYearbook.deptList.get(0).mission}"></h:outputText>
+                <h:outputText id = "label3" value="#{deptListsBeanYearbook.deptList.get(0).location}"></h:outputText>
+                <h:outputText id = "loc" value="#{deptListsBeanYearbook.deptList.get(0).url}"></h:outputText>
                             </h:panelGrid>
             <br />                    
            
             
              <h:panelGrid columns="1" style="margin:0 auto; text-align:center">
-    			<h:commandButton value="Next Page" action="Next"  style= "
-             	width : 120px;"></h:commandButton>
+    			<h:commandButton value="Next Page"  style= "
+             	width : 120px;" action="#{memberListBeanYearbook.init()}"></h:commandButton>
 			</h:panelGrid>
             <a href="mainMenu.xhtml">    Go Back to Menu  </a>               
         </h:form>

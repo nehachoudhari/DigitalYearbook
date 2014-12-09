@@ -18,36 +18,30 @@
  <managed-bean>
   <managed-bean-name>deptBean</managed-bean-name>
   <managed-bean-class>bean.Department</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
+  <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
  
  <managed-bean>
   <managed-bean-name>committeeBean</managed-bean-name>
   <managed-bean-class>bean.CommitteeMember</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
+  <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
  
  <managed-bean>
   <managed-bean-name>eventBean</managed-bean-name>
   <managed-bean-class>bean.Event</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
+  <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
  
  <managed-bean>
   <managed-bean-name>researchBean</managed-bean-name>
   <managed-bean-class>bean.ResearchGroup</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
+  <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
 
  <managed-bean>
   <managed-bean-name>deptListsBean</managed-bean-name>
   <managed-bean-class>bean.DepartmentList</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
- </managed-bean>
-
- <managed-bean>
-  <managed-bean-name>deptCurrentBean</managed-bean-name>
-  <managed-bean-class>bean.CurrentDepartment</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
  
@@ -66,7 +60,7 @@
  <managed-bean>
   <managed-bean-name>studentListBean</managed-bean-name>
   <managed-bean-class>bean.StudentList</managed-bean-class>
-  <managed-bean-scope>application</managed-bean-scope>
+  <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
  
  
@@ -76,11 +70,41 @@
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
 
+ 
+ 
  <managed-bean>
-  <managed-bean-name>deptdispBean</managed-bean-name>
-  <managed-bean-class>bean.Department</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
+  <managed-bean-name>deptListsBeanYearbook</managed-bean-name>
+  <managed-bean-class>bean.DispDepartmentList</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
+ 
+ <managed-bean>
+  <managed-bean-name>rGroupListBeanYearbook</managed-bean-name>
+  <managed-bean-class>bean.DispResearchGroupList</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
+
+<managed-bean>
+  <managed-bean-name>memberListBeanYearbook</managed-bean-name>
+  <managed-bean-class>bean.DispCommitteeMemberList</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
+ 
+ <managed-bean>
+  <managed-bean-name>studentListBeanYearbook</managed-bean-name>
+  <managed-bean-class>bean.DispStudentList</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
+ 
+ 
+<managed-bean>
+  <managed-bean-name>eventListBeanYearbook</managed-bean-name>
+  <managed-bean-class>bean.DispEventList</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
+ 
+ 
+ 
 
  <navigation-rule>
   <display-name>login.xhtml</display-name>
@@ -217,7 +241,7 @@
   <display-name>dispDepartment.xhtml</display-name>
   <from-view-id>/dispDepartment.xhtml</from-view-id>
   <navigation-case>
-   <from-outcome>Next</from-outcome>
+   <from-outcome>committee</from-outcome>
    <to-view-id>/dispComitteeMember.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
@@ -226,11 +250,11 @@
   <display-name>dispComitteeMember.xhtml</display-name>
   <from-view-id>/dispComitteeMember.xhtml</from-view-id>
    <navigation-case>
-   <from-outcome>Back</from-outcome>
+   <from-outcome>department</from-outcome>
    <to-view-id>/dispDepartment.xhtml</to-view-id>
   </navigation-case>
   <navigation-case>
-   <from-outcome>Next</from-outcome>
+   <from-outcome>event</from-outcome>
    <to-view-id>/dispEvents.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule> 
@@ -239,11 +263,11 @@
   <display-name>dispEvents.xhtml</display-name>
   <from-view-id>/dispEvents.xhtml</from-view-id>
   <navigation-case>
-   <from-outcome>Next</from-outcome>
+   <from-outcome>research</from-outcome>
    <to-view-id>/dispResearchGroups.xhtml</to-view-id>
   </navigation-case>
    <navigation-case>
-   <from-outcome>Back</from-outcome>
+   <from-outcome>committee</from-outcome>
    <to-view-id>/dispComitteeMember.xhtml</to-view-id>
   </navigation-case>
 </navigation-rule>
@@ -252,11 +276,11 @@
   <display-name>dispResearchGroups.xhtml</display-name>
   <from-view-id>/dispResearchGroups.xhtml</from-view-id>
   <navigation-case>
-   <from-outcome>Next</from-outcome>
+   <from-outcome>student</from-outcome>
    <to-view-id>/dispStudents.xhtml</to-view-id>
   </navigation-case>
   <navigation-case>
-   <from-outcome>Back</from-outcome>
+   <from-outcome>event</from-outcome>
    <to-view-id>/dispEvents.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
@@ -266,7 +290,7 @@
   <display-name>dispStudents.xhtml</display-name>
   <from-view-id>/dispStudents.xhtml</from-view-id>
    <navigation-case>
-   <from-outcome>Back</from-outcome>
+   <from-outcome>research</from-outcome>
    <to-view-id>/dispResearchGroups.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
@@ -281,10 +305,10 @@
  </navigation-rule>
  
  <navigation-rule>
-  <display-name>menubar.xhtml</display-name>
-  <from-view-id>/menubar.xhtml</from-view-id>
+  <display-name>yearbookView.xhtml</display-name>
+  <from-view-id>/yearbookView.xhtml</from-view-id>
   <navigation-case>
-   <from-outcome>true</from-outcome>
+   <from-outcome>department</from-outcome>
    <to-view-id>/dispDepartment.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>

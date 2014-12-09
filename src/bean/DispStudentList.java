@@ -33,7 +33,7 @@ import org.primefaces.model.StreamedContent;
 
 @Named
 @SessionScoped
-public class StudentList implements Serializable{
+public class DispStudentList implements Serializable{
 	
 	@EJB
 	StudentService studentService;
@@ -103,8 +103,8 @@ public class StudentList implements Serializable{
 		}
 		return student;
 	}
-	@PostConstruct
-	public void init() {
+	//@PostConstruct
+	public String init() {
 		try {		
 			allStudentsEntity = studentService.getAllStudents();
 			allStudents = new ArrayList<Student>();
@@ -113,8 +113,10 @@ public class StudentList implements Serializable{
 			}
 			
 			System.out.println("the number of students found is "+ allStudentsEntity.size());
+			return "student";
 		}catch (YearbookException e) {
 			e.printStackTrace();
 		}
+		return "false";
     }
 }

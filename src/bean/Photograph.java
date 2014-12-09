@@ -50,7 +50,7 @@ public class Photograph {
 	
 	protected void copyFile(String fileName,  InputStream in, String type) {
 		try {
-			String[] fileNames = fileName.split("\\");
+			String[] fileNames = fileName.split("\\/");
 			int length = fileNames.length;
 			ExternalContext extContext =FacesContext.getCurrentInstance().getExternalContext();
 			String filePath = extContext.getRealPath("//images//uploads//"+type+"//" + fileNames[length-1]);

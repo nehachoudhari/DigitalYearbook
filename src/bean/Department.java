@@ -1,9 +1,15 @@
 package bean;
+import java.io.File;
+import java.io.FileInputStream;
+
 import helper.DropboxUploaderHelper;
 
 import javax.ejb.EJB;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 
 import service.DepartmentService;
 import exception.YearbookException;
@@ -32,6 +38,16 @@ public class Department extends bean.Photograph{
 	private String url;
 	
 	private String photoUrl;
+	
+	private StreamedContent dbImage = null;
+	
+	public StreamedContent getDbImage() {
+		return dbImage;
+		//  FacesContext.getCurrentInstance().getExternalContext().getApplicationMap().get("studentBean")
+	}
+	public void setDbImage(StreamedContent dbImage) {
+		this.dbImage = dbImage;
+	}
 		
 	public String getPhotoUrl() {
 		return photoUrl;
@@ -166,9 +182,14 @@ public class Department extends bean.Photograph{
 			String filePath = extContext.getRealPath("//images//downloads"+dept.getPhotoUrl());
 			System.out.println(filePath);
 			this.photoUrl = filePath;
+			File dispFile = new File(filePath);
+			this.dbImage = new DefaultStreamedContent();
+			setDbImage(new DefaultStreamedContent(new FileInputStream(dispFile), "image/jpg"));
 			System.out.println();
 		} catch (YearbookException e) {
 			e.printStackTrace();
+		}catch(Exception e){
+			System.out.println(e.getMessage());
 		}
 		return "true";
     }

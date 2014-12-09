@@ -1,15 +1,11 @@
 package bean;
 
-import helper.DropboxUploaderHelper;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
 import service.EventService;
@@ -22,17 +18,6 @@ public class EventList {
 
 	List<SelectItem> allEvents = null;
 	
-	List<entity.Event> eventList = null;
-	
-	
-	public List<entity.Event> getEventList() {
-		return eventList;
-	}
-
-	public void setEventList(List<entity.Event> eventList) {
-		this.eventList = eventList;
-	}
-
 	public List<SelectItem> getAllEvents() {
 		return allEvents;
 	}
@@ -41,7 +26,7 @@ public class EventList {
 		this.allEvents = allEvents;
 	}
 
-
+	
 	@PostConstruct
 	public void init() {
 		allEvents = new ArrayList<SelectItem>();
@@ -49,15 +34,8 @@ public class EventList {
 		try {
 			list = eventService.getAllEvents();
 			if(list!= null) {
-				eventList = new ArrayList<entity.Event>(list);
 				for(entity.Event e : list) {
 					allEvents.add(new SelectItem(e.getEventId(),e.getName()));
-					
-					DropboxUploaderHelper dropboxUploader = new DropboxUploaderHelper();
-					dropboxUploader.fetchFromDropBoxIntoYearbook(e.getPhotoUrl());
-					ExternalContext extContext =FacesContext.getCurrentInstance().getExternalContext();
-					String filePath = extContext.getRealPath("//images//yearbook"+e.getPhotoUrl());
-					e.setPhotoUrl(filePath);	
 				}
 			}
 			else{
