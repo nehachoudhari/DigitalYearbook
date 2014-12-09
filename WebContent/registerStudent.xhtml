@@ -10,47 +10,86 @@
 <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
     <ui:define name="content">
         <h:form id="studentForm" enctype="multipart/form-data">
-            <h:panelGrid columns="2">
+            <h:panelGrid columns="3">
                 <h:outputText id = "firstLabel" value="First Name"></h:outputText>
-                <h:inputText id = "firstText" value="#{studentBean.firstName}"></h:inputText>
+                <h:inputText id = "firstText" value="#{studentBean.firstName}" required="true" requiredMessage="Please enter first name">
+                	<f:validateRequired> </f:validateRequired>
+                </h:inputText>
+               <h:message for="firstText" style="color:red" />
+                
                 <h:outputText id = "lastLabel" value="Last Name"></h:outputText>
-                <h:inputText id = "lastText" value="#{studentBean.lastName}"></h:inputText>
+                <h:inputText id = "lastText" value="#{studentBean.lastName}" required="true" requiredMessage="Please enter last name">
+                	<f:validateRequired> </f:validateRequired>
+                </h:inputText>
+                <h:message for="lastText" style="color:red" />
+                
+                
                 <h:outputText id = "buckidLabel" value="Buck Id"></h:outputText>
-                <h:inputText id = "buckidText" value="#{studentBean.buckId}"></h:inputText>
+                <h:inputText id = "buckidText" value="#{studentBean.buckId}"  required="true" requiredMessage="Please enter buck id">
+                	<f:validateRequired> </f:validateRequired>
+                </h:inputText>
+                <h:message for="buckidText" style="color:red" />
+                
                 <h:outputText id = "deptidLabel" value="Department Id"></h:outputText>
                 <h:selectOneMenu id="deptId" value="#{studentBean.selectedDeptId}">
    					 <f:selectItems value="#{deptListsBean.allDepartments}"  />
    					 <f:converter converterId="valueConverter" />
 				</h:selectOneMenu>
+				<h:message for="deptId" style="color:red" />
+				
                 <h:outputText id = "emailLabel" value="Email ID"></h:outputText>
-                <h:inputText id = "emailText" value="#{studentBean.email}"></h:inputText>
+                <h:inputText id = "emailText" value="#{studentBean.email}" required="true" requiredMessage="Please enter email id">
+                	<f:validator validatorId="emailValidator" />
+                </h:inputText>
+                <h:message for="emailText" style="color:red" />
+                
+                
                 <h:outputText id = "gradYearLabel" value="Grad Year"></h:outputText>
-                <h:inputText id = "gradYearText" value="#{studentBean.gradYear}"></h:inputText>
+                <h:inputText id = "gradYearText" value="#{studentBean.gradYear}" required="true" requiredMessage="Please enter year of graduation"></h:inputText>
+                <h:message for="gradyearText" style="color:red" />
+                
                 <h:outputText id = "dobLabel" value="Date of Birth"></h:outputText>
-                <h:inputText id = "dobText" value="#{studentBean.dob}"></h:inputText>
+                <h:inputText id = "DOB" value="#{studentBean.dob}" required="true" requiredMessage="Please enter date of birth">
+                	<f:convertDateTime pattern="dd-mm-yyyy"/>
+                </h:inputText>
+                <h:message for="DOB" style="color:red"/>
+                
                 <h:outputText id = "contactLabel" value="Contact Number"></h:outputText>
-                <h:inputText id = "contactText" value="#{studentBean.contactNumber}"></h:inputText>
+                <h:inputText id = "contactText" value="#{studentBean.contactNumber}" validatorMessage="Please enter a valid 10 digit contact number">
+                	 <f:validateLongRange  minimum="1000000000" maximum="9999999999" for="contactText"></f:validateLongRange>
+                </h:inputText>
+                <h:message for="contactText" style="color:red" />
+                
                 <h:outputText id = "jobLabel" value="Job/Internship Details"></h:outputText>
                 <h:inputText id = "jobText" value="#{studentBean.jobInternDetails}"></h:inputText>
+                <h:message for="jobText" style="color:red" />
+                
                 <h:outputText id = "nameLabel" value="User name"></h:outputText>
-                <h:inputText id = "usernameText" value="#{studentBean.username}"></h:inputText>
+                <h:inputText id = "usernameText" value="#{studentBean.username}" required="true" requiredMessage="Please enter username"></h:inputText>
+                <h:message for="usernameText" style="color:red" />
+                
                 <h:outputText  id = "passwordLabel" value="Password"></h:outputText>
-                <h:inputSecret  id = "passwordText" value="#{studentBean.password}"></h:inputSecret>
+                <h:inputSecret  id = "passwordText" value="#{studentBean.password}" validatorMessage="The password should have at least 6 charachers"> 
+                	<f:validateLength minimum="6" ></f:validateLength>
+                </h:inputSecret>
+                <h:message for="passwordText" style="color:red" > </h:message>
             </h:panelGrid>
             <br />
                         
 			<h3 >Photograph for Student</h3>
-            <h:panelGrid columns="2" style=" width : 378px;">
+            <h:panelGrid columns="3" >
                 <h:outputLabel value="Upload file" for="file" /> 
-                <p:fileUpload value="#{studentBean.file}" sizeLimit="10485760" 
+                <p:fileUpload value="#{studentBean.file}" sizeLimit="10485760"  required="true" requiredMessage="Please select a png/gif/jpg file"
                 id="file" dragDropSupport="false" mode="simple" allowTypes="png,gif,jpg" />
+                <h:message for="file" style="color:red" > </h:message>
             </h:panelGrid>
                         
             <br />
             <br />
             <h:commandButton value="Register" action="#{studentBean.addStudent()}" style= "position: static; 
             left: 2000px; top: 100px; width: 100px; height: 20px"></h:commandButton>
-                       
+              <br />   
+ <br />      
         </h:form>
     </ui:define>
 </ui:composition>
