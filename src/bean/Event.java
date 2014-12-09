@@ -1,10 +1,16 @@
 package bean;
 
+import java.io.File;
+import java.io.FileInputStream;
+
 import helper.DropboxUploaderHelper;
 
 import javax.ejb.EJB;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 
 import service.EventService;
 import exception.YearbookException;
@@ -27,6 +33,14 @@ public class Event extends Photograph{
 	private long eventId;
 	private String photoUrl;
 	private String selectedEvId;
+	private StreamedContent dbImage;
+	
+	public StreamedContent getDbImage() {
+		return dbImage;
+	}
+	public void setDbImage(StreamedContent dbImage) {
+		this.dbImage = dbImage;
+	}
 	
 	public String getSelectedEvId() {
 		return selectedEvId;
@@ -152,9 +166,14 @@ public class Event extends Photograph{
 	    	ExternalContext extContext =FacesContext.getCurrentInstance().getExternalContext();
 			String filePath = extContext.getRealPath("//images//downloads"+event.getPhotoUrl());
 			System.out.println(filePath);
+			File dispFile = new File(filePath);
+			dbImage = null;
+			dbImage = new DefaultStreamedContent(new FileInputStream(dispFile), "image/jpg");
 			this.photoUrl = filePath;
 		} catch (YearbookException e) {
 			e.printStackTrace();
+		}catch(Exception e){
+			System.out.println(e.getMessage());
 		}
 		return "true";
     }

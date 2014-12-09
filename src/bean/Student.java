@@ -1,4 +1,6 @@
 package bean;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.Serializable;
 import java.util.List;
 
@@ -13,6 +15,9 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
+
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 
 import service.StudentService;
 import exception.YearbookException;
@@ -53,6 +58,14 @@ public class Student extends bean.Photograph implements Serializable{
 	
 	private String photoUrl;
 	
+	private StreamedContent dbImage;
+	
+	public StreamedContent getDbImage() {
+		return dbImage;
+	}
+	public void setDbImage(StreamedContent dbImage) {
+		this.dbImage = dbImage;
+	}
 	public String getPhotoUrl() {
 		return photoUrl;
 	}
@@ -280,6 +293,9 @@ public class Student extends bean.Photograph implements Serializable{
 		    	ExternalContext extContext =FacesContext.getCurrentInstance().getExternalContext();
 				String filePath = extContext.getRealPath("//images//downloads"+loggedInStudent.getPhotoUrl());
 				System.out.println(filePath);
+				File dispFile = new File(filePath);
+				dbImage = null;
+				dbImage = new DefaultStreamedContent(new FileInputStream(dispFile), "image/jpg");
 				this.photoUrl = filePath;
 	    		return "true";
 	    	}else{

@@ -20,7 +20,7 @@ import org.primefaces.model.StreamedContent;
 import service.CommitteeMemberService;
 import exception.YearbookException;
 
-public class CommitteeMemberList {
+public class DispCommitteeMemberList {
 	
 	@EJB
 	CommitteeMemberService memberService;
@@ -71,8 +71,8 @@ public class CommitteeMemberList {
 		return committee;
 	}
 	
-	@PostConstruct
-	public void init() {
+	//@PostConstruct
+	public String init() {
 		allMembers = new ArrayList<SelectItem>();
 		Collection<entity.CommitteeMember> list;
 		try {
@@ -86,10 +86,12 @@ public class CommitteeMemberList {
 					listallMembers.add(convertToBean(m));
 				}
 			}
+			return "committee";
 		} catch (YearbookException e) {
 			e.printStackTrace();
 		}catch(Exception e){
 			System.out.println(e.getMessage());
 		}
+		return "false";
     }
 }

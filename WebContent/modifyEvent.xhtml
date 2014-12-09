@@ -26,7 +26,7 @@
 			<h3 >Photograph for Event</h3>
 			<h:panelGrid columns="2" style=" width : 378px;">
             	<h:outputLabel value="Uploaded file"/> 
-                <h:graphicImage height="200" width="200" value="#{eventBean.photoUrl}" />
+                <p:graphicImage height="200" width="200" value="#{eventBean.dbImage}" cache="false" />
             </h:panelGrid>
             
             <h:panelGrid columns="2" style=" width : 378px;">

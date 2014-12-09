@@ -51,15 +51,17 @@ public class DropboxUploaderHelper {
     }
     
     public String uploadToDropBox(String inputFileName, String type){
+    	String[] fileNames = inputFileName.split("\\/");
+		int length = fileNames.length;
     	ExternalContext extContext =FacesContext.getCurrentInstance().getExternalContext();
-		String filePath = extContext.getRealPath("//images//uploads//"+type+"//" + inputFileName);
+		String filePath = extContext.getRealPath("//images//uploads//"+type+"//" + fileNames[length-1]);
     	File inputFile = new File(filePath);
     	FileInputStream inputStream = null;
         try {
             inputStream = new FileInputStream(inputFile);
-            DbxEntry.File uploadedFile = client.uploadFile("/"+type+"/"+inputFileName,
+            DbxEntry.File uploadedFile = client.uploadFile("/"+type+"/"+fileNames[length-1],
                 DbxWriteMode.add(), inputFile.length(), inputStream);
-            String sharedUrl = client.createShareableUrl("/"+type+"/"+inputFileName);
+            String sharedUrl = client.createShareableUrl("/"+type+"/"+fileNames[length-1]);
             System.out.println("Uploaded: " + uploadedFile.toString() + " URL " + sharedUrl);
             return "/"+type+"/"+uploadedFile.name;
         }catch(Exception e){
