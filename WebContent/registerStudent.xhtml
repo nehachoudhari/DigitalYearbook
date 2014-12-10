@@ -25,10 +25,12 @@
                 
                 
                 <h:outputText id = "buckidLabel" value="Buck Id"></h:outputText>
-                <h:inputText id = "buckidText" value="#{studentBean.buckId}"  required="true" requiredMessage="Please enter buck id">
-                	<f:validateRequired> </f:validateRequired>
+                <h:inputText id = "buckId" value="#{studentBean.buckId}" >
+                	<f:validator validatorId="buckIdValidator"/>
+                	<f:ajax event="blur" render="nameError" execute="buckId" /> 
                 </h:inputText>
-                <h:message for="buckidText" style="color:red" />
+                <h:message id="nameError" for="buckId" style="color:red" />
+                
                 
                 <h:outputText id = "deptidLabel" value="Department Id"></h:outputText>
                 <h:selectOneMenu id="deptId" value="#{studentBean.selectedDeptId}">

@@ -16,7 +16,7 @@
             	<ul>
                 <ui:repeat value = "#{eventListBeanYearbook.eventList}" var = "event">
                 <li style="text-align: center; list-style-type: none">
-                 <p:graphicImage height="100" width="100"  value="#{eventListBeanYearbook.listImage}" >
+                 <p:graphicImage height="100" width="100"  value="#{eventListBeanYearbook.eventList.get(0).dbImage}" >
                  	<f:param name="id" value="#{event.eventId}" />
                  </p:graphicImage>
                 <br />

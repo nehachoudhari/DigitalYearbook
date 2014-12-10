@@ -31,7 +31,7 @@ public class ResearchGroup extends Photograph{
 	@EJB
 	Student studentBean;
 
-	private int groupId;
+	private long groupId;
 	private String name;
 	private String description;
 	private int deptId;
@@ -71,10 +71,10 @@ public class ResearchGroup extends Photograph{
 	public void setDeptId(int deptId) {
 		this.deptId = deptId;
 	}
-	public int getGroupId() {
+	public long getGroupId() {
 		return groupId;
 	}
-	public void setGroupId(int groupId) {
+	public void setGroupId(long groupId) {
 		this.groupId = groupId;
 	}
 	public String getName() {
@@ -156,9 +156,9 @@ public class ResearchGroup extends Photograph{
 	
 	public String showGroup() throws YearbookException{
 		try {
-			System.out.println("Inside member list");
+			System.out.println("Inside research list");
 			System.out.println("Research id  - "+selectedResId);
-			entity.ResearchGroup research = researchService.getResearchGroup(Integer.parseInt(selectedResId));
+			entity.ResearchGroup research = researchService.getResearchGroup(Long.parseLong(selectedResId));
 			this.deptId = research.getDeptId();
 			this.description = research.getDescription();
 			this.groupId = research.getGroupId();

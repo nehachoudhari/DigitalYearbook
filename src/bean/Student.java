@@ -12,8 +12,12 @@ import javax.ejb.EJB;
 import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 import javax.faces.bean.SessionScoped;
+import javax.faces.component.UIComponent;
+import javax.faces.component.UIInput;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.faces.event.AjaxBehaviorEvent;
+import javax.faces.event.ValueChangeEvent;
 import javax.inject.Named;
 
 import org.primefaces.model.DefaultStreamedContent;
@@ -60,6 +64,14 @@ public class Student extends bean.Photograph implements Serializable{
 	
 	private StreamedContent dbImage;
 	
+	private String nameError;
+	
+	public String getNameError() {
+		return nameError;
+	}
+	public void setNameError(String nameError) {
+		this.nameError = nameError;
+	}
 	public StreamedContent getDbImage() {
 		return dbImage;
 	}
@@ -307,6 +319,44 @@ public class Student extends bean.Photograph implements Serializable{
 			return "false";
 	    }
 	 
+	 /*public void validateBuckId(FacesContext context, UIComponent toValidate, Object value){
+		 try{
+			 System.out.println("Inside validate buck id ");
+			// UIInput nameInput = (UIInput)e.getComponent();
+			 String name = (String)value;
+			 System.out.println(name);
+			 System.out.println("Inside validate buck id" + this.buckId);
+			 //long buckIdInput = Long.parseLong(name);
+			 if(this.buckId != 0){
+				 entity.Student entityStudent = studentService.getStudent(this.buckId);
+				 if(entityStudent != null){
+					 this.nameError = "This buck id is already registered here.";
+				 }
+			 }else{
+				 this.nameError = "Buck ID cannot be blank";
+			 }
+			 
+			 //return this.nameError;
+		 }catch(Exception ex){
+			 System.out.println(ex.getMessage());
+			// return "Error getting buckid info";
+		 }
+	 }*/
+	 
+	 public boolean validateBuckIds(long buckId){
+		 try{
+			 
+			 if(buckId != 0){
+				 entity.Student entityStudent = studentService.getStudent(buckId);
+				 if(entityStudent != null){
+					 return false;
+				 }
+			 }
+		 }catch(Exception ex){
+			 System.out.println(ex.getMessage());
+		 }
+		 return true;
+	 }
 	 public boolean equals(Object other)
 		{
 		    return other instanceof Department && (selectedDeptId != null) ? selectedDeptId.equals(((Department) other).getDeptId()) : (other == this);

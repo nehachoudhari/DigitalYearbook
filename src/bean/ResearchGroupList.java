@@ -52,14 +52,7 @@ public class ResearchGroupList {
 			if(list!= null) {
 				rGroupList = new ArrayList<entity.ResearchGroup>(list);
 				for(entity.ResearchGroup r : list) {
-					allGroups.add(new SelectItem(r.getGroupId(),r.getName()));
-					
-					DropboxUploaderHelper dropboxUploader = new DropboxUploaderHelper();
-					dropboxUploader.fetchFromDropBoxIntoYearbook(r.getPhotoUrl());
-					ExternalContext extContext =FacesContext.getCurrentInstance().getExternalContext();
-					String filePath = extContext.getRealPath("//images//yearbook"+r.getPhotoUrl());
-					r.setPhotoUrl(filePath);
-					
+					allGroups.add(new SelectItem(r.getGroupId(),r.getName()));				
 					
 				}
 			}else {

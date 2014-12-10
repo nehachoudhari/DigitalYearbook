@@ -16,7 +16,7 @@
             	<ul>
                 <ui:repeat value = "#{memberListBeanYearbook.listallMembers}" var = "member">
                 <li style="text-align: center; list-style-type: none">
-                 <p:graphicImage height="100" width="100"  value="#{member.dbImage}" cache="false"/>
+                 <p:graphicImage height="100" width="100"  value="#{memberListBeanYearbook.listallMembers.get(0).dbImage}" cache="false"/>
                 <br />
                 <h:outputText id = "label1" value="Member Name: "></h:outputText>
                 <h:outputText id = "name" value="#{member.fName}"></h:outputText>

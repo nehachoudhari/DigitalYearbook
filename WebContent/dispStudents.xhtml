@@ -16,7 +16,7 @@
                 <ul>
                	 <ui:repeat  value = "#{studentListBeanYearbook.allStudents}" var = "student">
              	  	<p> 	 
-             	  	 <p:graphicImage height="100" width="100"  value="#{student.dbImage}"  />
+             	  	 <p:graphicImage height="100" width="100"  value="#{studentListBeanYearbook.allStudents.get(0).dbImage}"  />
                		 <br />
             	    <h:outputText id = "name" value="#{student.firstName}"></h:outputText>
             	    <br/>

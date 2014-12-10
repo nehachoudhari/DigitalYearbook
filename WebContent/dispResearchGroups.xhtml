@@ -16,7 +16,7 @@
             	<ul>
                 <ui:repeat value = "#{rGroupListBeanYearbook.rGroupList}" var = "group">
                 <li style="text-align: center; list-style-type: none">
-                 <p:graphicImage height="100" width="100"  value="#{group.dbImage}" cache="false" />
+                 <p:graphicImage height="100" width="100"  value="#{rGroupListBeanYearbook.rGroupList.get(0).dbImage}" cache="false" />
                 <br />
                 <h:outputText id = "label1" value="Group Name: "></h:outputText>
                 <h:outputText id = "name" value="#{group.name}"></h:outputText>

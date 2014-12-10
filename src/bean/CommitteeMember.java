@@ -170,7 +170,9 @@ public class CommitteeMember extends Photograph{
 		try {
 			System.out.println("Inside member list");
 			System.out.println("Member id  - "+selectedComId);
-			entity.CommitteeMember member = memberService.getMember(Integer.parseInt(selectedComId));
+			System.out.println();
+			entity.CommitteeMember member = memberService.getMember(Long.parseLong(selectedComId));
+			System.out.println("member "+member);
 			this.deptId = member.getDeptId();
 			this.designation = member.getDesignation();
 			this.fName = member.getfName();
