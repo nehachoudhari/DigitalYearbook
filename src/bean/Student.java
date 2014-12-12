@@ -193,16 +193,13 @@ public class Student extends bean.Photograph implements Serializable{
 			boolean ret = studentService.addStudent(this.buckId, this.contactNumber, Integer.parseInt(this.selectedDeptId), this.dob,
 					this.email, this.firstName, this.gradYear, this.jobInternDetails, this.lastName, 
 					this.password, this.username, dropboxUrl);
-			dropboxUploader.fetchFromDropBox(dropboxUrl);
+			//dropboxUploader.fetchFromDropBox(dropboxUrl);
 			ExternalContext extContext =FacesContext.getCurrentInstance().getExternalContext();
 			String filePath = extContext.getRealPath("//images//downloads"+dropboxUrl);
 			System.out.println(filePath);
 			this.photoUrl = filePath;
 			//dropboxUploader.fetchFromDropBox(dropboxUrl);
-			if(ret)
-					return "true";
-				else 
-					return "false";
+			return logStudent();
 		}catch(Exception e){
 			System.out.println(e.getMessage());
 		}

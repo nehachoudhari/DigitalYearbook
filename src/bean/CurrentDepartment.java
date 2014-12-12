@@ -1,7 +1,6 @@
 package bean;
 
 
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 
 import service.DepartmentService;

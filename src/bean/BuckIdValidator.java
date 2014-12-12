@@ -11,12 +11,22 @@ import javax.faces.validator.ValidatorException;
 import service.StudentService;
 import serviceImpl.StudentServiceImpl;
 
+/**
+ * This is buck id validator which is called on Ajax call from registerStudent.xhtml page
+ * @author admin
+ *
+ */
 @FacesValidator("buckIdValidator")
 public class BuckIdValidator implements Validator {
 
 	@EJB
 	StudentService studentService = new StudentServiceImpl();
 	
+    /**
+     * Validates if the Buck Id already exists!
+     * If it exists, throws an exception, else does nothing.
+     * @see javax.faces.validator.Validator#validate(javax.faces.context.FacesContext, javax.faces.component.UIComponent, java.lang.Object)
+     */
     @Override
     public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
         	System.out.println("Inside validate method of buckidvalidator");

@@ -86,11 +86,14 @@ public class DropboxUploaderHelper {
 		String filePath = extContext.getRealPath("//images//downloads//"+remoteUrl);
 		 File target = new File(filePath);
 		 try {
-			 OutputStream out = new FileOutputStream(target);
-		     md = client.getFile(remoteUrl, null, out);
-		     if(out!=null){
-		    	 out.close();
-		     }
+			 if(!target.exists()){
+				 System.out.println("Target not exists!!");
+				 OutputStream out = new FileOutputStream(target);
+			     md = client.getFile(remoteUrl, null, out);
+			     if(out!=null){
+			    	 out.close();
+			     }
+			 }
 		 }catch(Exception e){
 			 System.out.println(e.getMessage());
 		 }

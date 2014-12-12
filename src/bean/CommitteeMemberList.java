@@ -20,6 +20,13 @@ import org.primefaces.model.StreamedContent;
 import service.CommitteeMemberService;
 import exception.YearbookException;
 
+/**
+ * Displays a list of existing committee members on front end.
+ * init method (PstConstruct) is called on load of 
+ * the front end and this method gets called
+ * @author admin
+ *
+ */
 public class CommitteeMemberList {
 	
 	@EJB

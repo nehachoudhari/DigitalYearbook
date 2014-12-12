@@ -27,7 +27,7 @@
                 <h:outputText id = "buckidLabel" value="Buck Id"></h:outputText>
                 <h:inputText id = "buckId" value="#{studentBean.buckId}" >
                 	<f:validator validatorId="buckIdValidator"/>
-                	<f:ajax event="blur" render="nameError" /> 
+                	<f:ajax render="nameError" /> 
                 </h:inputText>
                 <h:message id="nameError" for="buckId" style="color:red" />
                 

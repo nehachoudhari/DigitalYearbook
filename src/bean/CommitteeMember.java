@@ -102,6 +102,12 @@ public class CommitteeMember extends Photograph{
 		this.dbImage = dbImage;
 	}
 	
+	/**
+	 * This method adds a new committee member.
+	 * It calls dropboxhelper class to upload its photograph on dropbox.
+	 * @return
+	 * @throws YearbookException
+	 */
 	public String add() throws YearbookException{
 		try{
 			System.out.println("Inside add");
@@ -124,6 +130,11 @@ public class CommitteeMember extends Photograph{
 		}
 		return "false";
 	}
+	/**
+	 * Updates committee member details based on the committee member information posted on modifyCommittee.xhtml
+	 * @return
+	 * @throws YearbookException
+	 */
 	public String modify() throws YearbookException{
 		try{
 			System.out.println("Inside modify");
@@ -150,6 +161,11 @@ public class CommitteeMember extends Photograph{
 		return "false";
 	}
 	
+	/**
+	 * Deletes a committee member from the database.
+	 * @return
+	 * @throws YearbookException
+	 */
 	public String delete() throws YearbookException{
 		try{
 			System.out.println("Inside delete members ");
@@ -166,6 +182,11 @@ public class CommitteeMember extends Photograph{
 		return "false";
 	}
 	
+	/**
+	 * Displays a committee member on modify/delete screen after selecting a member id from dropdown 
+	 * @return
+	 * @throws YearbookException
+	 */
 	public String showMember() throws YearbookException{
 		try {
 			System.out.println("Inside member list");
