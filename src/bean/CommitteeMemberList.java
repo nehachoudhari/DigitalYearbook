@@ -32,9 +32,6 @@ public class CommitteeMemberList {
 	@EJB
 	CommitteeMemberService memberService;
 	
-//	@EJB
-//	Student studentBean;
-
 	List<SelectItem> allMembers = null;
 	List<CommitteeMember> listallMembers = null;
 	public List<SelectItem> getAllMembers() {
@@ -54,6 +51,12 @@ public class CommitteeMemberList {
 	}
 	
 
+	/**
+	 * This is a utility method that converts an entity bean of CommitteeMember to managed bean. 
+	 * This conversion is done to avoid dependency on the external entity beans
+	 * @param entityBean
+	 * @return managed/backing bean
+	 */
 	private CommitteeMember convertToBean(entity.CommitteeMember entityBean){
 		CommitteeMember committee = new CommitteeMember();
 		try {			
@@ -78,6 +81,10 @@ public class CommitteeMemberList {
 		return committee;
 	}
 	
+	/**
+	 * This method creates a list of committee members
+	 * This list is required to populate the select committee member dropdown on front end
+	 */
 	@PostConstruct
 	public void init() {
 		allMembers = new ArrayList<SelectItem>();

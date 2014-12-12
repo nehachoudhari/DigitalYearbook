@@ -52,6 +52,7 @@ public class Photograph {
 		try {
 			String[] fileNames = fileName.split("\\/");
 			int length = fileNames.length;
+			System.out.println("File name in copyFile "+fileNames[length-1]);
 			ExternalContext extContext =FacesContext.getCurrentInstance().getExternalContext();
 			String filePath = extContext.getRealPath("//images//uploads//"+type+"//" + fileNames[length-1]);
 			System.out.println("File is "+extContext.getRealPath("//images//uploads//"+type+"//" + fileNames[length-1]));
